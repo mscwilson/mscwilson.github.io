@@ -1,7 +1,7 @@
 ---
 layout: single
 title: Three days into Makers course
-tags: Sublime TDD Makers
+tags: Sublime TDD Makers themes
 ---
 Good things today:
 - set up an alias/function in zsh to do git add . commit and push all in one go. Based on [this post](https://stackoverflow.com/a/23328996). I even understand what it's saying

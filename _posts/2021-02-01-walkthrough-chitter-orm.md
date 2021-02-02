@@ -10,7 +10,7 @@ Given that I spent quite a while working out how to do all of this yesterday, I 
 ## Specifically, the Chitter weekend challenge
 
 ActiveRecord is an ORM. Object Relational Mapper.
-[Here are all the basic details about it and how to use it]( https://guides.rubyonrails.org/active_record_basics.html). /Using ActiveRecord means not writing any SQL or Model code/. Feels a bit like cheating.
+[Here are all the basic details about it and how to use it]( https://guides.rubyonrails.org/active_record_basics.html). <strong>Using ActiveRecord means not writing any SQL or Model code</strong>. Feels a bit like cheating.
 
 These instructions are largely based on [this post](https://medium.com/@rileythompson/setting-up-a-simple-sinatra-blog-app-db56dda4c280).
 
@@ -195,10 +195,12 @@ run Chitter
 ```
 
 ### Adding stuff to the database(s)
-When using ActiveRecord, /no SQL is needed/!
+When using ActiveRecord, <strong>no SQL is needed</strong>!
 To make a change to a database, use rake to make a template for it to run later. Run:
 `rake db:create_migration NAME=what_i_want_the_change_to_be`
+
 Then it will make a file, plus the folders if necessary, in `db/migrate/timestamp-what_i_want_the_change_to_be`.
+
 Inside the file will be an empty template like this:
 ```ruby
 # in empty migration file
@@ -226,7 +228,7 @@ end
 ```
 The numeric primary key is made automatically, no need to list that column.
 
-/To create the table in the databases/, have to add it to each one separately using rake.
+<strong>To create the table in the databases</strong>, have to add it to each one separately using rake.
 Run:
 ```
 rake db:migrate
@@ -236,7 +238,8 @@ rake db:migrate RACK_ENV="test"
 It will confirm that it made the table.
 
 ### Model classes with ActiveRecord NB naming is important
-/There is no need to write any database accessing code with ActiveRecord./ But, it relies on the naming convention discussed [here](https://edgeguides.rubyonrails.org/active_record_migrations.html#migrations-and-seed-data) I think. Specifically, the /model classes have to be named in singular and the db tables the same but plural/.
+<strong>There is no need to write any database accessing code with ActiveRecord</strong>. But, it relies on the naming convention discussed [here](https://edgeguides.rubyonrails.org/active_record_migrations.html#migrations-and-seed-data) I think. Specifically, the <strong>model classes have to be named in singular and the db tables the same but plural</strong>.
+
 Here's the Post class which will be for accessing and wrapping info from the posts table.
 ```ruby
 # in post.rb
@@ -261,6 +264,7 @@ That method, `has_secure_password`, allows Sinatra to use an authenticate method
 
 ### Adding data to the database in the controller
 Data comes into the controller off the HTML forms, into params. Eg user entering a post and their name.
+
 Given that the posts table currently has columns for text (content), author name and datetime, can save the data into the database with something like:
 ```ruby
 # in app.rb
@@ -271,9 +275,9 @@ Given that the posts table currently has columns for text (content), author name
     post.save ? (redirect "/") : "failed to create a post!"
   end
 ```
-You don't need to say what time it was made, ActiveRecord automatically fills that in.
-
 Other useful methods are `Post.all` to read out all the rows in posts table (into a list I think) so can display them on the homepage. Or `Post.where("author_name": "miranda")`, `Post.find(id)`, etc.
+
+You don't need to say what time it was made, ActiveRecord automatically fills that in. Btw then to read the time out to look nice would be like `post.created_at.strftime("%k:%M, %e %b %Y")` if post is a thing in Post.all.
 
 ### Clearing out the test database before each test
 Add this to the spec_helper, just after `RSpec.configure do |config|`
@@ -329,7 +333,7 @@ Every time `rake db:migrate` is run, rake creates or updates a `schema.rb` file 
 It is also possible to automatically populate the databases with records and info, instead of everyone manually entering it. I have not tried this. The "easiest" way looks to be to get a `seed.rb` or `seeds.rb` file in the db/ folder. Then can run:
 `rake db:seed`
 and it will magically put the data in the database.
-However, how does the data get into the `seed.rb` file? Some quick research suggests that at this point - /assuming it works with Sinatra and not just Rails/ - the [best bet is the gem Seed Dump](https://medium.com/adventures-in-code/seed-dump-ruby-gem-b74cc8bdfdc). It saves (dumps) all the data that's been already entered and is in the db into a seed file. `rake db:seed:dump`
+However, how does the data get into the `seed.rb` file? Some quick research suggests that at this point - <strong>assuming it works with Sinatra and not just Rails</strong> - the [best bet is the gem Seed Dump](https://medium.com/adventures-in-code/seed-dump-ruby-gem-b74cc8bdfdc). It saves (dumps) all the data that's been already entered and is in the db into a seed file. `rake db:seed:dump`
 Then, everyone in the team can use that seed.rb file to populate the dbs so everyone is using the same data without having to manually enter loads of things.
 
 

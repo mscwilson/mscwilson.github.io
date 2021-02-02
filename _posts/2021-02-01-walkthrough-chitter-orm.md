@@ -4,7 +4,7 @@ title: How to set up a Sinatra PostgreSQL app with ActiveRecord and RSpec
 date:  2021-02-01 23:54:00
 tags: Ruby Sinatra PostgreSQL ActiveRecord
 ---
-Given that I spent quite a while working out how to do all of this yesterday, I wanted to write some fairly comprehensive notes on how I set up my Chitter app. Here are the instructions almost entirely taken from this [one blog post](https://medium.com/@rileythompson/setting-up-a-simple-sinatra-blog-app-db56dda4c280) with some alterations. Feels a bit cargo-cult programming, a lot of copy-pasting randomly off StackOverflow posts, but it works! I might try adding more links when I go through all the many tabs open about it on my Firefox. There may well be many mistakes.
+Given that I spent quite a while working out how to do all of this yesterday, I wanted to write some fairly comprehensive notes on how I set up my [Chitter app](https://github.com/mscwilson/chitter-challenge). Here are the instructions almost entirely taken from this [one blog post](https://medium.com/@rileythompson/setting-up-a-simple-sinatra-blog-app-db56dda4c280) with some alterations. Feels a bit cargo-cult programming, a lot of copy-pasting randomly off StackOverflow posts, but it works! I might try adding more links when I go through all the many tabs open about it on my Firefox. There may well be many mistakes.
 
 # Setting up a fully tested Sinatra Postgres app with ActiveRecord
 ## Specifically, the Chitter weekend challenge
@@ -94,6 +94,7 @@ Some instructions for this file listed all kinds of different parameters like "p
 Paste this in:  
 
 ```ruby
+ # in database.rb
  # set the database based on the current environment
  # The name Chitter in the below line is because my main app controller class in app.rb is called Chitter
 database_name = "chitter-#{Chitter.environment}"
@@ -114,16 +115,17 @@ ActiveRecord::Base.establish_connection(
 `touch environment.rb`  
 
 ```ruby
-# get the path of the root of the app
-# assuming that this file is one folder down in config/
+ # in environment.rb
+ # get the path of the root of the app
+ # assuming that this file is one folder down in config/
 APP_ROOT = File.expand_path("..", __dir__)
 
-# require the controller(s)
-# says that app.rb is in the root
+ # require the controller(s)
+ # says that app.rb is in the root
 Dir.glob(File.join(APP_ROOT, "app", "*.rb")).each { |file| require file }
 
-# require the model(s)
-# models stored in lib/
+ # require the model(s)
+ # models stored in lib/
 Dir.glob(File.join(APP_ROOT, "lib", "*.rb")).each { |file| require file }
 
 # require database configurations
@@ -160,6 +162,7 @@ The order in which things are set or required matters. At the top, require simpl
 It should look like this at the top:  
 
 ```ruby
+ # in spec_helper.rb
 require 'simplecov'
 require 'simplecov-console'
 
@@ -225,7 +228,7 @@ class CreatePosts < ActiveRecord::Migration[6.1]
     # makes a table called "posts"
     create_table :posts do |t|
         # has a column called "text", type is text
-      t.text :tex, limit: 280
+      t.text :text
        # column "author_name", a string
       t.string :author_name
       # automatically makes created_at and modified_at columns
@@ -307,6 +310,7 @@ class CreateUsers < ActiveRecord::Migration[6.1]
   def change
     create_table :users do |t|
       t.string :email
+       # password_digest not password column, because encyrpted
       t.string :password_digest
       t.string :real_name
       t.string :username
@@ -314,6 +318,8 @@ class CreateUsers < ActiveRecord::Migration[6.1]
   end
 end
 ```
+NB the encrypted passwords must be saved into a column called "password_digest" to use the user.authenticate method.  
+
 Again, run the `rake db:migrate` for both environments.  
 
 Then I wanted to change the column in posts table to be a user_id foreign key instead of the string "author_name". Another migration file.  

@@ -19,6 +19,7 @@ A folder initialised with git and bundle. No databases required.
 
 ### Gemfile
 Gemfile should have at least these gems:  
+
 ```ruby
 # in Gemfile
 source 'https://rubygems.org'
@@ -73,12 +74,16 @@ It's a YAML file. Don't know what that is.
 Write inside:  
 
 ```
-# in database.yml
-development: # this defines the database for the development environment (default environment)
- adapter: postgresql # the type of database it will be
- database: chitter-development # name of db to make
+ # in database.yml
+ # this defines the database for the development environment (default environment)
+development:
+ # the type of database it will be
+ adapter: postgresql 
+  # name of db to make
+ database: chitter-development
 
- test: # test env details
+ # same but for test env
+ test:
  adapter: postgresql
  database: chitter-test
 ```
@@ -87,13 +92,14 @@ Some instructions for this file listed all kinds of different parameters like "p
 * Second file is for ActiveRecord to connect to the databases that are going to be made. It defines which database to use in which environment  
 `touch database.rb`  
 Paste this in:  
+
 ```ruby
-# set the database based on the current environment
-# The name Chitter in the below line is because my main app controller class in app.rb is called Chitter
+ # set the database based on the current environment
+ # The name Chitter in the below line is because my main app controller class in app.rb is called Chitter
 database_name = "chitter-#{Chitter.environment}"
 db = URI.parse( ENV['DATABASE_URL'] || "postgres://localhost/#{database_name}")
 
-# connect ActiveRecord with the current database
+ # connect ActiveRecord with the current database
 ActiveRecord::Base.establish_connection(
  :adapter => db.scheme == "postgres" ? "postgresql" : db.scheme,
  :host => db.host,
@@ -152,6 +158,7 @@ If this doesn't work, make them manually with psql.
 The order in which things are set or required matters. At the top, require simplecov maybe? Otherwise, setting the ENV should be the first thing.  
 
 It should look like this at the top:  
+
 ```ruby
 require 'simplecov'
 require 'simplecov-console'

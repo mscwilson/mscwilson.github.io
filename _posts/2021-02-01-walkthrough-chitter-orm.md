@@ -71,7 +71,7 @@ Put these files in a `config` directory.
 `touch database.yml`
 It's a YAML file. Don't know what that is.
 Write inside:
-```yaml
+```
 # in database.yml
 development: # this defines the database for the development environment (default environment)
  adapter: postgresql # the type of database it will be

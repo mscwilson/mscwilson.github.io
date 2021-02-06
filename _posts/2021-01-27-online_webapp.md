@@ -1,6 +1,6 @@
 ---
 layout: single
-title: My website on the real internet
+title: My website on the real internet (Heroku setup)
 date:  2021-01-27 19:30:00
 tags: Ruby Sinatra Heroku
 ---

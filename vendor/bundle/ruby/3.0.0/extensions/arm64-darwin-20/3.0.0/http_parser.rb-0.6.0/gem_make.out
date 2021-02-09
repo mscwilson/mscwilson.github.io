@@ -1,0 +1,16 @@
+current directory: /Users/mirandawilson/mscwilson_blog/vendor/bundle/ruby/3.0.0/gems/http_parser.rb-0.6.0/ext/ruby_http_parser
+/Users/mirandawilson/.rvm/rubies/ruby-3.0.0/bin/ruby -I /Users/mirandawilson/.rvm/rubies/ruby-3.0.0/lib/ruby/3.0.0 -r ./siteconf20210209-9746-2f7hem.rb extconf.rb
+creating Makefile
+
+current directory: /Users/mirandawilson/mscwilson_blog/vendor/bundle/ruby/3.0.0/gems/http_parser.rb-0.6.0/ext/ruby_http_parser
+make "DESTDIR=" clean
+
+current directory: /Users/mirandawilson/mscwilson_blog/vendor/bundle/ruby/3.0.0/gems/http_parser.rb-0.6.0/ext/ruby_http_parser
+make "DESTDIR="
+compiling ruby_http_parser.c
+compiling ryah_http_parser.c
+linking shared-object ruby_http_parser.bundle
+
+current directory: /Users/mirandawilson/mscwilson_blog/vendor/bundle/ruby/3.0.0/gems/http_parser.rb-0.6.0/ext/ruby_http_parser
+make "DESTDIR=" install
+/opt/homebrew/opt/coreutils/bin/ginstall -c -m 0755 ruby_http_parser.bundle ./.gem.20210209-9746-ukua7g

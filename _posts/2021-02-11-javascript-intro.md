@@ -4,11 +4,13 @@ title: My first JavaScript!
 date:  2021-02-11 21:57:00
 tags: JavaScript Sublime
 ---
-We are learning JavaScript this week! Including the basic Python I did a while ago, this is the third language that I've started learning. It's really interesting to see the similarities/differences. For the first couple of weeks of Ruby I was very cross with it for not being Python. "Call this readable?! I have to write `end` all the time? `and` is much more readable than `&&` - and what's going on with that `||` `or`?!". Now I prefer Ruby.
+We are learning JavaScript this week! Including the basic Python I did a while ago, this is the third language that I've started learning. It's really interesting to see the similarities/differences. For the first couple of weeks of Ruby I was very cross with it for not being Python. "Call this readable?! I have to write `end` all the time? `and` is much more readable than `&&` - and what's going on with that `||`?!". Now I prefer Ruby.
 
 A lot of Python seems to be written back to front, with the important bit at the end of the line. Especially in list comprehensions which I always found very confusing.
 ```python
-dogs_list = ["pomeranian", "spaniel", "tibetan terrier", "poodle", "shiba inu"]
+dogs_list = ["pomeranian", "spaniel",
+            "tibetan terrier", "poodle",
+            "shiba inu", "husky"]
 p_dogs = [ x for x in dogs_list if x[0] == "p" ] # wtf is this
 >> ["pomeranian", "poodle"]
 
@@ -18,6 +20,8 @@ for i, dog in enumerate(p_dogs):
 >> 1: pomeranian
 2: poodle
 ```
+
+Whereas Ruby is indeed easier to read:
 ```ruby
 p_dogs = dogs_list.select { |x| x[0] == "p"}
 

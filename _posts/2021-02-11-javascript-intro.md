@@ -32,11 +32,14 @@ So this gives me some good context for my first couple of days of JavaScript thi
 ```javascript
 dogs_list.filter( function(x) { return x[0] === "p"; });
 
-p_dogs.forEach( function(dog, index) { console.log(`${index + 1}: ${dog}`); });
+p_dogs.forEach( function(dog, index) {
+    console.log(`${index + 1}: ${dog}`);
+    });
 ```
 It's actually ok. I don't mind it. Though I wish I had ever paid attention to Lambdas/Procs before because JavaScript seems to be 50% made of them. Something in JavaScript's favour is that its unit test framework is called Jasmine. What a pretty name! Also the Jasmine creators must have had RSpec in mind, or vice versa, as it's extremely similar.
 
 I was envious of my cohort-colleague's colourful brackets yesterday in her VSCode. With so many brackets involved in JavaScript it's a shame for them all to be the same plain colour. I found that Sublime has a plugin called [RainbowBrackets](https://github.com/absop/RainbowBrackets). It's very functional - easier to see which ones belong to which bit - and also very garish. Excellent.
 
 ![rainbow brackets js](/assets/images/2021-02/rainbowbrackets.png)
+
 (Shown with Dracula theme. I switch themes over light/dark throughout the day)

@@ -1,6 +1,6 @@
 ---
 layout: single
-title: My first JavaScript!
+title: My first JavaScript
 date:  2021-02-11 21:57:00
 tags: JavaScript Sublime
 ---

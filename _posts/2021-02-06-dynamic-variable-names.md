@@ -1,6 +1,6 @@
 ---
 layout: single
-title: Dynamic key names
+title: Dynamic key names in Ruby
 date:  2021-02-06 18:41:00
 tags: Ruby
 ---

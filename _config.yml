@@ -22,6 +22,7 @@ email:
 #   line in _config.yml. It will appear in your document head meta (for
 #   Google search results) and in your feed.xml site description.
 url: "http://www.mirandawilson.tech"
+baseurl: "/blog"
 # twitter_username: username
 github_username: mscwilson
 minimal_mistakes_skin: neon

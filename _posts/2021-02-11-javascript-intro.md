@@ -1,6 +1,9 @@
 ---
 layout: single
 title: My first JavaScript
+redirect_from:
+    - /javascript-intro/
+    - /testing
 date:  2021-02-11 21:57:00
 tags: JavaScript Sublime
 ---
@@ -41,5 +44,6 @@ It's actually ok. I don't mind it. Though I wish I had ever paid attention to La
 I was envious of my cohort-colleague's colourful brackets yesterday in her VSCode. With so many brackets involved in JavaScript it's a shame for them all to be the same plain colour. I found that Sublime has a plugin called [RainbowBrackets](https://github.com/absop/RainbowBrackets). It's very functional - easier to see which ones belong to which bit - and also very garish. Excellent.
 
 ![rainbow brackets js](/assets/images/2021-02/rainbowbrackets.png)
+![rainbow brackets js](/blog/assets/images/2021-02/rainbowbrackets.png)
 
 (Shown with Dracula theme. I switch themes over light/dark throughout the day)

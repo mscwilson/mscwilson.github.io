@@ -25,7 +25,7 @@ url: "http://www.mirandawilson.tech"
 # twitter_username: username
 github_username: mscwilson
 minimal_mistakes_skin: neon
-search: true
+search: false
 atom_feed:
   path: # blank (default) uses feed.xml
 

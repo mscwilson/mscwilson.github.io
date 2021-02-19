@@ -1,0 +1,14 @@
+---
+layout: single
+title: Fixing the theme for this blog
+redirect_to: http://www.mirandawilson.tech/blog/2021/01/24/blog-improvements/
+date:  2021-01-24 20:53:00
+tags: Jekyll themes
+---
+I decided to look into why this blog looked so terrible and not how I expected. It turned out to be because I had started it with one theme ([Jekyll-Now](https://github.com/barryclark/jekyll-now)) and then tried to migrate to another ([Minimal Mistakes](https://github.com/mmistakes/minimal-mistakes)). But clearly I hadn't set it up right. I just started again with a fresh Minimal Mistakes repo and it looks pretty good. Or at least much better!
+
+Before:
+![before blog](/assets/images/2021-01/bad_blog_theme.png)
+
+After:
+![after blog](/assets/images/2021-01/theme_done_correctly.png)

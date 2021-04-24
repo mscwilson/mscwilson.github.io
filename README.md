@@ -1,27 +1,10 @@
-# Minimal Mistakes remote theme starter
+## My Site
 
-Click [**Use this template**](https://github.com/mmistakes/mm-github-pages-starter/generate) button above for the quickest method of getting started with the [Minimal Mistakes Jekyll theme](https://github.com/mmistakes/minimal-mistakes).
+My personal site, using the Jekyll framework with [Minimal Mistakes](https://github.com/mmistakes/minimal-mistakes) theme. Hosted [here](https://mscwilson.github.io) on GitHub Pages.
 
-Contains basic configuration to get you a site with:
+### Description
+I initially set up this site for my [blog](https://mscwilson.github.io/blog). Then I realised that I wanted my blog to have the URL `/blog`, so I migrated it to a separate GitHub [repo](https://github.com/mscwilson/blog), by duplicating this repo, and then removing the blog posts and displays from this site.  
 
-- Sample posts.
-- Sample top navigation.
-- Sample author sidebar with social links.
-- Sample footer links.
-- Paginated home page.
-- Archive pages for posts grouped by year, category, and tag.
-- Sample about page.
-- Sample 404 page.
-- Site wide search.
+It currently looks like this:  ![homepage](https://user-images.githubusercontent.com/10324709/115954683-2bdae380-a4ea-11eb-8f50-e47fffeda59d.png)
 
-Replace sample content with your own and [configure as necessary](https://mmistakes.github.io/minimal-mistakes/docs/configuration/).
-
----
-
-## Troubleshooting
-
-If you have a question about using Jekyll, start a discussion on the [Jekyll Forum](https://talk.jekyllrb.com/) or [StackOverflow](https://stackoverflow.com/questions/tagged/jekyll). Other resources:
-
-- [Ruby 101](https://jekyllrb.com/docs/ruby-101/)
-- [Setting up a Jekyll site with GitHub Pages](https://jekyllrb.com/docs/github-pages/)
-- [Configuring GitHub Metadata](https://github.com/jekyll/github-metadata/blob/master/docs/configuration.md#configuration) to work properly when developing locally and avoid `No GitHub API authentication could be found. Some fields may be missing or have incorrect data.` warnings.
+My goal is to create a nice homepage with an about me, a portfolio, and a link to my blog, while keeping the Minimal Mistakes style so that the blog still looks and feels integrated.  

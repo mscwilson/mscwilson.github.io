@@ -1,10 +1,15 @@
-## My Site
+## Miranda Making Things
 
 My personal site, using the Jekyll framework with [Minimal Mistakes](https://github.com/mmistakes/minimal-mistakes) theme. Hosted [here](https://mscwilson.github.io) on GitHub Pages.
 
+It's named "Miranda Making Things" because my name is Miranda, and I like making things.
+
 ### Description
-I initially set up this site for my [blog](https://mscwilson.github.io/blog). Then I realised that I wanted my blog to have the URL `/blog`, so I migrated it to a separate GitHub [repo](https://github.com/mscwilson/blog), by duplicating this repo, and then removing the blog posts and displays from this site.  
 
-It currently looks like this:  ![homepage](https://user-images.githubusercontent.com/10324709/115954683-2bdae380-a4ea-11eb-8f50-e47fffeda59d.png)
+This site gives information about me, and is mainly a platform for my [blog](https://github.com/mscwilson/blog). When I set it up I didn't know anything about web development, but was excited to learn. For that reason I chose to blog on my own page with Jekyll rather than using e.g. Medium.  
 
-My goal is to create a nice homepage with an about me, a portfolio, and a link to my blog, while keeping the Minimal Mistakes style so that the blog still looks and feels integrated.  
+The Minimal Mistakes theme provides all the necessary configuration, styling and structure to easily add content. Since completing the [Makers Academy](https://makers.tech) coding bootcamp I have more website knowledge, and have started to customise the code. It's important to me that I don't lose the responsive design, and that I maintain an integrated look with my [blog](https://mscwilson.github.io/blog), which is actually hosted separately.
+
+It currently looks like this:  ![homepage](/homepage/assets/images/screenshot_readme.png)
+
+My goal is to create a complete homepage with information about me, the link to my blog, and a portfolio page to highlight things I've made, while keeping a consistent style.  

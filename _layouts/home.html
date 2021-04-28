@@ -1,32 +1,24 @@
 ---
-layout: archive
+layout: default
 ---
 
 {{ content }}
-
-Please go to my <a href="http://www.mirandawilson.tech/blog/">blog</a> to read
-about what I've been up to lately!
-<br/>
-I'm in the process of migrating the blog over to /blog from here, so this is a
-work in progress.
+<div style="padding-left: 20vw; padding-right: 20vw;">
+  <h3 style="text-align: center;">About me</h3>
+  I recently graduated from the <a href="https://makers.tech">Makers</a> coding bootcamp, after 12 years as a cell biologist. I learned an incredible amount! Now I'm looking forward to getting my first job in tech. Check out my CV <a href="https://github.com/mscwilson/curriculum-vitae">here</a>.<br /><br />
 
 
+  Please go to my <a href="http://www.mirandawilson.tech/blog/">blog</a> to read a wide-eyed account
+  of my journey to becoming a developer, as well as tutorials for things like setting up <a href="https://www.mirandawilson.tech/blog/2021/01/27/online-webapp/">Heroku</a> or <a href="https://www.mirandawilson.tech/blog/2021/02/01/walkthrough-chitter-orm/">ActiveRecord with Sinatra</a>.
+  <br /><br />
 
+  Here's me and my dog during a very wet camping trip last October (later that day our tent collapsed and filled with rain):<br />
+  <div style="text-align: center;"><img src="assets/images/camping_ace_full_pic.JPG" alt="me wearing a winter coat, with my tiny dog tucked inside it" width="500vw"></div>
 
-<!-- <h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].recent_posts | default: "Recent Posts" }}</h3>
+  <br /><br />
+  <h3 style="text-align: center;">About this site</h3>
+  This page is created using <a href="https://jekyllrb.com/">Jekyll</a> and the <a href="https://mmistakes.github.io/minimal-mistakes/">Minimal Mistakes</a> theme, which provides all the necessary structure, configuration, and styling. This was perfect for me at the start of 2021, before I knew anything about web development. It was initially a platform for my blog, which I started so I could share my excitement at all the new things I was discovering during my bootcamp. <br /><br />Jekyll is a static site generator and is designed with blogging in mind, as all that's needed to write a new post is to create a new Markdown file. It seemed like it would be more fun and educational to 
+  make my own site than posting on Medium or WordPress. This site is hosted with <a href="https://pages.github.com/">GitHub Pages</a>, a free GitHub-based hosting service based on Jekyll.<br /><br />
 
-{% if paginator %}
-  {% assign posts = paginator.posts %}
-{% else %}
-  {% assign posts = site.posts %}
-{% endif %}
-
-{% assign entries_layout = page.entries_layout | default: 'list' %}
-<div class="entries-{{ entries_layout }}">
-  {% for post in posts %}
-    {% include archive-single.html type=entries_layout %}
-  {% endfor %}
+  I'm slowly working on personalising the code. My next goal is to add a portfolio page to share all the cool stuff I've made. In the meantime, check out my <a href="https://github.com/mscwilson">GitHub</a>. <br /><br />
 </div>
-
-{% include paginator.html %}
- -->

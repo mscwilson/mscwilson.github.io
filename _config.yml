@@ -63,25 +63,25 @@ plugins:
   - jekyll-include-cache
   - jekyll-redirect-from
 
-author:
-  name   : "Miranda Wilson"
-  avatar : "/assets/images/profile_mir.png"
-  bio    : "Developer under development: currently studying at Makers Academy bootcamp. Needed a new challenge after 12 years of cell biology!"
-  location: "London, UK"
-  email: miranda@mirandawilson.tech
-  links:
-    # - label: "Website"
-    #   icon: "fas fa-fw fa-link"
-      # url: "https://"
-    # - label: "Twitter"
-    #   icon: "fab fa-fw fa-twitter-square"
-    #   url: "https://twitter.com/"
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      url: "https://github.com/mscwilson"
-    # - label: "Instagram"
-    #   icon: "fab fa-fw fa-instagram"
-    #   url: "https://instagram.com/"
+# author:
+#   name: "Miranda Wilson"
+#   avatar: "/assets/images/profile_mir.png"
+#   bio: "Developer under development: junior software engineer recently graduated from [Makers](https://makers.tech) bootcamp. Needed a new challenge after 12 years of cell biology!"
+#   location: "London, UK"
+#   email: miranda@mirandawilson.tech
+#   links:
+#     # - label: "Website"
+#     #   icon: "fas fa-fw fa-link"
+#     # url: "https://"
+#     # - label: "Twitter"
+#     #   icon: "fab fa-fw fa-twitter-square"
+#     #   url: "https://twitter.com/"
+#     - label: "GitHub"
+#       icon: "fab fa-fw fa-github"
+#       url: "https://github.com/mscwilson"
+#     # - label: "Instagram"
+#     #   icon: "fab fa-fw fa-instagram"
+#     #   url: "https://instagram.com/"
 
 footer:
   links:

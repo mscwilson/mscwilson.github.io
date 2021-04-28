@@ -97,6 +97,9 @@ footer:
     - label: "email"
       icon: "fas fa-fw fa-envelope-square"
       url: mailto:miranda@mirandawilson.tech
+    - label: "LinkedIn"
+      icon: "fab fa-linkedin"
+      url: "https://www.linkedin.com/in/miranda-wilson-b2196336/"
 
 defaults:
   # _posts

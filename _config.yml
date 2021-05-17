@@ -1,5 +1,6 @@
 plugins:
   - jekyll-sitemap
+  - jekyll-feed
 
 # SEO Stuff
 author: Miranda
@@ -8,3 +9,7 @@ lang: en
 locale: en_GB
 url: "https://mscwilson.github.io/portfolio"
 baseurl: ""
+
+# RSS feed
+feed:
+  posts_limit: 20

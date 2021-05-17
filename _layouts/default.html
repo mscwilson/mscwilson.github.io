@@ -5,18 +5,27 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="icon" href="{{site.url}}/assets/images/favicon-star.png" />
+  <link rel="icon" href="{{ site.url }}/assets/images/favicon-star.png" />
 
-  <title>Jekyll or Hyde?</title>
+  <title>{{ page.title }}</title>
+  <meta name="description" content="{{ page.description }}" />
+
+  <link rel="stylesheet" href="{{ site.url }}/assets/css/custom.css">
 </head>
 <body>
   <header>
+    <h1>{{ page.header }}</h1>
+    <p>{{ page.description }}</p>
+
+    {% include navigation.html %}
   </header>
 
   <main>
+    {{ content }}
   </main>
 
   <footer>
+    Site made by Miranda, using Jekyll
   </footer>
   
 </body>

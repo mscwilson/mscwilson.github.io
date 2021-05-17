@@ -1,0 +1,10 @@
+plugins:
+  - jekyll-sitemap
+
+# SEO Stuff
+author: Miranda
+description: Messing around with Jekyll
+lang: en
+locale: en_GB
+url: "https://mscwilson.github.io/portfolio"
+baseurl: ""

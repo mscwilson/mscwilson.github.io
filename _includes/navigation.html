@@ -1,14 +1,19 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Navbar</a>
+    <dark-mode-toggle id="dark-mode-toggle" appearance="toggle"></dark-mode-toggle>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
       aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    
+    <div class="collapse navbar-collapse ms-auto" id="navbarNavAltMarkup">
       <div class="navbar-nav ms-auto">
+        <a class="theme-switch navbar-nav nav-link ms-auto">
+          Again
+        </a>
         {% for item in site.data.navigation %}
-        <a class="nav-link" href="{{ item.link }}">{{ item.name }}</a>
+        <a class="nav-link ms-auto" href="{{ item.link }}">{{ item.name }}</a>
         {% endfor %}
       </div>
     </div>

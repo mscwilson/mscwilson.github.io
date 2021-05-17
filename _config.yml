@@ -19,3 +19,6 @@ feed:
 
 include:
   - _pages
+
+collections:
+  - projects

@@ -10,6 +10,12 @@ locale: en_GB
 url: "https://mscwilson.github.io/portfolio"
 baseurl: ""
 
+# build settings
+permalink: blog/:year/:month/:day/:title/
+
 # RSS feed
 feed:
   posts_limit: 20
+
+include:
+  - _pages

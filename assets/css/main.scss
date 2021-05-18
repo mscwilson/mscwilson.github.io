@@ -10,3 +10,13 @@
 @import "assets/css/custom/includes/pagination";
 @import "assets/css/custom/includes/post";
 @import "assets/css/solarized-dark";
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: blueviolet;
+  }
+}
+
+body {
+  background-color: blanchedalmond;
+}

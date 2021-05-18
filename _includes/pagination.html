@@ -1,21 +1,41 @@
-<div id="pager" class="container">
-  <div class="row">
-    <div class="col text-center">
+<!-- from here:
+https://gist.github.com/kylehotchkiss/56657b0361993aa26be319deb20eca4e
+https://gist.github.com/kylehotchkiss -->
+
+<div class="section-pagination text-center">
+  <nav class="d-table mx-auto">
+    <ul class="pagination">
       {% if paginator.previous_page %}
-      {% if paginator.page == 2 %}
-      <a class="btn btn-primary" href="{{ site.baseurl }}/">&larr;&nbsp;Newer posts</a>
-      {% else %}
-      <a class="btn btn-primary" href="{{ site.baseurl }}/page{{paginator.previous_page}}/">&larr;&nbsp;Newer posts</a>
+      {% if paginator.previous_page == 1 %}
+      <li class="page-item"><a class="page-link" href="/">Previous</a></a>
+        {% else %}
+      <li class="page-item"><a class="page-link" href="/page{{ paginator.previous_page }}">Previous</a></li>
       {% endif %}
       {% else %}
-      <a class="disabled btn btn-primary">&larr;&nbsp;Newer posts</a>
+      <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
       {% endif %}
 
-      {% if paginator.next_page %}
-      <a class="btn btn-primary" href="{{ site.baseurl }}/page{{paginator.next_page}}/">Older posts&nbsp;&rarr;</a>
+      {% for i in (1..paginator.total_pages) %}
+      {% if i == 1 %}
+      {% if paginator.page == i %}
+      <li class="page-item active"><a class="page-link" href="#">{{ i }}</a></li>
       {% else %}
-      <a class="disabled btn btn-primary">Older posts&nbsp;&rarr;</a>
+      <li class="page-item"><a class="page-link" href="/">{{ i }}</a></li>
       {% endif %}
-    </div>
-  </div>
+      {% else %}
+      {% if paginator.page == i %}
+      <li class="page-item active"><a class="page-link" href="#">{{ i }}</a></li>
+      {% else %}
+      <li class="page-item"><a class="page-link" href="/page{{ i }}">{{ i }}</a></li>
+      {% endif %}
+      {% endif %}
+      {% endfor %}
+
+      {% if paginator.next_page %}
+      <li class="page-item"><a class="page-link" href="/page{{ paginator.next_page }}">Next</a></li>
+      {% else %}
+      <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+      {% endif %}
+    </ul>
+  </nav>
 </div>

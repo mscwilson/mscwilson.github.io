@@ -71,6 +71,8 @@ DEPENDENCIES
   jekyll-feed
   jekyll-paginate
   jekyll-sitemap
+  kramdown-parser-gfm (~> 1.1)
+  rouge
   webrick
 
 BUNDLED WITH

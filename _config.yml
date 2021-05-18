@@ -17,6 +17,11 @@ sass:
   sass_dir: css
 paginate: 3
 
+markdown: kramdown
+# kramdown:
+#   input: GFM
+#   syntax_highlighter: rouge
+
 # RSS feed
 feed:
   posts_limit: 20

@@ -1,6 +1,7 @@
 plugins:
   - jekyll-sitemap
   - jekyll-feed
+  - jekyll-paginate
 
 # SEO Stuff
 author: Miranda
@@ -14,6 +15,7 @@ baseurl: ""
 permalink: blog/:year/:month/:day/:title/
 sass:
   sass_dir: css
+paginate: 3
 
 # RSS feed
 feed:

@@ -9,13 +9,13 @@
     
     <div class="collapse navbar-collapse ms-auto" id="navbarNavAltMarkup">
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item ms-auto">
+        <li {% if page.url == "/blog/" %} class="nav-item active ms-auto" {% else %} class="nav-item ms-auto" {% endif %}>
           <a class="nav-link" href="{{ site.baseurl }}/blog/">Blog</a>
         </li>
-        <li class="nav-item ms-auto">
+        <li {% if page.url=="/portfolio/" %} class="nav-item active ms-auto" {% else %} class="nav-item ms-auto" {% endif %}>
           <a class="nav-link" href="{{ site.baseurl }}/portfolio/">Portfolio</a>
         </li>
-        <li class="nav-item ms-auto">
+        <li {% if page.url=="/about/" %} class="nav-item active ms-auto" {% else %} class="nav-item ms-auto" {% endif %}>
           <a class="nav-link" href="{{ site.baseurl }}/about/">About</a>
         </li>
       </ul>

@@ -12,10 +12,17 @@ baseurl: ""
 
 # build settings
 permalink: blog/:year/:month/:day/:title/
+sass:
+  sass_dir: css
 
 # RSS feed
 feed:
   posts_limit: 20
+
+# social icons
+show_social_icons: true
+github_username: mscwilson
+twitter_username: someTwitterUser
 
 include:
   - _pages

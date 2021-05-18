@@ -2,7 +2,7 @@
   color-scheme: dark light;
 }
 
-body *:not(nav *) {
+/* body *:not(nav *) {
   background-color: var(--background-color);
   color: var(--text-color);
   margin: 0;
@@ -13,30 +13,16 @@ header,
 main,
 footer {
   overflow: auto;
-}
+} */
 
 header {
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 main {
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
 }
 
 footer {
-  border: 1px solid green;
-}
-nav {
-  /* border: 1px solid orange; */
-  overflow: auto;
-  padding: 1px;
-  border-bottom: 1px solid var(--shadow-color);
-}
-
-nav * {
-  background-color: var(--background-color);
-}
-
-.navbar-brand {
-  color: var(--text-color);
+  /* border: 1px solid green; */
 }

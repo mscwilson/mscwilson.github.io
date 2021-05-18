@@ -1,6 +1,8 @@
 ---
 layout: post
-title: a post with many elements
+title: A post with many elements
+date: 2021-05-18 16:35:00
+tags: testing Jekyll
 ---
 
 # Heading 1

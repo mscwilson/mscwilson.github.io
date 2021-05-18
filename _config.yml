@@ -17,6 +17,7 @@ sass:
   sass_dir: css
 paginate: 3
 paginate_path: "/blog/page:num"
+timezone: Europe/London # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 markdown: kramdown
 # kramdown:

@@ -12,4 +12,9 @@ gem 'webrick'
 group :jekyll_plugins do
   gem 'jekyll-sitemap'
   gem 'jekyll-feed'
+  gem 'jekyll-paginate'
 end
+
+gem 'rouge'
+
+gem "kramdown-parser-gfm", "~> 1.1"

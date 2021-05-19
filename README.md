@@ -21,20 +21,21 @@ Make the blog look good first before starting on portfolio.
 * Make the footer stick to the bottom, in a way that works with the pagination
 * ~~Find out how to get post excerpts, make them show up on posts page~~
 * ~~Show the post reading time~~
-* Add a separate navbar for blog tags and archive (posts by year)
+* ~~Add a separate navbar for blog tags and archive (posts by year)~~
 * Create tags page
-* Create archive page (could leave this one as placeholder to start with)
-* Add RSS feed link somewhere - with tags/archive?
-* Only show the RSS link if it's a desktop browser
+* ~~Create archive page~~
+* ~~Add RSS feed link somewhere - with tags/archive?~~
+* Only show the RSS link if it's a desktop browser, show "All posts" on mobile?
 * Set up RSS feed
 * Add the youtube include and anything else useful from old blog
+* Change pagination to 10 posts per page
 
 * Get some padding on the index page, and info (copy from old site)
 * Same for About page
 * Replace the Twitter icon with a working LinkedIn one
 * Make the banner look better - narrower, different images - ideally same image but different overlay or something
 
-Can migrate at this point!  
+Can migrate at this point! NB change the default layout name   
   
 * Fix the padding on Portfolio page, add a short blurb
 * Add projects - as Bootstrap cards maybe. Links to github and live project if possible. Click through to individual project pages

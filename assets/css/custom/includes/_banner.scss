@@ -4,7 +4,7 @@
   min-height: 150px;
 
   .primary-overlay {
-    background: rgba(141, 2, 31, 0.8);
+    background: $primary, 0.8;
     position: absolute;
     top: 0;
     left: 0;

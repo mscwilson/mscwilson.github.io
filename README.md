@@ -25,6 +25,8 @@ Make the blog look good first before starting on portfolio.
 * Create tags page
 * Create archive page (could leave this one as placeholder to start with)
 * Add RSS feed link somewhere - with tags/archive?
+* Only show the RSS link if it's a desktop browser
+* Set up RSS feed
 * Add the youtube include and anything else useful from old blog
 
 * Get some padding on the index page, and info (copy from old site)

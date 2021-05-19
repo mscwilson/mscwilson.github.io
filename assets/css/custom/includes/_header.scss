@@ -1,25 +1,14 @@
 .navbar {
-  box-shadow: 1px 1px 3px $primary;
-  opacity: 0.8;
-  background: $pastel-pink;
+  border-bottom: 1px solid $primary;
 
   .nav-item {
     font-size: 1.4rem;
     padding-right: 20px;
   }
-
-  .nav-item.active {
-    background: $primary;
-    a {
-      color: $white !important;
-    }
-  }
 }
 
-.nav-link {
-  color: $secondary !important;
-
-  &:hover {
-    color: $primary !important;
+@media (prefers-color-scheme: light) {
+  .navbar {
+    background-color: #fffafa;
   }
 }

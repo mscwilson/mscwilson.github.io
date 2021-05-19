@@ -14,3 +14,4 @@ This is a work in progress.
 * Clone this repo and navigate into the folder
 * Run `bundle` to install dependencies
 * Check out the site locally: `jekyll serve`
+

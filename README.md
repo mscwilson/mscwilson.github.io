@@ -19,8 +19,8 @@ This is a work in progress.
 ### What needs doing
 Make the blog look good first before starting on portfolio.
 * Make the footer stick to the bottom, in a way that works with the pagination
-* Find out how to get post excerpts, make them show up on posts page
-* Install the post reading time gem(?)
+* ~~Find out how to get post excerpts, make them show up on posts page~~
+* ~~Show the post reading time~~
 * Add a separate navbar for blog tags and archive (posts by year)
 * Create tags page
 * Create archive page (could leave this one as placeholder to start with)

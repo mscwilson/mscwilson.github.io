@@ -30,18 +30,22 @@ Make the blog look good first before starting on portfolio.
 * ~~Add the youtube include from old blog~~
 * Transfer misc config from old site
 * Change pagination to 10 posts per page
+<br/><br/>
 
 * Get some padding on the index page, and info (copy from old site)
 * Same for About page
 * Replace the Twitter icon with a working LinkedIn one
 * Fix the email link in footer
 * Add license details of images used
+<br/><br/>
 
 Can migrate at this point! NB change the default layout name, old blog is "single"   
+<br/><br/>
   
 * Fix the padding on Portfolio page, add a short blurb
 * Add projects - as Bootstrap cards maybe. Links to github and live project if possible. Click through to individual project pages
 * Make individual project pages
+<br/><br/>
   
 * DRY out the CSS?
 * Make the banner look better - narrower, different images - ideally same image but different overlay or something

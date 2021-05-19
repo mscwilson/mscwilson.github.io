@@ -2,11 +2,11 @@
   a {
     text-decoration: none;
     &:hover {
-      color: $info;
+      color: $success;
     }
   }
 
-  .post-date {
+  .post-meta {
     font-size: 0.9rem;
   }
 }

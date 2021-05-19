@@ -23,9 +23,13 @@
     text-decoration: none;
 
     &:hover {
-      color: $info;
+      color: $success;
       cursor: pointer;
       text-decoration: underline;
     }
+  }
+
+  .post-meta {
+    font-size: 0.9rem;
   }
 }

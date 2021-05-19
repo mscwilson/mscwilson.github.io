@@ -3,20 +3,20 @@
     <div class="row">
       <div class="col">
         {% for post in paginator.posts %}
+        
         <div>
           <h4><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h4>
-          <p class="post-date">
-            {{ post.date | date: "%b %-d, %Y" }}
+          <p class="post-meta">
+            <i class="far fa-calendar-alt"></i> {{ post.date | date: "%b %-d, %Y" }} ·
+            {% include read-time.html content=post.content %}
           </p>
-
-          <p>
-            {% if post.summary %}
-            {{ post.summary }}
-            {% else %}
-            {{ post.excerpt }}
-            {% endif %}
-          </p>
+        
+          {% if post.excerpt %}<p class="post-excerpt">{{ post.excerpt | markdownify | strip_html
+            | truncate: 200 }}</p>{% endif %}
+        
         </div>
+
+
         {% endfor %}
       </div>
     </div>

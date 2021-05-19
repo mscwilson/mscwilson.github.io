@@ -1,0 +1,9 @@
+footer {
+  border-top: 1px solid $primary;
+}
+
+@media (prefers-color-scheme: light) {
+  footer {
+    background-color: #fffafa;
+  }
+}

@@ -34,18 +34,21 @@ Make the blog look good first before starting on portfolio.
 * Get some padding on the index page, and info (copy from old site)
 * Same for About page
 * Replace the Twitter icon with a working LinkedIn one
-* Make the banner look better - narrower, different images - ideally same image but different overlay or something
+* Fix the email link in footer
+* Add license details of images used
 
-Can migrate at this point! NB change the default layout name   
+Can migrate at this point! NB change the default layout name, old blog is "single"   
   
 * Fix the padding on Portfolio page, add a short blurb
 * Add projects - as Bootstrap cards maybe. Links to github and live project if possible. Click through to individual project pages
 * Make individual project pages
   
 * DRY out the CSS?
+* Make the banner look better - narrower, different images - ideally same image but different overlay or something
 * Choose nicer syntax highlighting themes, probably need light and dark ones
 * Add share buttons (twitter, fb, linkedin)
 * Add previous/next at the bottom of single posts and projects
+* Add a scrolling about section on the left like on old site?
 * Consider using background images or gradients so it looks less flat
 * Only show the RSS link if it's a desktop browser. Show "All posts" on mobile?
 * Add a nice table of tag frequencies and other polish to tags page

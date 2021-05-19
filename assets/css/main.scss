@@ -2,7 +2,9 @@
 # nothing here
 ---
 
-@import "assets/css/bootstrap/bootstrap.scss";
+@import "bootstrap/bootstrap-dark.css";
+@import "assets/css/custom/variables";
+
 @import "assets/css/custom/includes/header";
 @import "assets/css/custom/includes/banner";
 @import "assets/css/custom/includes/social_links";
@@ -11,12 +13,13 @@
 @import "assets/css/custom/includes/post";
 @import "assets/css/solarized-dark";
 
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: blueviolet;
-  }
-}
+// footer,
+// body {
+//   background-color: cornsilk;
+// }
 
-body {
-  background-color: blanchedalmond;
-}
+// @media (prefers-color-scheme: dark) {
+//   footer {
+//     background-color: darkblue;
+//   }
+// }

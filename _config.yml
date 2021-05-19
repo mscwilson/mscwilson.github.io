@@ -8,7 +8,7 @@ author: Miranda
 description: Messing around with Jekyll
 lang: en
 locale: en_GB
-# url: "https://mscwilson.github.io/portfolio"
+# url: "https://mscwilson.github.io/"
 baseurl: ""
 
 # build settings

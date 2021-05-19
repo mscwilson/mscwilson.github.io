@@ -22,13 +22,13 @@ Make the blog look good first before starting on portfolio.
 * ~~Find out how to get post excerpts, make them show up on posts page~~
 * ~~Show the post reading time~~
 * ~~Add a separate navbar for blog tags and archive (posts by year)~~
-* Create tags page
+* ~~Create tags page~~
 * ~~Create archive page~~
 * ~~Add RSS feed link somewhere - with tags/archive?~~
-* Only show the RSS link if it's a desktop browser, show "All posts" on mobile?
-* Set up RSS feed
-* Add the youtube include and anything else useful from old blog
-* Change pagination to 10 posts per page
+* ~~Set up RSS feed~~
+* Sort out styling of single post page
+* ~~Add the youtube include from old blog~~
+* Transfer misc config from old site
 
 * Get some padding on the index page, and info (copy from old site)
 * Same for About page
@@ -41,6 +41,10 @@ Can migrate at this point! NB change the default layout name
 * Add projects - as Bootstrap cards maybe. Links to github and live project if possible. Click through to individual project pages
 * Make individual project pages
   
+* Change pagination to 10 posts per page
 * DRY out the CSS?
 * Pick out nicer syntax highlighting themes, probably need light and dark ones
 * Consider using background images or gradients so it looks less flat
+* Only show the RSS link if it's a desktop browser. Show "All posts" on mobile?
+* Add a nice table of tag frequencies and other polish to tags page
+* Make youtube embeds centred (and full width on mobile)

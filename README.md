@@ -30,7 +30,7 @@ Make the blog look good first before starting on portfolio.
 * Get some padding on the index page, and info (copy from old site)
 * Same for About page
 * Replace the Twitter icon with a working LinkedIn one
-* Make the banner look better - narrower and paler? different image(s)?
+* Make the banner look better - narrower, different images - ideally same image but different overlay or something
 
 Can migrate at this point!  
   

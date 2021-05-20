@@ -18,7 +18,7 @@ This is a work in progress.
 
 ### What needs doing
 Make the blog look good first before starting on portfolio.
-* Make the footer stick to the bottom, in a way that works with the pagination
+* ~~Make the footer stick to the bottom, in a way that works with the pagination~~
 * ~~Find out how to get post excerpts, make them show up on posts page~~
 * ~~Show the post reading time~~
 * ~~Add a separate navbar for blog tags and archive (posts by year)~~
@@ -34,13 +34,19 @@ Make the blog look good first before starting on portfolio.
 <br/><br/>
 
 * Get some padding on the index page, and info (copy from old site)
-* Same for About page
+* Make about me/about this site headers into links
 * ~~Replace the Twitter icon with a working LinkedIn one~~
 * ~~Fix the email link in footer~~
 * Add license details of images used
+* Fix images style for post and home pages
 <br/><br/>
 
 Can migrate at this point! NB change the default layout name, old blog is "single"   
+* copy existing posts and their images over
+* make sure they look right
+* fix links in posts
+* improve the About text, fix the links (incl to GH repo)
+* deploy!
 <br/><br/>
   
 * Fix the padding on Portfolio page, add a short blurb
@@ -49,6 +55,8 @@ Can migrate at this point! NB change the default layout name, old blog is "singl
 <br/><br/>
   
 * DRY out the CSS?
+* Give the navbar title/brand a hover colour? or a glow? underline?
+* Put links to jekyll and bootstrap in footer?
 * Make the banner look better - narrower, different images - ideally same image but different overlay or something
 * Choose nicer syntax highlighting themes, probably need light and dark ones
 * Add share buttons (twitter, fb, linkedin)
@@ -59,4 +67,3 @@ Can migrate at this point! NB change the default layout name, old blog is "singl
 * Add a nice table of tag frequencies and other polish to tags page
 * Make youtube embeds centred (and full width on mobile)
 * Make posts archive look nicer and correctly aligned
-* Why doesn't the navbar hover colour work correctly in dark mode?

@@ -13,7 +13,7 @@ locale: en_GB
 # url: "http://www.mirandawilson.tech"
 email: miranda@mirandawilson.tech
 github_username: mscwilson
-baseurl: ""
+baseurl: "portfolio"
 
 # build settings
 permalink: blog/:year/:month/:day/:title/

@@ -3,10 +3,7 @@
     text-decoration: none;
     border: none;
     &:hover {
-      color: $info;
+      color: $success;
     }
-  }
-  li {
-    font-size: 18px;
   }
 }

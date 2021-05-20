@@ -28,14 +28,15 @@ Make the blog look good first before starting on portfolio.
 * ~~Set up RSS feed~~
 * ~~Sort out styling of single post page~~
 * ~~Add the youtube include from old blog~~
-* Transfer misc config from old site
+* ~~Transfer misc config from old site~~
 * ~~Change pagination to 10 posts per page~~
+* ~~Make the main posts page look nicer (padding)~~
 <br/><br/>
 
 * Get some padding on the index page, and info (copy from old site)
 * Same for About page
-* Replace the Twitter icon with a working LinkedIn one
-* Fix the email link in footer
+* ~~Replace the Twitter icon with a working LinkedIn one~~
+* ~~Fix the email link in footer~~
 * Add license details of images used
 <br/><br/>
 
@@ -57,3 +58,5 @@ Can migrate at this point! NB change the default layout name, old blog is "singl
 * Only show the RSS link if it's a desktop browser. Show "All posts" on mobile?
 * Add a nice table of tag frequencies and other polish to tags page
 * Make youtube embeds centred (and full width on mobile)
+* Make posts archive look nicer and correctly aligned
+* Why doesn't the navbar hover colour work correctly in dark mode?

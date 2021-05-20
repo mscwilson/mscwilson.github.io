@@ -6,7 +6,8 @@ plugins:
 # SEO Stuff
 title: Miranda Making Things
 author: Miranda Wilson
-description: Messing around with Jekyll
+description: >-
+  I'm a cell biologist turned programmer. This site is my blog and portfolio: my coding journey and the things I've made.
 lang: en
 locale: en_GB
 # url: "http://www.mirandawilson.tech"
@@ -44,3 +45,11 @@ collections:
 tag_archive:
   type: liquid
   path: /blog/tags/
+
+defaults:
+  # _posts
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post

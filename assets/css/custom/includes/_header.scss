@@ -17,3 +17,10 @@
     background-color: #fffafa;
   }
 }
+
+// For some reason the hover colour is wrong in dark mode, this doesn't fix it
+// @media (prefers-color-scheme: dark) {
+//   .nav-link:not(.active):hover {
+//     color: $success !important;
+//   }
+// }

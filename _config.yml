@@ -18,7 +18,7 @@ baseurl: "portfolio"
 # build settings
 permalink: blog/:year/:month/:day/:title/
 sass:
-  sass_dir: ./_scss
+  sass_dir: ./_sass
 paginate: 10
 paginate_path: "/blog/page:num"
 timezone: Europe/London # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones

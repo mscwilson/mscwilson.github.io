@@ -32,7 +32,7 @@ Can migrate at this point! NB change the default layout name, old blog is "singl
 * make sure they look right
 * fix links in posts
 * improve the About text, fix the links (incl to GH repo)
-* deploy!
+* change the name of the repos and fix the cname!
 <br/><br/>
   
 * Fix the padding on Portfolio page, add a short blurb

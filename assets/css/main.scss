@@ -1,22 +1,21 @@
 ---
-# nothing here
 ---
 
-@import "assets/css/custom/variables";
+@import "custom/variables";
 
-@import "assets/css/custom/includes/header";
-@import "assets/css/custom/includes/banner";
-@import "assets/css/custom/includes/footer";
-@import "assets/css/custom/includes/social_links";
-@import "assets/css/custom/includes/home";
-@import "assets/css/custom/includes/posts";
-@import "assets/css/custom/includes/pagination";
-@import "assets/css/custom/includes/post-pagination";
-@import "assets/css/custom/includes/post";
-@import "assets/css/custom/includes/archive";
-@import "assets/css/custom/includes/youtube";
+@import "custom/includes/header";
+@import "custom/includes/banner";
+@import "custom/includes/footer";
+@import "custom/includes/social_links";
+@import "custom/includes/home";
+@import "custom/includes/posts";
+@import "custom/includes/pagination";
+@import "custom/includes/post-pagination";
+@import "custom/includes/post";
+@import "custom/includes/archive";
+@import "custom/includes/youtube";
 
-@import "assets/css/solarized-dark";
+@import "solarized-dark";
 
 body {
   margin-bottom: 95px !important;

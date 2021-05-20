@@ -12,4 +12,29 @@
       </article>
     </div>
   </div>
+
+  <!-- <div class="row">
+    <div class="col text-left">
+      {% if page.previous.url %}
+      <a href="{{ page.previous.url }}" class="previous">&laquo; {{page.previous.title}}</a>
+      {% endif %}
+    </div>
+  
+    <div class="col text-right">
+      {% if page.next.url %}
+      <a href="{{ page.next.url }}" class="next">{{page.next.title}} »
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="next-previous">
+    <a href="#" class="btn btn-info" role="button">Link Button</a>
+    <a href="#" class="btn btn-info" role="button">Link Button</a>
+
+    <a href="#" class="previous">&laquo; Previous</a>
+    <a href="#" class="next">Next &raquo;</a>
+  </div> -->
+  
+
+  {% include post-pagination.html %}
 </div>

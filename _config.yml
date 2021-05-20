@@ -13,12 +13,12 @@ locale: en_GB
 # url: "http://www.mirandawilson.tech"
 email: miranda@mirandawilson.tech
 github_username: mscwilson
-baseurl: "portfolio"
+baseurl: "/portfolio"
 
 # build settings
 permalink: blog/:year/:month/:day/:title/
 sass:
-  sass_dir: ./_sass
+  sass_dir: assets/css
 paginate: 10
 paginate_path: "/blog/page:num"
 timezone: Europe/London # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones

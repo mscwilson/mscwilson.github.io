@@ -18,3 +18,20 @@
     }
   }
 }
+
+@media (prefers-color-scheme: dark) {
+  .post-pagination {
+    .btn {
+      border-color: #444;
+      color: white;
+    }
+
+    .disabled {
+      color: #888 !important;
+    }
+
+    a:hover {
+      color: white !important;
+    }
+  }
+}

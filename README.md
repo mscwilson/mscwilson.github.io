@@ -29,7 +29,7 @@ Make the blog look good first before starting on portfolio.
 * ~~Sort out styling of single post page~~
 * ~~Add the youtube include from old blog~~
 * Transfer misc config from old site
-* Change pagination to 10 posts per page
+* ~~Change pagination to 10 posts per page~~
 <br/><br/>
 
 * Get some padding on the index page, and info (copy from old site)
@@ -51,7 +51,7 @@ Can migrate at this point! NB change the default layout name, old blog is "singl
 * Make the banner look better - narrower, different images - ideally same image but different overlay or something
 * Choose nicer syntax highlighting themes, probably need light and dark ones
 * Add share buttons (twitter, fb, linkedin)
-* Add previous/next at the bottom of single posts and projects
+* Add previous/next at the bottom of single projects
 * Add a scrolling about section on the left like on old site?
 * Consider using background images or gradients so it looks less flat
 * Only show the RSS link if it's a desktop browser. Show "All posts" on mobile?

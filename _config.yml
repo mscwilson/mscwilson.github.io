@@ -4,18 +4,21 @@ plugins:
   - jekyll-paginate
 
 # SEO Stuff
-author: Miranda
+title: Miranda Making Things
+author: Miranda Wilson
 description: Messing around with Jekyll
 lang: en
 locale: en_GB
-# url: "https://mscwilson.github.io/"
+# url: "http://www.mirandawilson.tech"
+email: miranda@mirandawilson.tech
+github_username: mscwilson
 baseurl: ""
 
 # build settings
 permalink: blog/:year/:month/:day/:title/
 sass:
   sass_dir: css
-paginate: 3
+paginate: 10
 paginate_path: "/blog/page:num"
 timezone: Europe/London # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
@@ -31,10 +34,13 @@ feed:
 # social icons
 show_social_icons: true
 github_username: mscwilson
-twitter_username: someTwitterUser
 
 include:
   - _pages
 
 collections:
   - projects
+
+tag_archive:
+  type: liquid
+  path: /blog/tags/

@@ -4,9 +4,7 @@ A basic Jekyll site that might end up showcasing my projects - or just being a p
 ### Description
 I'm using Jekyll, a static site generator, for my blog and simple homepage. I set it up using the Minimal Mistakes premade theme, which has been great but is overkill for my needs. It contained a lot of things I'm not using (e.g. Comments capability), and I found the project structure confusing since I'd never used SASS before.  
 
-Therefore I decided to start a new Jekyll page from scratch, with just the features I need: about me; a portfolio and my projects; my blog; and the ability to change between light and dark theme, because I think that's really fun.  
-
-I followed [this](https://kevq.uk/how-to-build-jekyll-site-simple-css/) tutorial to set up the Jekyll project structure and config, with Bootstrap to provide the styling. I used the brilliant [Bootstrap Build](https://bootstrap.build/) to set up my light and dark themes, based off [Bootswatch](https://bootswatch.com/)'s Flatly and Darkly.   
+Therefore I decided to start a new Jekyll page from scratch, with just the features I need: about me; a portfolio and my projects; my blog; and the ability to change between light and dark theme, because I think that's really fun.    
 
 This is a work in progress.
 
@@ -15,32 +13,20 @@ This is a work in progress.
 * Run `bundle` to install dependencies
 * Check out the site locally: `jekyll serve`
 
+### Acknowledgements
+* [Bootstrap](https://getbootstrap.com/) responsive design
+* [Bootswatch](https://bootswatch.com/) - Flatly and Darkly Bootstrap themes
+* [Bootstrap Build](https://bootstrap.build). Fantastic site for customising Bootstrap themes
+* [Jekyll](https://jekyllrb.com/) static site generator
+* [Minimal Mistakes](https://github.com/mmistakes/minimal-mistakes) Jekyll theme
+* [Experimenting With Code](https://experimentingwithcode.com)'s amazing 5-part [tutorial](https://experimentingwithcode.com/creating-a-jekyll-blog-with-bootstrap-4-and-sass-part-1/) on setting up a Jekyll site with Bootstrap
+* This gist of Solarized Dark [syntax highlighter](https://gist.githubusercontent.com/nicolashery/5765395/raw/80abaa1791271466393e8264f286c1eb9240d059/solarized-dark.css) for Jekyll
+
+Images from [Unsplash](https://unsplash.com/):
+* Dark banner [image](https://unsplash.com/photos/EQqHRrvDG-Y) by Omid Armin
+* Light banner [image](https://unsplash.com/photos/jhw1cRdWkEI) by Annie Spratt
 
 ### What needs doing
-Make the blog look good first before starting on portfolio.
-* ~~Make the footer stick to the bottom, in a way that works with the pagination~~
-* ~~Find out how to get post excerpts, make them show up on posts page~~
-* ~~Show the post reading time~~
-* ~~Add a separate navbar for blog tags and archive (posts by year)~~
-* ~~Create tags page~~
-* ~~Create archive page~~
-* ~~Add RSS feed link somewhere - with tags/archive?~~
-* ~~Set up RSS feed~~
-* ~~Sort out styling of single post page~~
-* ~~Add the youtube include from old blog~~
-* ~~Transfer misc config from old site~~
-* ~~Change pagination to 10 posts per page~~
-* ~~Make the main posts page look nicer (padding)~~
-<br/><br/>
-
-* Get some padding on the index page, and info (copy from old site)
-* Make about me/about this site headers into links
-* ~~Replace the Twitter icon with a working LinkedIn one~~
-* ~~Fix the email link in footer~~
-* Add license details of images used
-* Fix images style for post and home pages
-<br/><br/>
-
 Can migrate at this point! NB change the default layout name, old blog is "single"   
 * copy existing posts and their images over
 * make sure they look right
@@ -55,6 +41,7 @@ Can migrate at this point! NB change the default layout name, old blog is "singl
 <br/><br/>
   
 * DRY out the CSS?
+* Set up CI
 * Give the navbar title/brand a hover colour? or a glow? underline?
 * Put links to jekyll and bootstrap in footer?
 * Make the banner look better - narrower, different images - ideally same image but different overlay or something

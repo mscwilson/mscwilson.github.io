@@ -4476,7 +4476,7 @@ input[type="button"].btn-block {
   color: #80ffaa;
 }
 .navbar-dark .navbar-nav .nav-link.disabled {
-  color: rgba(255, 255, 255, 0.25);
+  color: rgba(0, 0, 0, 0.25);
 }
 
 .navbar-dark .navbar-nav .show > .nav-link,

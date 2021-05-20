@@ -1,0 +1,20 @@
+.post-pagination {
+  padding: 1em 2em;
+
+  .btn {
+    border-color: #dee2e6;
+    color: black;
+  }
+
+  .disabled {
+    color: #ced4da !important;
+  }
+
+  a {
+    text-decoration: none !important;
+
+    &:hover {
+      color: black !important;
+    }
+  }
+}

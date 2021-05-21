@@ -48,7 +48,7 @@ tag_archive:
 defaults:
   # _posts
   - scope:
-      path: ""
+      path: "blog/_posts"
       type: posts
     values:
       layout: post

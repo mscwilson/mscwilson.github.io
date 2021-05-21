@@ -34,6 +34,7 @@ Can migrate at this point!
 * make sure they look right
 * fix links in posts
 * did I link to my blog anywhere in my profile?
+* Add the redirect plugin
 <br/><br/>
   
 * Fix the padding on Portfolio page, add a short blurb

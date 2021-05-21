@@ -1,5 +1,5 @@
 ---
-layout: single
+ layout: post
 title: My first Rails project
 date:  2021-02-22 16:28:00
 tags: Rails Ruby Jekyll

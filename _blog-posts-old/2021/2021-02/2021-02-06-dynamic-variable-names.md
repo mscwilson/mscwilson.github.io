@@ -1,5 +1,5 @@
 ---
-layout: single
+ layout: post
 title: Dynamic key names in Ruby
 redirect from:
     - /dynamic-variable-names/

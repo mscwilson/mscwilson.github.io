@@ -1,5 +1,5 @@
 ---
-layout: single
+ layout: post
 title: Test Driven Inspired Development
 date:  2021-03-10 20:28:00
 tags: miscellaneous testing Makers

@@ -1,8 +1,8 @@
 ---
 title: My first post!
-# redirect from:
-#     - /Hello-World/
-#     - http://www.mirandawilson.tech/Hello-World/
+redirect from:
+    - /Hello-World/
+    - http://www.mirandawilson.tech/Hello-World/
 tags: Jekyll
 ---
 

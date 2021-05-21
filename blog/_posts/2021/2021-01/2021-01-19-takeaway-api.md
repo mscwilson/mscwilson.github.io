@@ -1,5 +1,5 @@
 ---
-layout: single
+ layout: post
 title: My first API
 redirect from:
     - /takeaway-api/

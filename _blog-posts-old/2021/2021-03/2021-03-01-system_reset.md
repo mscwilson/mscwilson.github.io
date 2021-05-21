@@ -1,5 +1,5 @@
 ---
-layout: single
+ layout: post
 title: Native naivety - system reset
 date:  2021-03-01 22:28:00
 tags: miscellaneous PostgreSQL

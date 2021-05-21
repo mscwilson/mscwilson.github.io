@@ -1,5 +1,5 @@
 ---
-layout: single
+ layout: post
 title: Changing URLs without breaking everything
 date:  2021-02-18 22:04:00
 tags: Jekyll
@@ -37,7 +37,7 @@ Using the gem [Jekyll-Redirect-From](https://github.com/jekyll/jekyll-redirect-f
 Now the posts in the old repo look like eg:  
 ```yaml
 ---
-layout: single
+ layout: post
 title: My first JavaScript
 redirect_to: http://www.mirandawilson.tech/blog/2021/02/11/javascript-intro/
 date:  2021-02-11 21:57:00

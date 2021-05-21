@@ -2,6 +2,7 @@ plugins:
   - jekyll-sitemap
   - jekyll-feed
   - jekyll-paginate
+  - jekyll-redirect-from
 
 # SEO Stuff
 title: Miranda Making Things

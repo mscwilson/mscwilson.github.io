@@ -1,5 +1,5 @@
 ---
-layout: single
+ layout: post
 title: Learning how to use Sublime
 date:  2021-02-14 15:37:00
 tags: Sublime

@@ -1,5 +1,5 @@
 ---
-layout: single
+ layout: post
 title: Miranda the Job Hunter
 date:  2021-03-31 20:08:00
 tags: Makers

@@ -1,5 +1,5 @@
 ---
-layout: single
+ layout: post
 title: Job Hunting is Weird
 date:  2021-05-12 15:00
 tags: miscellaneous

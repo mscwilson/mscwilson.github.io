@@ -1,5 +1,5 @@
 ---
-layout: single
+ layout: post
 title: \[not coding\] I Made A Dog Barrier
 date:  2021-05-13 17:03
 tags: not_coding

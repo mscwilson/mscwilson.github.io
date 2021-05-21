@@ -1,5 +1,5 @@
 ---
-layout: single
+ layout: post
 title: How to set up a Sinatra PostgreSQL app with ActiveRecord and RSpec
 redirect from:
     - /walkthrough-chitter-orm/

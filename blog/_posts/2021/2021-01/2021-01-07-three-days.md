@@ -1,5 +1,5 @@
 ---
-layout: single
+ layout: post
 title: Three days into Makers course
 redirect from:
     - /three-days/

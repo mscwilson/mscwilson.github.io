@@ -1,5 +1,5 @@
 ---
-layout: single
+ layout: post
 title: Makers Wednesday week 2
 redirect from:
     - /feedback-and-rspec/

@@ -1,5 +1,5 @@
 ---
-layout: single
+ layout: post
 title: Autocompletion Entertainment
 date:  2021-05-05 14:49
 tags: VSCode

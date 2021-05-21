@@ -1,5 +1,5 @@
 ---
-layout: single
+ layout: post
 title: Valentine's Day JavaScript
 date:  2021-02-14 15:37:00
 tags: JavaScript Makers

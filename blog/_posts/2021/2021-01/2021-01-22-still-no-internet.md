@@ -1,5 +1,5 @@
 ---
-layout: single
+ layout: post
 title: Still no internet
 redirect from:
     - /still-no-internet/

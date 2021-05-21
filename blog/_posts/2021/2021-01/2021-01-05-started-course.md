@@ -1,5 +1,5 @@
 ---
-layout: single
+ layout: post
 title: First day of Makers course
 redirect from:
     - /started-course/

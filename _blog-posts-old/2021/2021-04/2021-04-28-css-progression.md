@@ -1,5 +1,5 @@
 ---
-layout: single
+ layout: post
 title: The Importance of Being CSS'd
 date:  2021-04-28 22:18
 tags: Makers JavaScript HTML/CSS

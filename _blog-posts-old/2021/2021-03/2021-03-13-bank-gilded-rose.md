@@ -1,5 +1,5 @@
 ---
-layout: single
+ layout: post
 title: Dependency injection, confusion injection / Double trouble
 date:  2021-03-13 20:28:00
 tags: Ruby testing Makers

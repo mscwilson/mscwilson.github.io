@@ -1,5 +1,5 @@
 ---
-layout: single
+ layout: post
 title: My first JavaScript
 redirect_from:
     - /javascript-intro/

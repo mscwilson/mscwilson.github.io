@@ -1,5 +1,5 @@
 ---
-layout: single
+ layout: post
 title: New computer!
 redirect from:
     - /installation-m1/

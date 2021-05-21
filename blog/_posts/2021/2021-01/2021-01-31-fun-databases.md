@@ -1,5 +1,5 @@
 ---
-layout: single
+ layout: post
 title: Full stack fun
 redirect from:
     - /fun-databases/

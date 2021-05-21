@@ -1,5 +1,5 @@
 ---
-layout: single
+ layout: post
 title: Rock Paper Scissors (my ~~first~~ second webapp!)
 redirect from:
     - /first-webapp/

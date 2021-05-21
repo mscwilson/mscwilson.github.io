@@ -1,5 +1,5 @@
 ---
-layout: single
+ layout: post
 title: Fulfilled promise
 date:  2021-03-25 08:42:00
 tags: JavaScript Makers

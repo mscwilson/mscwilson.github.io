@@ -1,5 +1,5 @@
 ---
-layout: single
+ layout: post
 title: Fixing the theme for this blog
 redirect from:
     - /blog-improvements/

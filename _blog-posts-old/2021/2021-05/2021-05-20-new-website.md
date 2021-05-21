@@ -1,5 +1,5 @@
 ---
-layout: single
+ layout: post
 title: Light and Dark, Jekyll and SASS
 date:  2021-05-20 20:57
 tags: Jekyll Bootstrap SASS

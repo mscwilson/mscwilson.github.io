@@ -1,5 +1,5 @@
 ---
-layout: single
+ layout: post
 title: My website on the real internet (Heroku setup)
 redirect from:
     - /online_webapp/

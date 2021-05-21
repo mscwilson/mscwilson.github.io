@@ -1,5 +1,5 @@
 ---
-layout: single
+ layout: post
 title: Finished Feamwork Friday
 redirect from:
     - /finished-teamwork/

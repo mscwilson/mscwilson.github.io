@@ -1,5 +1,5 @@
 ---
-layout: single
+ layout: post
 title: Beginning of the end
 date:  2021-03-17 20:42:00
 tags: JavaScript Makers VSCode

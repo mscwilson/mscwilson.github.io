@@ -1,0 +1,12 @@
+#posts {
+  a {
+    text-decoration: none;
+    &:hover {
+      color: $success;
+    }
+  }
+
+  .post-meta {
+    font-size: 0.9rem;
+  }
+}

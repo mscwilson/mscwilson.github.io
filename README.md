@@ -33,6 +33,7 @@ Can migrate at this point!
 * copy existing posts and their images over. NB change the default layout name, old blog is "single"
 * make sure they look right
 * fix links in posts
+* did I link to my blog anywhere in my profile?
 <br/><br/>
   
 * Fix the padding on Portfolio page, add a short blurb
@@ -42,6 +43,7 @@ Can migrate at this point!
 <br/><br/>
   
 * DRY out the CSS?!
+* Fix domain pointing, GitHub says there's a problem
 * Set up CI
 * Give the navbar title/brand a hover colour? or a glow? underline?
 * Only show the RSS link if it's a desktop browser. Show "All posts" on mobile?

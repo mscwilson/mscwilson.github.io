@@ -10,10 +10,10 @@ description: >-
   I'm a cell biologist turned programmer. This site is my blog and portfolio: my coding journey and the things I've made.
 lang: en
 locale: en_GB
-# url: "http://www.mirandawilson.tech"
+url: "http://www.mirandawilson.tech"
 email: miranda@mirandawilson.tech
 github_username: mscwilson
-baseurl: "/portfolio"
+baseurl: "/"
 
 # build settings
 permalink: blog/:year/:month/:day/:title/

@@ -19,6 +19,7 @@ baseurl: "/portfolio"
 permalink: blog/:year/:month/:day/:title/
 sass:
   sass_dir: assets/css
+  style: compressed
 paginate: 10
 paginate_path: "/blog/page:num"
 timezone: Europe/London # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones

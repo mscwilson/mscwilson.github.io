@@ -19,7 +19,7 @@ This is a work in progress.
 * [Bootstrap Build](https://bootstrap.build). Fantastic site for customising Bootstrap themes
 * [Jekyll](https://jekyllrb.com/) static site generator
 * [Minimal Mistakes](https://github.com/mmistakes/minimal-mistakes) Jekyll theme. I used this for the previous version of this site, so I kept the overall design and some of the code (e.g. for post excerpts and reading time)
-* [Experimenting With Code](https://experimentingwithcode.com)'s amazing multi-part [tutorial](https://experimentingwithcode.com/creating-a-jekyll-blog-with-bootstrap-4-and-sass-part-1/) on setting up a Jekyll site with Bootstrap
+* [Experimenting With Code](https://experimentingwithcode.com)'s incredibly helpful multi-part [tutorial](https://experimentingwithcode.com/creating-a-jekyll-blog-with-bootstrap-4-and-sass-part-1/) on setting up a Jekyll site with Bootstrap
 * This gist of Solarized Dark [syntax highlighter](https://gist.githubusercontent.com/nicolashery/5765395/raw/80abaa1791271466393e8264f286c1eb9240d059/solarized-dark.css) for Jekyll
 
 Images from [Unsplash](https://unsplash.com/):

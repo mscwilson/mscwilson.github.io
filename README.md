@@ -28,17 +28,17 @@ Images from [Unsplash](https://unsplash.com/):
 
 ### What needs doing
 Can migrate at this point!  
-* change the name of the repos and fix the cname!
+* ~~change the name of the repos and fix the cname!~~
 * improve the About text, fix the links (incl to GH repo)
 * ~~copy existing posts and their images over. NB change the default layout name, old blog is "single"~~
 * make sure they look right
-* remove drop shadow from images in blog? some of them look terrible. and make them smaller/responsive!!
+* ~~remove drop shadow from images in blog? some of them look terrible. and make them smaller/responsive!!~~
 * fix links in posts
-* did I link to my blog anywhere in my profile?
+* ~~did I link to my blog anywhere in my profile?~~
 * ~~Add the redirect plugin~~
-* Check redirects work
-* Check youtube embeds work 
-* first page of paginator links to index page!
+* ~~Check redirects work~~
+* ~~Check youtube embeds work~~
+* ~~first page of paginator links to index page!~~
 <br/><br/>
   
 * Fix the padding on Portfolio page, add a short blurb
@@ -48,10 +48,11 @@ Can migrate at this point!
 <br/><br/>
   
 * DRY out the CSS?!
-* Change the colour of inline code so it doesn't look like links
+* Change the colour of inline code so it doesn't look like links ($info?)
 * Fix domain pointing, GitHub says there's a problem
 * Set up CI
 * Make a better 404 page
+* Fix the redirects for first 20 posts
 * Different colour for link that's been visited
 * Give the navbar title/brand a hover colour? or a glow? underline?
 * Only show the RSS link if it's a desktop browser. Show "All posts" on mobile?

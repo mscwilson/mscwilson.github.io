@@ -16,7 +16,13 @@
 @import "custom/includes/archive";
 @import "custom/includes/youtube";
 
-@import "solarized-dark";
+@media (prefers-color-scheme: dark) {
+  @import "custom/syntax-highlight-themes/dracula";
+}
+
+@media (prefers-color-scheme: light) {
+  @import "custom/syntax-highlight-themes/dracula";
+}
 
 body {
   margin-bottom: 95px !important;

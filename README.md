@@ -27,20 +27,6 @@ Images from [Unsplash](https://unsplash.com/):
 * Light banner [image](https://unsplash.com/photos/jhw1cRdWkEI) by Annie Spratt
 
 ### What needs doing
-Can migrate at this point!  
-* ~~change the name of the repos and fix the cname!~~
-* improve the About text, fix the links (incl to GH repo)
-* ~~copy existing posts and their images over. NB change the default layout name, old blog is "single"~~
-* make sure they look right
-* ~~remove drop shadow from images in blog? some of them look terrible. and make them smaller/responsive!!~~
-* fix links in posts
-* ~~did I link to my blog anywhere in my profile?~~
-* ~~Add the redirect plugin~~
-* ~~Check redirects work~~
-* ~~Check youtube embeds work~~
-* ~~first page of paginator links to index page!~~
-<br/><br/>
-  
 * Fix the padding on Portfolio page, add a short blurb
 * Add projects - as Bootstrap cards maybe. Links to github and live project if possible. Click through to individual project pages
 * Make individual project pages
@@ -48,18 +34,16 @@ Can migrate at this point!
 <br/><br/>
   
 * DRY out the CSS?!
-* Change the colour of inline code so it doesn't look like links ($info?)
+* ~~Only show the RSS link if it's a desktop browser. Show "All posts" on mobile?~~
+* Improve the code blocks. Scrolling, margins, centred, better colour schemes
+* ~~Change the colour of inline code so it doesn't look like links ($info?)~~
 * Fix domain pointing, GitHub says there's a problem
-* Set up CI
+* Set up CI?
 * Make a better 404 page
 * Fix the redirects for first 20 posts
 * Different colour for link that's been visited
-* Give the navbar title/brand a hover colour? or a glow? underline?
-* Only show the RSS link if it's a desktop browser. Show "All posts" on mobile?
-* Light dropshadow for images in dark mode
-* Put links to jekyll and bootstrap in footer?
+* Fancy JS underline for navbar link hover like in Minimal Mistakes?
 * Make the banner look better - narrower, different images - ideally same image but different overlay or something
-* Choose nicer syntax highlighting themes, probably need light and dark ones
 * Add share buttons (twitter, fb, linkedin)
 * Add a scrolling about section on the left like on old site?
 * Consider using background images or gradients so it looks less flat

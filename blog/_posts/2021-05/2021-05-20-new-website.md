@@ -22,10 +22,9 @@ I started deleting unused files - e.g. for commenting on posts - from the projec
 Switching themes was easy on a single test HTML page, using a JavaScript-based [toggle](https://github.com/GoogleChromeLabs/dark-mode-toggle). I set different background and text colours in two CSS files, then imported them using the `@media` query:
 
 ```html
+<!-- in the head.html section -->
 <link rel="stylesheet" media="(prefers-color-scheme: light)" href="lightstyle.css">
 <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="darkstyle.css">
-
-<script type="module" src="https://unpkg.com/dark-mode-toggle"></script>
 ```
 Success! I could change the background colour and text colour at will! But how to scale up 8 lines of CSS to a whole pile of SASS? I couldn't work it out at all.  
 

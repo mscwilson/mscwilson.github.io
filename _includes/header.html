@@ -35,9 +35,12 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav ml-auto">
 
-        <li {% if page.url contains "/feed.xml" %} class="nav-item active ml-auto" {% else %} class="nav-item ml-auto" {% endif
-          %}>
+        <li class="nav-item ml-auto d-none d-lg-block">
           <a class="nav-link" href="{{ site.baseurl }}/feed.xml"><i class="fas fa-rss"></i></a>
+        </li>
+
+        <li {% if page.url == "/blog/" %} class="nav-item active ml-auto" {% else %} class="nav-item ml-auto" {% endif %}>
+          <a class="nav-link" href="{{ site.baseurl }}/blog/">Posts</a>
         </li>
         
         <li {% if page.url contains "/tags/" %} class="nav-item active ml-auto" {% else %} class="nav-item ml-auto" {%

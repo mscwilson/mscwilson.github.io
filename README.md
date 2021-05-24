@@ -25,29 +25,3 @@ This is a work in progress.
 Images from [Unsplash](https://unsplash.com/):
 * Dark banner [image](https://unsplash.com/photos/EQqHRrvDG-Y) by Omid Armin
 * Light banner [image](https://unsplash.com/photos/jhw1cRdWkEI) by Annie Spratt
-
-### What needs doing
-* Fix the padding on Portfolio page, add a short blurb
-* Add projects - as Bootstrap cards maybe. Links to github and live project if possible. Click through to individual project pages
-* Make individual project pages
-* Add previous/next at the bottom of single projects
-<br/><br/>
-  
-* DRY out the CSS?!
-* ~~Only show the RSS link if it's a desktop browser. Show "All posts" on mobile?~~
-* Improve the code blocks. Scrolling, margins, centred, better colour schemes
-* ~~Change the colour of inline code so it doesn't look like links ($info?)~~
-* Fix domain pointing, GitHub says there's a problem
-* Set up CI?
-* Make a better 404 page
-* Show image thumbnails that can be expanded out
-* Fix the redirects for first 20 posts
-* Different colour for link that's been visited
-* Fancy JS underline for navbar link hover like in Minimal Mistakes?
-* Make the banner look better - narrower, different images - ideally same image but different overlay or something
-* Add share buttons (twitter, fb, linkedin)
-* Add a scrolling about section on the left like on old site?
-* Consider using background images or gradients so it looks less flat
-* Add a nice table of tag frequencies for tags page
-* Make youtube embeds centred (and full width on mobile)
-* Make posts archive look nicer and correctly aligned

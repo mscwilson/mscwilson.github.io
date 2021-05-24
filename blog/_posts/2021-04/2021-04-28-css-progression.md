@@ -14,7 +14,7 @@ It's very funny to me how unstyled pages all look like they're from the 90s. Any
 
 I'd become more familiar with display layouts during my Makers [final project](https://github.com/mscwilson/SmellsLikeGreenSpirit), using the React Native flex layouts. So I changed the whole table to be a "grid-container" `div`, filled with `div`s of class "grid-item". From there, CSS took over. This was my starting point:  
 
-```
+```html
 .grid-container {
   border: 1px solid blue;
   display: grid;
@@ -48,7 +48,7 @@ Nearly there. I centered everything into the middle of the page. It's only semi-
 ![finished page with handwriting font and text glow](/blog/images/2021/2021-04/9_handwriting_font.png)  
 
 Now I'm very pleased with this page! There is still a lot I don't know about CSS. After all, I left this in my stylesheet:  
-```
+```html
 #card-and-reset {
   /* for some reason the grid breaks if I remove this section */
 }

@@ -12,10 +12,17 @@
 @import "custom/includes/pagination";
 @import "custom/includes/post-pagination";
 @import "custom/includes/post";
+@import "custom/includes/code";
 @import "custom/includes/archive";
 @import "custom/includes/youtube";
 
-@import "solarized-dark";
+@media (prefers-color-scheme: dark) {
+  @import "custom/syntax-highlight-themes/dracula";
+}
+
+@media (prefers-color-scheme: light) {
+  @import "custom/syntax-highlight-themes/light";
+}
 
 body {
   margin-bottom: 95px !important;

@@ -40,6 +40,7 @@ Images from [Unsplash](https://unsplash.com/):
 * Fix domain pointing, GitHub says there's a problem
 * Set up CI?
 * Make a better 404 page
+* Show image thumbnails that can be expanded out
 * Fix the redirects for first 20 posts
 * Different colour for link that's been visited
 * Fancy JS underline for navbar link hover like in Minimal Mistakes?

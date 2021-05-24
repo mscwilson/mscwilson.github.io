@@ -1,0 +1,33 @@
+<section id="portfolio">
+  <div class="container py-3">
+    <div class="row">
+      <div class="col">
+        <h4 class="text-primary">Portfolio</h4>
+        <p>I'm still working on this page! It will look better soon.</p>
+        <ul>
+          {% for project in site.projects %}
+
+            <div class="card w-75">
+              <!-- <img src="..." class="card-img-top" alt="..."> -->
+              <div class="card-body">
+                <h5 class="card-title">{{ project.title }}</h5>
+                {% if project.technology %}
+                  <p>{{ project.technology }}</p>
+                {% endif %}
+
+                <p>{% if project.language == "ruby" %}<i class="far fa-gem"></i>{% elsif project.language == "javascript" %}<i class="fab fa-js-square"></i>{% elsif project.language == "python" %}<i class="fab fa-python"></i>{% endif %}</p>
+
+                <p class="card-text">{{ project.content }}</p>
+                <a href="{{ project.repo_url }}" class="btn btn-primary">GitHub</a>
+
+                {% if project.hosted_url %}
+                  <a href="{{ project.hosted_url }}" class="btn btn-primary">Try It Out</a>
+                {% endif %}
+              </div>
+            </div>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

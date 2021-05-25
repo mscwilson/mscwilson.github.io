@@ -1,12 +1,18 @@
-## Portfolio
-A basic Jekyll site that might end up showcasing my projects - or just being a playground to test things out.
+## Miranda Making Things
+My personal site, for my blog and portfolio.
 
 ### Description
-I'm using Jekyll, a static site generator, for my blog and simple homepage. I set it up using the Minimal Mistakes premade theme, which has been great but is overkill for my needs. It contained a lot of things I'm not using (e.g. Comments capability), and I found the project structure confusing since I'd never used SASS before.  
+Check out my site [here](https://www.mirandawilson.tech).  
 
-Therefore I decided to start a new Jekyll page from scratch, with just the features I need: about me; a portfolio and my projects; my blog; and the ability to change between light and dark theme, because I think that's really fun.    
+I started my blog when I started at [Makers](https://makers.tech) coding bootcamp, in January 2021. I wanted a place to share my excitement and interest as I learned about programming.  
 
-This is a work in progress.
+I used the static site generator Jekyll, as it is designed for blogging: just make a new Markdown file to post. Also, Jekyll sites can be easily hosted on GitHub Pages. Initially I used a pre-made theme, Minimal Mistakes, but wanted to have more control over the design and features. So I created a new site, using Bootstrap for responsiveness.  
+
+The key features I wanted were: about me section; a portfolio page; my blog; and light and dark themes, because I think that's really fun.  
+
+It currently looks like this:  
+![website index page in light theme](assets/images/light-theme.png)
+![website index page in light theme](assets/images/dark-theme.png)
 
 ### Usage
 * Clone this repo and navigate into the folder
@@ -20,8 +26,11 @@ This is a work in progress.
 * [Jekyll](https://jekyllrb.com/) static site generator
 * [Minimal Mistakes](https://github.com/mmistakes/minimal-mistakes) Jekyll theme. I used this for the previous version of this site, so I kept the overall design and some of the code (e.g. for post excerpts and reading time)
 * [Experimenting With Code](https://experimentingwithcode.com)'s incredibly helpful multi-part [tutorial](https://experimentingwithcode.com/creating-a-jekyll-blog-with-bootstrap-4-and-sass-part-1/) on setting up a Jekyll site with Bootstrap
-* This gist of Solarized Dark [syntax highlighter](https://gist.githubusercontent.com/nicolashery/5765395/raw/80abaa1791271466393e8264f286c1eb9240d059/solarized-dark.css) for Jekyll
+* [Dracula](https://github.com/dracula/pygments) syntax highlighting theme
 
 Images from [Unsplash](https://unsplash.com/):
 * Dark banner [image](https://unsplash.com/photos/EQqHRrvDG-Y) by Omid Armin
 * Light banner [image](https://unsplash.com/photos/jhw1cRdWkEI) by Annie Spratt
+
+### Known Issues
+I didn't include any special rules for old browsers that don't support `prefers-color-scheme`, so it might look bad in that case.

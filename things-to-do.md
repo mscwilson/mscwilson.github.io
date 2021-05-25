@@ -1,9 +1,9 @@
 ### What needs doing
 For the portfolio section:
 * Fix the padding on Portfolio page, add a short blurb
-* Add projects - as Bootstrap cards maybe. Links to github and live project if possible. Click through to individual project pages
-* Make individual project pages
-* Add previous/next at the bottom of single projects
+* ~~Add projects - as Bootstrap cards maybe. Links to github and live project if possible.~~
+* Fix cards layout in responsive grid
+* Make individual project pages? Or modals maybe?
 <br/><br/>
   
 * DRY out the CSS?!
@@ -20,4 +20,4 @@ For the portfolio section:
 * Consider using background images or gradients so it looks less flat
 * Add a nice table of tag frequencies for tags page
 * Make youtube embeds centred (and full width on mobile)
-* Make posts archive look nicer and correctly aligned
+* Make posts archive perfectly aligned

@@ -33,4 +33,5 @@ Images from [Unsplash](https://unsplash.com/):
 * Light banner [image](https://unsplash.com/photos/jhw1cRdWkEI) by Annie Spratt
 
 ### Known Issues
-I didn't include any special rules for old browsers that don't support `prefers-color-scheme`, so it might look bad in that case.
+There are no tests! Shame on me, I know. I'd like to get some tests in place now that there are a few pages in the site.  
+Also, I didn't include any special rules for old browsers that don't support `prefers-color-scheme`, so it might look bad in that case.

@@ -14,6 +14,13 @@ It currently looks like this:
 ![website index page in light theme](assets/images/light-theme.png)
 ![website index page in light theme](assets/images/dark-theme.png)
 
+### Trackers
+Ideas of what to track:
+1. the github links from portfolio projects - which projects are most popular?
+2. the tags for each blog post title that's clicked on (NB posts are linked to in several places) - entries tagged with what are most popular?
+3. youtube plays (NB requires knowledge of youtube embed API)
+
+
 ### Usage
 * Clone this repo and navigate into the folder
 * Run `bundle` to install dependencies

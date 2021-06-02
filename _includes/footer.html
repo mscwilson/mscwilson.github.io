@@ -19,4 +19,22 @@
     integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
   
   <script src="https://kit.fontawesome.com/6b6bfd734a.js" crossorigin="anonymous"></script>
+
+  <script type="text/javascript" async=1>
+    ; (function (p, l, o, w, i, n, g) { if (!p[i]) { p.GlobalSnowplowNamespace = p.GlobalSnowplowNamespace || []; p.GlobalSnowplowNamespace.push(i); p[i] = function () { (p[i].q = p[i].q || []).push(arguments) }; p[i].q = p[i].q || []; n = l.createElement(o); g = l.getElementsByTagName(o)[0]; n.async = 1; n.src = w; g.parentNode.insertBefore(n, g) } }(window, document, "script", "{{ site.url }}/assets/js/plow.js", "snowplow"));
+
+    snowplow('newTracker', 'sp', '0.0.0.0:9090', {
+      appId: 'my-app-id',
+    });
+
+    snowplow('enableActivityTracking', {
+        minimumVisitLength: 30,
+        heartbeatDelay: 10
+      });
+
+      snowplow('trackPageView');
+
+      
+  </script>
+
 </footer>

@@ -1,0 +1,24 @@
+; (function (p, l, o, w, i, n, g) { if (!p[i]) { p.GlobalSnowplowNamespace = p.GlobalSnowplowNamespace || []; p.GlobalSnowplowNamespace.push(i); p[i] = function () { (p[i].q = p[i].q || []).push(arguments) }; p[i].q = p[i].q || []; n = l.createElement(o); g = l.getElementsByTagName(o)[0]; n.async = 1; n.src = w; g.parentNode.insertBefore(n, g) } }(window, document, "script", "/assets/js/plow.js", "snowplow"));
+
+snowplow('newTracker', 'sp', '0.0.0.0:9090', {
+  appId: 'mirandawilson',
+});
+
+snowplow('enableActivityTracking', {
+  minimumVisitLength: 30,
+  heartbeatDelay: 10
+});
+
+snowplow('trackPageView');
+
+snowplow('enableLinkClickTracking', {
+  options: {
+    'allowList': ['tracked']
+  },
+  pseudoClicks: true
+});
+
+snowplow('trackLinkClick', {
+  targetUrl: '/blog'
+})
+

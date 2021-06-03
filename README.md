@@ -17,13 +17,13 @@ It currently looks like this:
 ### Trackers
 I've embedded [Snowplow](https://snowplowanalytics.com/)'s JavaScript analytics trackers.  
 
-I'm capturing the standard Page Views and Activity Tracking events on all pages, by including Snowplow's tracker tag and built-in functions in the shared footer.  
+I'm capturing the standard Page Views and Activity Tracking events on all pages, by including Snowplow's tracker tag and built-in functions in the shared [footer](_includes/footer.html) [script](assets/js/trackers.js).  
 
-For more personalised tracking, I also used link tracking specifically for the navbar buttons. I added "tracked" to the classes of those links. This would allow me to find out how people navigate around my site. 
+For more personalised tracking, I also used link tracking specifically for the [navbar](_includes/header.html) buttons. I added "tracked" to the classes of those links. This would allow me to find out how people navigate around my site. 
 
-Finally, I want to know which of my portfolio projects are the most popular, based on GitHub link clicks. I've added a script to the portfolio HTML to use a custom tracker (`trackSelfDescribingEvent`). When users click on the GitHub repo link (which opens a new tab), the event is stored along with the name of the repo.  
+Finally, I want to know which of my portfolio projects are the most popular, based on GitHub link clicks. I've added a [script](assets/js/portfolio.js) to the [portfolio HTML](_includes/portfolio.html) to use a custom tracker (`trackSelfDescribingEvent`) based on this [JSON schema](assets/iglu/schemas/test.mwilson/github-link/jsonschema/1-0-0). When users click on the GitHub repo link (which opens a new tab), the event is stored along with the name of the repo.  
 
-The JSON schemas used are referenced from this GitHub repo in Snowplow Micro's iglu.json config file. I ended up using an older version of the JavaScript Tracker, v2.18.0, as I had a technical problem with v3.1.0 and the `trackSelfDescribingEvent` function.  
+The JSON schemas used are referenced from this GitHub repo in Snowplow Micro's [iglu.json](snowplow-micro/iglu.json) config file. I ended up using an older version of the JavaScript Tracker, v2.18.0, as I had a technical problem with v3.1.0 and the `trackSelfDescribingEvent` function. I renamed `sp.js` to `plow.js` to potentially fool adblockers.   
 
 
 ### Usage
@@ -54,5 +54,6 @@ Images from [Unsplash](https://unsplash.com/):
 * Light banner [image](https://unsplash.com/photos/jhw1cRdWkEI) by Annie Spratt
 
 ### Known Issues
-There are no tests yet! 😨  
-I didn't include any special rules for old browsers that don't support `prefers-color-scheme`, so it might look bad in that case.
+* There are no tests yet! 😨  
+* The portfolio page needs more work - grid layout, pictures, and better information about each project.  
+* I didn't include any special rules for old browsers that don't support `prefers-color-scheme`, so it might look bad in that case.

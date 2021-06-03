@@ -10,7 +10,7 @@
             <div class="card w-75">
               <!-- <img src="..." class="card-img-top" alt="..."> -->
               <div class="card-body">
-                <h5 class="card-title">{{ project.title }}</h5>
+                <h5 class="card-title test">{{ project.title }}</h5>
                 {% if project.technology %}
                   <p>{{ project.technology }}</p>
                 {% endif %}
@@ -18,10 +18,10 @@
                 <p>{% if project.language == "ruby" %}<i class="far fa-gem"></i>{% elsif project.language == "javascript" %}<i class="fab fa-js-square"></i>{% elsif project.language == "python" %}<i class="fab fa-python"></i>{% endif %}</p>
 
                 <p class="card-text">{{ project.content }}</p>
-                <a href="{{ project.repo_url }}" class="btn btn-primary">GitHub</a>
+                <a href="{{ project.repo_url }}" class="btn btn-primary github-link" target="_blank">GitHub</a>
 
                 {% if project.hosted_url %}
-                  <a href="{{ project.hosted_url }}" class="btn btn-primary">Try It Out</a>
+                  <a href="{{ project.hosted_url }}" class="btn btn-primary" target="_blank">Try It Out</a>
                 {% endif %}
               </div>
             </div>
@@ -31,3 +31,4 @@
     </div>
   </div>
 </section>
+<script src="/assets/js/portfolio.js"></script>

@@ -15,16 +15,30 @@ It currently looks like this:
 ![website index page in light theme](assets/images/dark-theme.png)
 
 ### Trackers
-Ideas of what to track:
-1. the github links from portfolio projects - which projects are most popular?
-2. the tags for each blog post title that's clicked on (NB posts are linked to in several places) - entries tagged with what are most popular?
-3. youtube plays (NB requires knowledge of youtube embed API)
+I've embedded [Snowplow](https://snowplowanalytics.com/)'s JavaScript analytics trackers.  
+
+I'm capturing the standard Page Views and Activity Tracking events on all pages, by including Snowplow's tracker tag and built-in functions in the shared footer.  
+
+For more personalised tracking, I also used link tracking specifically for the navbar buttons. I added "tracked" to the classes of those links. This would allow me to find out how people navigate around my site. 
+
+Finally, I want to know which of my portfolio projects are the most popular, based on GitHub link clicks. I've added a script to the portfolio HTML to use a custom tracker (`trackSelfDescribingEvent`). When users click on the GitHub repo link (which opens a new tab), the event is stored along with the name of the repo.  
+
+The JSON schemas used are referenced from this GitHub repo in Snowplow Micro's iglu.json config file. I ended up using an older version of the JavaScript Tracker, v2.18.0, as I had a technical problem with v3.1.0 and the `trackSelfDescribingEvent` function.  
 
 
 ### Usage
 * Clone this repo and navigate into the folder
 * Run `bundle` to install dependencies
 * Check out the site locally: `jekyll serve`
+
+To try out the trackers, make sure Docker is installed first
+* Run: 
+  ```
+  docker run --platform=linux/amd64 --mount type=bind,source={{this folder you just cloned}}/snowplow-micro,destination=/config -p 9090:9090 snowplow/snowplow-micro:1.1.2 --collector-config /config/micro.conf --iglu /config/iglu.json
+  ```
+* This will start Snowplow Micro inside a container on port 9090
+* Access the Micro API: `curl -X GET -H 'Content-Type: application/json' 0.0.0.0:9090/micro/all`
+* Explore the site and generate tracking events!  
 
 ### Acknowledgements
 * [Bootstrap](https://getbootstrap.com/) responsive design
@@ -40,4 +54,5 @@ Images from [Unsplash](https://unsplash.com/):
 * Light banner [image](https://unsplash.com/photos/jhw1cRdWkEI) by Annie Spratt
 
 ### Known Issues
+There are no tests yet! 😨  
 I didn't include any special rules for old browsers that don't support `prefers-color-scheme`, so it might look bad in that case.

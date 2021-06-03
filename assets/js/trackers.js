@@ -15,8 +15,3 @@ snowplow('enableLinkClickTracking', {
   },
   pseudoClicks: true
 });
-
-// snowplow('trackLinkClick', {
-//   targetUrl: '/blog'
-// })
-

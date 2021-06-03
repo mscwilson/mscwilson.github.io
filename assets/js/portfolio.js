@@ -1,34 +1,16 @@
-// const githubLinksHTML = document.getElementsByClassName("github-link")
-// const githubLinks = Array.from(githubLinksHTML)
+const portfolio = document.getElementById("portfolio");
 
-// // console.log(githubLinks[0]);
-// githubLinks.forEach(link => {
-//   console.log(link.href);
-// });
-
-let selectedTitle;
-const section = document.getElementById("portfolio")
-
-section.onclick = function(event) {
-  console.log("start of onclick");
-
+portfolio.onclick = function(event) {
   const target = event.target;
 
-  console.log(target);
-  console.log(target.classList);
+  if (!target.classList.contains("github-link")) return;
 
-  if (!target.classList.contains("card-title")) {
-    return
-  }
+  const repoName = target.href.slice(29);
 
-
-
-  highlight(target)
+  snowplow('trackSelfDescribingEvent', {
+    schema: 'iglu:test.mwilson/github-link/jsonschema/1-0-0',
+    data: {
+      repoName: repoName
+    }
+  });
 };
-
-function highlight(title) {
-  selectedTitle = title
-  selectedTitle.classList.add('highlight')
-  console.log("here in highlight");
-}
-

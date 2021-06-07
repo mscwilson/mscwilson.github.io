@@ -25,6 +25,7 @@ Finally, I want to know which of my portfolio projects are the most popular, bas
 
 The JSON schemas used are referenced from this GitHub repo in Snowplow Micro's [iglu.json](snowplow-micro/iglu.json) config file. I ended up using an older version of the JavaScript Tracker, v2.18.0, as I had a technical problem with v3.1.0 and the `trackSelfDescribingEvent` function. I renamed `sp.js` to `plow.js` to potentially fool adblockers.   
 
+Read the full account of how I set up the tracker [here](trackers-setup.md).
 
 ### Usage
 * Clone this repo and navigate into the folder

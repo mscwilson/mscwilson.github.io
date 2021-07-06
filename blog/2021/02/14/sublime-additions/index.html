@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" href="/assets/images/favicon-star.png" />
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css//bootstrap/bootstrap-mir-dark.css" media="(prefers-color-scheme: dark)">
+  <link rel="stylesheet" href="/assets/css//bootstrap/bootstrap-mir-light.css" media="(prefers-color-scheme: light)">
+  
+  <title>Learning how to use Sublime</title>
+  <meta name="description" content="" />
+</head>
+
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark body-bg">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <h3 class="d-inline align-middle pl-2 text-primary">Miranda Making Things</h3>
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
+                
+        <li  class="nav-item active ml-auto" >
+          <a class="nav-link" href="/blog/">Blog</a>
+        </li>
+        
+        <li  class="nav-item ml-auto" >
+          <a class="nav-link" href="/portfolio/">Portfolio</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<nav class="navbar navbar-expand navbar-dark body-bg navbar-blog">
+  <div class="container-fluid">
+    
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
+
+        <li class="nav-item ml-auto d-none d-lg-block">
+          <a class="nav-link" href="/feed.xml"><i class="fas fa-rss"></i></a>
+        </li>
+
+        <li  class="nav-item ml-auto" >
+          <a class="nav-link" href="/blog/">Posts</a>
+        </li>
+        
+        <li  class="nav-item ml-auto" >
+          <a class="nav-link" href="/blog/tags/">Tags</a>
+        </li>
+
+        <li  class="nav-item ml-auto"
+          >
+          <a class="nav-link" href="/blog/archive/">Archive</a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <section id="banner" class="py-5 d-none d-sm-block">
+</section>
+
+
+    <div id="post" class="container pt-3">
+  <div class="row">
+    <div class="col">
+      <h3>Learning how to use Sublime</h3>
+      <p class="post-meta">
+        <i class="far fa-calendar-alt"></i> Feb 14, 2021 ·
+        <!-- reading_time from Minimal Mistakes theme -->
+
+
+
+<span class="page__meta-readtime">
+  <i class="far fa-clock" aria-hidden="true"></i> 
+   2 minute read 
+<span>
+
+      </p>
+      <p class="post-tags-list">
+        <i class="fas fa-tags"></i> Sublime
+      </p>
+      <hr>
+      <article>
+        <p>JavaScript is growing on me. I’ll post something about it at some point. Right now I am very pleased with myself for having done some “advanced” stuff with Sublime Text.</p>
+
+<p>A few days ago I discovered <a href="https://www.freecodecamp.org/news/a-guide-to-preserving-your-wrists-with-sublime-text-snippets-7541662a53f2/">Snippets</a>, ie tab-autocomplete commands. I was envious of my pair partners who could tab-autocomplete to get <code class="language-plaintext highlighter-rouge">console.log()</code>, and it didn’t seem that Sublime had that built in. So I followed <a href="https://gist.github.com/cabans/6d1663372b534403bd55e2a2501227b7">these instructions</a> to add my own console.log autocomplete. Of course, it turned out that Sublime did it already, just off “l” rather than “log” like I tried. But, in setting up this snippet I discovered that I had been using autocomplete wrong anyway! I didn’t realise you could continue to tab through jump points in the generated text, depending where the cursor points had been placed in the snippet. Like if I press “f” then tab (in a .js file), it does <code class="language-plaintext highlighter-rouge">function(&lt;cursor flashing here&gt;) {}</code>. I thought that was annoying because usually there are no arguments. But another tab press moves the cursor straight into the curly brackets!</p>
+
+<p>This evening I have triumphed again and added a key binding to switch between light and dark themes. I’ve been using the <a href="https://github.com/deathaxe/sublime-skins">Skins</a> plugin (written by someone called Deathaxe, great name) but that involved manually switching skins over through the Command Palette. So I again followed the instructions of <a href="https://forum.sublimetext.com/t/modifying-color-scheme-and-theme-globally-with-a-keyboard-shortcut/49406">helpful</a> <a href="https://stackoverflow.com/questions/13121687/keyboard-shortcut-to-change-color-scheme-in-sublime-text-2/14687195">people</a>, and created my own Sublime plugin!</p>
+
+<p>This is the plugin:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">sublime</span>
+<span class="kn">import</span> <span class="nn">sublime_plugin</span>
+
+<span class="k">class</span> <span class="nc">ToggleColorsThemesCommand</span><span class="p">(</span><span class="n">sublime_plugin</span><span class="p">.</span><span class="n">TextCommand</span><span class="p">):</span>
+  <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">edit</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">):</span>
+    <span class="n">settings</span> <span class="o">=</span> <span class="n">sublime</span><span class="p">.</span><span class="n">load_settings</span><span class="p">(</span><span class="s">"Preferences.sublime-settings"</span><span class="p">)</span>
+
+    <span class="n">light_theme</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s">"light_theme"</span><span class="p">]</span>
+    <span class="n">dark_theme</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s">"dark_theme"</span><span class="p">]</span>
+
+    <span class="n">light_color_scheme</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s">"light_color_scheme"</span><span class="p">]</span>
+    <span class="n">dark_color_scheme</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s">"dark_color_scheme"</span><span class="p">]</span>
+
+    <span class="n">current_theme</span> <span class="o">=</span> <span class="n">settings</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"theme"</span><span class="p">,</span> <span class="n">light_theme</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">current_theme</span> <span class="o">==</span> <span class="n">light_theme</span><span class="p">:</span>
+      <span class="n">settings</span><span class="p">.</span><span class="nb">set</span><span class="p">(</span><span class="s">"theme"</span><span class="p">,</span> <span class="n">dark_theme</span><span class="p">)</span>
+      <span class="n">settings</span><span class="p">.</span><span class="nb">set</span><span class="p">(</span><span class="s">"color_scheme"</span><span class="p">,</span> <span class="n">dark_color_scheme</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">settings</span><span class="p">.</span><span class="nb">set</span><span class="p">(</span><span class="s">"theme"</span><span class="p">,</span> <span class="n">light_theme</span><span class="p">)</span>
+      <span class="n">settings</span><span class="p">.</span><span class="nb">set</span><span class="p">(</span><span class="s">"color_scheme"</span><span class="p">,</span> <span class="n">light_color_scheme</span><span class="p">)</span>
+
+    <span class="n">sublime</span><span class="p">.</span><span class="n">save_settings</span><span class="p">(</span><span class="s">"Preferences.sublime-settings"</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Extremely nice to see some Python code again. I’d like to go back to it one day &lt;3.</p>
+
+<p>Here’s my setting from Sublime key bindings:</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nl">"keys"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"§"</span><span class="p">],</span><span class="w"> </span><span class="nl">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"toggle_colors_themes"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"light_theme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ayu-light.sublime-theme"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"dark_theme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Adaptive.sublime-theme"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"light_color_scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Packages/Rainglow/rainglow/Lavender Light (rainglow).tmTheme"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"dark_color_scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Packages/Dracula Color Scheme/Dracula.tmTheme"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+<p>That random key next to the “1” key wasn’t being used for anything! So it’s just one key press to switch the colours over. Of course, the ideal would be to have it automatically change colour when the Mac system changes over. Someone has written a plugin for Sublime 4, currently in semi-public beta, to do that.</p>
+
+<hr />
+<p>My husband put this album, No Dawn for Men, on earlier. The very first chord, an accordion, I thought was leading into the Captain Pugwash theme. But it wasn’t Captain Pugwash! It was black metal. Atmospheric, Lord of the Rings-themed black metal, from an explicitly feminist and anti-fascist band with the amazing name Feminazgul. Not bad.
+<!-- instructions from https://learn.cloudcannon.com/jekyll/youtube/ --></p>
+<div class="video_wrapper">
+  <iframe src="https://www.youtube.com/embed/ZFxT9XquVtE?rel=0&amp;modestbranding=1&amp;showinfo=0" frameborder="0" allowfullscreen=""></iframe>
+</div>
+
+
+      </article>
+    </div>
+  </div>
+
+  <!-- from Minimal Mistakes -->
+
+<nav class="post-pagination text-center section-pagination mx-auto">
+  <div class="btn-group">
+  
+  <a href="/blog/2021/02/14/js-valentines/" class="btn btn-outline-primary" role="button"
+    title="Valentine’s Day JavaScript
+">Previous</a>
+  
+  
+  <a href="/blog/2021/02/18/url-changes/" class="btn btn-outline-primary"  role="button"
+    title="Changing URLs without breaking everything
+">Next</a>
+  
+  </div>
+</nav>
+
+
+</div>
+
+
+
+    <footer class="footer fixed-bottom mt-auto py-3">
+  <div class="container text-center text-secondary">
+    <div class="row">
+      <div class="col">
+        
+        <div class="social-links">
+  <a target="_blank" href="https://github.com/mscwilson">
+    <i class="fab fa-github fa-2x"></i>
+  </a>
+  <a href="mailto:miranda@mirandawilson.tech">
+    <i class="fa fa-envelope fa-2x"></i>
+  </a>
+  <a target="_blank" href="https://www.linkedin.com/in/miranda-wilson-b2196336/">
+    <i class="fab fa-linkedin fa-2x"></i>
+  </a>
+</div>
+
+        
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <p class="footer-text">&copy; 2021 Miranda Wilson
+      </div>
+    </div>
+  </div>
+  
+  <!-- JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+  
+  <script src="https://kit.fontawesome.com/6b6bfd734a.js" crossorigin="anonymous"></script>
+</footer>
+
+    
+  </body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" href="/assets/images/favicon-star.png" />
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css//bootstrap/bootstrap-mir-dark.css" media="(prefers-color-scheme: dark)">
+  <link rel="stylesheet" href="/assets/css//bootstrap/bootstrap-mir-light.css" media="(prefers-color-scheme: light)">
+  
+  <title>Autocompletion Entertainment</title>
+  <meta name="description" content="" />
+</head>
+
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark body-bg">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <h3 class="d-inline align-middle pl-2 text-primary">Miranda Making Things</h3>
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
+                
+        <li  class="nav-item active ml-auto" >
+          <a class="nav-link" href="/blog/">Blog</a>
+        </li>
+        
+        <li  class="nav-item ml-auto" >
+          <a class="nav-link" href="/portfolio/">Portfolio</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<nav class="navbar navbar-expand navbar-dark body-bg navbar-blog">
+  <div class="container-fluid">
+    
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
+
+        <li class="nav-item ml-auto d-none d-lg-block">
+          <a class="nav-link" href="/feed.xml"><i class="fas fa-rss"></i></a>
+        </li>
+
+        <li  class="nav-item ml-auto" >
+          <a class="nav-link" href="/blog/">Posts</a>
+        </li>
+        
+        <li  class="nav-item ml-auto" >
+          <a class="nav-link" href="/blog/tags/">Tags</a>
+        </li>
+
+        <li  class="nav-item ml-auto"
+          >
+          <a class="nav-link" href="/blog/archive/">Archive</a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <section id="banner" class="py-5 d-none d-sm-block">
+</section>
+
+
+    <div id="post" class="container pt-3">
+  <div class="row">
+    <div class="col">
+      <h3>Autocompletion Entertainment</h3>
+      <p class="post-meta">
+        <i class="far fa-calendar-alt"></i> May 5, 2021 ·
+        <!-- reading_time from Minimal Mistakes theme -->
+
+
+
+<span class="page__meta-readtime">
+  <i class="far fa-clock" aria-hidden="true"></i> 
+   less than 1 minute read 
+<span>
+
+      </p>
+      <p class="post-tags-list">
+        <i class="fas fa-tags"></i> VSCode
+      </p>
+      <hr>
+      <article>
+        <p>VSCode is very keen on autocompleting names - overly keen. It’s a roulette game every tab press! For some reason it usually prefers to pull something random out of the ether (mystery library code?), instead of filling in the variable name that I just wrote two lines ago. But I can almost forgive it, just for this:</p>
+
+<p><img src="/blog/images/2021/2021-05/VSCode_secret_internals.png" alt="screenshot of code that says &quot;secret internals do not use or you will be fired&quot;" /></p>
+
+<p>This cheered me and my pair partner up no end when we were stuck on our API call in our React Native project. I’m not sure why VSCode got <code class="language-plaintext highlighter-rouge">__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED</code> from <code class="language-plaintext highlighter-rouge">doesThisWork</code>, but I’m glad it did. Our code <code class="language-plaintext highlighter-rouge">doesThisWork</code> did work, eventually. The code still ended up kind of hacky but we were only a couple of days into using React Native, so that’s to be expected. I did a similar call in a better way <a href="/blog/2021/03/25/fulfilled-promise/">later on</a>.</p>
+
+<p>It seems <code class="language-plaintext highlighter-rouge">__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED</code> is <a href="https://github.com/facebook/react/blob/master/packages/react/src/React.js#L106">part of React</a>. I wonder if they intended for people to notice this - I’m sure they wouldn’t have expected VSCode to highlight it!</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="k">export</span> <span class="p">{</span>
+  <span class="p">...</span>
+  <span class="nx">ReactSharedInternals</span> <span class="k">as</span> <span class="nx">__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED</span><span class="p">,</span>
+  <span class="c1">// Deprecated behind disableCreateFactory</span>
+  <span class="p">...</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+      </article>
+    </div>
+  </div>
+
+  <!-- from Minimal Mistakes -->
+
+<nav class="post-pagination text-center section-pagination mx-auto">
+  <div class="btn-group">
+  
+  <a href="/blog/2021/04/28/css-progression/" class="btn btn-outline-primary" role="button"
+    title="The Importance of Being CSS’d
+">Previous</a>
+  
+  
+  <a href="/blog/2021/05/12/job-hunting-weird/" class="btn btn-outline-primary"  role="button"
+    title="Job Hunting is Weird
+">Next</a>
+  
+  </div>
+</nav>
+
+
+</div>
+
+
+
+    <footer class="footer fixed-bottom mt-auto py-3">
+  <div class="container text-center text-secondary">
+    <div class="row">
+      <div class="col">
+        
+        <div class="social-links">
+  <a target="_blank" href="https://github.com/mscwilson">
+    <i class="fab fa-github fa-2x"></i>
+  </a>
+  <a href="mailto:miranda@mirandawilson.tech">
+    <i class="fa fa-envelope fa-2x"></i>
+  </a>
+  <a target="_blank" href="https://www.linkedin.com/in/miranda-wilson-b2196336/">
+    <i class="fab fa-linkedin fa-2x"></i>
+  </a>
+</div>
+
+        
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <p class="footer-text">&copy; 2021 Miranda Wilson
+      </div>
+    </div>
+  </div>
+  
+  <!-- JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+  
+  <script src="https://kit.fontawesome.com/6b6bfd734a.js" crossorigin="anonymous"></script>
+</footer>
+
+    
+  </body>
+</html>

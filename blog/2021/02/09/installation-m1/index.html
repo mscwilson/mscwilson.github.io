@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" href="/assets/images/favicon-star.png" />
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css//bootstrap/bootstrap-mir-dark.css" media="(prefers-color-scheme: dark)">
+  <link rel="stylesheet" href="/assets/css//bootstrap/bootstrap-mir-light.css" media="(prefers-color-scheme: light)">
+  
+  <title>New computer!</title>
+  <meta name="description" content="" />
+</head>
+
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark body-bg">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <h3 class="d-inline align-middle pl-2 text-primary">Miranda Making Things</h3>
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
+                
+        <li  class="nav-item active ml-auto" >
+          <a class="nav-link" href="/blog/">Blog</a>
+        </li>
+        
+        <li  class="nav-item ml-auto" >
+          <a class="nav-link" href="/portfolio/">Portfolio</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<nav class="navbar navbar-expand navbar-dark body-bg navbar-blog">
+  <div class="container-fluid">
+    
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
+
+        <li class="nav-item ml-auto d-none d-lg-block">
+          <a class="nav-link" href="/feed.xml"><i class="fas fa-rss"></i></a>
+        </li>
+
+        <li  class="nav-item ml-auto" >
+          <a class="nav-link" href="/blog/">Posts</a>
+        </li>
+        
+        <li  class="nav-item ml-auto" >
+          <a class="nav-link" href="/blog/tags/">Tags</a>
+        </li>
+
+        <li  class="nav-item ml-auto"
+          >
+          <a class="nav-link" href="/blog/archive/">Archive</a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <section id="banner" class="py-5 d-none d-sm-block">
+</section>
+
+
+    <div id="post" class="container pt-3">
+  <div class="row">
+    <div class="col">
+      <h3>New computer!</h3>
+      <p class="post-meta">
+        <i class="far fa-calendar-alt"></i> Feb 9, 2021 ·
+        <!-- reading_time from Minimal Mistakes theme -->
+
+
+
+<span class="page__meta-readtime">
+  <i class="far fa-clock" aria-hidden="true"></i> 
+   2 minute read 
+<span>
+
+      </p>
+      <p class="post-tags-list">
+        <i class="fas fa-tags"></i> miscellaneous
+      </p>
+      <hr>
+      <article>
+        <p>It’s taken me two weeks but I have finally got all the software installed and my projects working on my new computer. It’s a Mac Mini with the new M1 chip. I hadn’t considered quite how new the M1 chip is. An accidental early adopter - I was starting to think I should give up and get a refund.</p>
+
+<p>Shoutout to <a href="https://github.com/kivikakk">this helpful person</a> on Github whose comment <a href="https://github.com/gjtorikian/commonmarker/issues/128">here</a> helped me get Jekyll working again. It turned out that I had - again! - set up my Jekyll wrong. At least I didn’t have to set it up from scratch again this time. I was supposed to have set gems to install into the vendor folder (<code class="language-plaintext highlighter-rouge">config set --local path "vendor/bundle"</code>) and I hadn’t. As to how I fixed my Sinatra repos using <code class="language-plaintext highlighter-rouge">bcrypt</code> and <code class="language-plaintext highlighter-rouge">eventmachine</code>, I have no idea. Just kept running <code class="language-plaintext highlighter-rouge">bundle</code> or <code class="language-plaintext highlighter-rouge">gem install</code> in various ways until it worked maybe?! I thought I had cracked it when I realised that the terminal running inside Sublime Text (Terminus plugin) wasn’t the same as the ones in iTerm. But in retrospect I don’t know if that was the difference or not. Oh well it works!</p>
+
+<p>Edit: (the next morning) I realised what was going on with Terminal. The Mac M1 chip isn’t supported by much software yet. When I saw error messages like this</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>LoadError (dlopen(/Users/mirandawilson/.rvm/gems/ruby-2.7.2/gems/bcrypt-3.1.16/lib/bcrypt_ext.bundle, 9): no suitable image found.  Did find:)
+/Users/mirandawilson/.rvm/gems/ruby-2.7.2/gems/bcrypt-3.1.16/lib/bcrypt_ext.bundle: mach-o, but wrong architecture”
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>I thought maybe it mentioned architecture was because the gem wasn’t installed natively (arm64) but with the old Intel x86_64 type of instructions, enabled by Apple’s Rosetta bridging software. Somehow this led to me running <code class="language-plaintext highlighter-rouge">arch</code> in the terminal. I was using the Terminus plugin inside Sublime as usual, since I was messing around with Gemfiles etc. <code class="language-plaintext highlighter-rouge">arch</code> said “i386”. What’s that? It’s an Intel chip thing. Asking <code class="language-plaintext highlighter-rouge">arch</code> or the related <code class="language-plaintext highlighter-rouge">machine</code>, <code class="language-plaintext highlighter-rouge">uname -p</code> and <code class="language-plaintext highlighter-rouge">uname -m</code> in the iTerm terminal gave only answers about ARM.</p>
+
+<p>At the time I thought maybe this is why my gems weren’t working, because I had been installing through the “i386” terminal/architecture. Note that I have no actual idea what architecture means. I moved over to the proper iTerm terminal where I did get everything installed. Although it gave the “but wrong architecture” error a few more times there as well, so who knows. Anyway, I suddenly remembered that Sublime Text isn’t natively supported yet. It’s using Rosetta. Meaning it is using x86_64! Hence the terminal running in there is understandably also in x86_64. As long as I remember to only install things using the real terminal I think it’ll be alright.</p>
+
+<p>Now I can finally move on to more interesting setup things like making Sublime look nice.</p>
+
+<hr />
+<p>Spotify recommended this track for me yesterday. Kind of bluesy alternative rock, reminds me of Nick Cave (or what I think Nick Cave sounds like, probably not accurate). It’s nice:
+<!-- instructions from https://learn.cloudcannon.com/jekyll/youtube/ --></p>
+<div class="video_wrapper">
+  <iframe src="https://www.youtube.com/embed/R6QE0EhBbw4?rel=0&amp;modestbranding=1&amp;showinfo=0" frameborder="0" allowfullscreen=""></iframe>
+</div>
+
+
+      </article>
+    </div>
+  </div>
+
+  <!-- from Minimal Mistakes -->
+
+<nav class="post-pagination text-center section-pagination mx-auto">
+  <div class="btn-group">
+  
+  <a href="/blog/2021/02/06/dynamic-variable-names/" class="btn btn-outline-primary" role="button"
+    title="Dynamic key names in Ruby
+">Previous</a>
+  
+  
+  <a href="/blog/2021/02/11/javascript-intro/" class="btn btn-outline-primary"  role="button"
+    title="My first JavaScript
+">Next</a>
+  
+  </div>
+</nav>
+
+
+</div>
+
+
+
+    <footer class="footer fixed-bottom mt-auto py-3">
+  <div class="container text-center text-secondary">
+    <div class="row">
+      <div class="col">
+        
+        <div class="social-links">
+  <a target="_blank" href="https://github.com/mscwilson">
+    <i class="fab fa-github fa-2x"></i>
+  </a>
+  <a href="mailto:miranda@mirandawilson.tech">
+    <i class="fa fa-envelope fa-2x"></i>
+  </a>
+  <a target="_blank" href="https://www.linkedin.com/in/miranda-wilson-b2196336/">
+    <i class="fab fa-linkedin fa-2x"></i>
+  </a>
+</div>
+
+        
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <p class="footer-text">&copy; 2021 Miranda Wilson
+      </div>
+    </div>
+  </div>
+  
+  <!-- JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+  
+  <script src="https://kit.fontawesome.com/6b6bfd734a.js" crossorigin="anonymous"></script>
+</footer>
+
+    
+  </body>
+</html>

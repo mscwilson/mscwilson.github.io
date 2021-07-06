@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" href="/assets/images/favicon-star.png" />
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css//bootstrap/bootstrap-mir-dark.css" media="(prefers-color-scheme: dark)">
+  <link rel="stylesheet" href="/assets/css//bootstrap/bootstrap-mir-light.css" media="(prefers-color-scheme: light)">
+  
+  <title>Full stack fun</title>
+  <meta name="description" content="" />
+</head>
+
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark body-bg">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <h3 class="d-inline align-middle pl-2 text-primary">Miranda Making Things</h3>
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
+                
+        <li  class="nav-item active ml-auto" >
+          <a class="nav-link" href="/blog/">Blog</a>
+        </li>
+        
+        <li  class="nav-item ml-auto" >
+          <a class="nav-link" href="/portfolio/">Portfolio</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<nav class="navbar navbar-expand navbar-dark body-bg navbar-blog">
+  <div class="container-fluid">
+    
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
+
+        <li class="nav-item ml-auto d-none d-lg-block">
+          <a class="nav-link" href="/feed.xml"><i class="fas fa-rss"></i></a>
+        </li>
+
+        <li  class="nav-item ml-auto" >
+          <a class="nav-link" href="/blog/">Posts</a>
+        </li>
+        
+        <li  class="nav-item ml-auto" >
+          <a class="nav-link" href="/blog/tags/">Tags</a>
+        </li>
+
+        <li  class="nav-item ml-auto"
+          >
+          <a class="nav-link" href="/blog/archive/">Archive</a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <section id="banner" class="py-5 d-none d-sm-block">
+</section>
+
+
+    <div id="post" class="container pt-3">
+  <div class="row">
+    <div class="col">
+      <h3>Full stack fun</h3>
+      <p class="post-meta">
+        <i class="far fa-calendar-alt"></i> Jan 31, 2021 ·
+        <!-- reading_time from Minimal Mistakes theme -->
+
+
+
+<span class="page__meta-readtime">
+  <i class="far fa-clock" aria-hidden="true"></i> 
+   2 minute read 
+<span>
+
+      </p>
+      <p class="post-tags-list">
+        <i class="fas fa-tags"></i> Ruby, Sinatra, PostgreSQL
+      </p>
+      <hr>
+      <article>
+        <p>This week we learned about databases. Specifically, how to make a Sinatra app where the data is in a PostgreSQL database. I was very excited going into this: I’ve wanted to learn about databases for years. I wanted to make my own database for my experiments when I was in the lab, or to make a nice GUI app for keeping track of frozen cell stocks. But it always seemed too hard when I looked at it. After this week, I can confirm to my past self that it is indeed really hard! The afternoon project was to make a Bookmarks Manager, where eventually users could register, log in and save URLs to display, and log out. This weekend the challenge was to make a very basic Twitter clone: a site which displays posts with the authors’ usernames, with registration/authentication for users. The site should be called Chitter and users make peeps instead of tweets. The name Chitter is very off-putting to me. I think because it came up recently in my <a href="https://www.chaosium.com/call-of-cthulhu-rpg/">Call of Cthulhu</a> game; there was a “chittering sound” coming from a pit in a cultist lair, no doubt from an eldrich horror. I did a bit of research (Google/Youtube) to find out what creatures chitter in real life. Mainly raccoons, apparently. Possibly an owl. Also, not really helping the case for the word, the <a href="https://en.wikipedia.org/wiki/Predator_(franchise)">Predator</a>.</p>
+
+<p>At the start of building the app and thinking how I should do it, I had Heroku in mind for deployment. As in, I should try to deploy it. I’m still intrigued as to how that will work with the databases. So I set off to follow instructions for setting up a Heroku-ready Sinatra / postgres app. Turned out to be non-trivial, involving a certain amount of trial and error. Especially for setting up the tables using <code class="language-plaintext highlighter-rouge">rake db:migrate</code> (have to run <code class="language-plaintext highlighter-rouge">rake db:migrate RACK_ENV="test</code> separately…). I didn’t read the several walkthroughs I was simultaneously following very closely beyond the initial database setup. So I was very surprised to find that I had set up an Object Relational Mapper (ORM), and now didn’t need to write any code for the model!</p>
+
+<p>A disconcerting class definition:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre> <span class="k">class</span> <span class="nc">Post</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+ <span class="k">end</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>It gets loads of methods, which we wrote out manually for the Bookmark Manager project, inherited from the ORM ActiveRecord.</p>
+
+<p>I abandoned my “no coding after 8pm rule” to get to a satisfying point on this app. This was how it looked when I’d just got to the point of needing the posts and users tables to be linked, so that a post (peep) would have the proper username rather than a name entered into a form during creation:
+<img src="/blog/images/2021/2021-01/chitter_half_way_through.png" alt="changing over how posts are made" /></p>
+
+<p>And afterwards:
+<img src="/blog/images/2021/2021-01/chitter_named_posts.png" alt="changing over how posts are made" /></p>
+
+<p>Not bad for a day’s work. I’m very pleased with it! Logging out is next to implement. Then various authentication checks. Incredible how I’ve done this after only starting databases this week, and web development two weeks ago. Makers &lt;3</p>
+
+      </article>
+    </div>
+  </div>
+
+  <!-- from Minimal Mistakes -->
+
+<nav class="post-pagination text-center section-pagination mx-auto">
+  <div class="btn-group">
+  
+  <a href="/blog/2021/01/27/online-webapp/" class="btn btn-outline-primary" role="button"
+    title="My website on the real internet (Heroku setup)
+">Previous</a>
+  
+  
+  <a href="/blog/2021/02/01/walkthrough-chitter-orm/" class="btn btn-outline-primary"  role="button"
+    title="How to set up a Sinatra PostgreSQL app with ActiveRecord and RSpec
+">Next</a>
+  
+  </div>
+</nav>
+
+
+</div>
+
+
+
+    <footer class="footer fixed-bottom mt-auto py-3">
+  <div class="container text-center text-secondary">
+    <div class="row">
+      <div class="col">
+        
+        <div class="social-links">
+  <a target="_blank" href="https://github.com/mscwilson">
+    <i class="fab fa-github fa-2x"></i>
+  </a>
+  <a href="mailto:miranda@mirandawilson.tech">
+    <i class="fa fa-envelope fa-2x"></i>
+  </a>
+  <a target="_blank" href="https://www.linkedin.com/in/miranda-wilson-b2196336/">
+    <i class="fab fa-linkedin fa-2x"></i>
+  </a>
+</div>
+
+        
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <p class="footer-text">&copy; 2021 Miranda Wilson
+      </div>
+    </div>
+  </div>
+  
+  <!-- JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+  
+  <script src="https://kit.fontawesome.com/6b6bfd734a.js" crossorigin="anonymous"></script>
+</footer>
+
+    
+  </body>
+</html>

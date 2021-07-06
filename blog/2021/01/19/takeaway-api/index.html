@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" href="/assets/images/favicon-star.png" />
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css//bootstrap/bootstrap-mir-dark.css" media="(prefers-color-scheme: dark)">
+  <link rel="stylesheet" href="/assets/css//bootstrap/bootstrap-mir-light.css" media="(prefers-color-scheme: light)">
+  
+  <title>My first API</title>
+  <meta name="description" content="" />
+</head>
+
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark body-bg">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <h3 class="d-inline align-middle pl-2 text-primary">Miranda Making Things</h3>
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
+                
+        <li  class="nav-item active ml-auto" >
+          <a class="nav-link" href="/blog/">Blog</a>
+        </li>
+        
+        <li  class="nav-item ml-auto" >
+          <a class="nav-link" href="/portfolio/">Portfolio</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<nav class="navbar navbar-expand navbar-dark body-bg navbar-blog">
+  <div class="container-fluid">
+    
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
+
+        <li class="nav-item ml-auto d-none d-lg-block">
+          <a class="nav-link" href="/feed.xml"><i class="fas fa-rss"></i></a>
+        </li>
+
+        <li  class="nav-item ml-auto" >
+          <a class="nav-link" href="/blog/">Posts</a>
+        </li>
+        
+        <li  class="nav-item ml-auto" >
+          <a class="nav-link" href="/blog/tags/">Tags</a>
+        </li>
+
+        <li  class="nav-item ml-auto"
+          >
+          <a class="nav-link" href="/blog/archive/">Archive</a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <section id="banner" class="py-5 d-none d-sm-block">
+</section>
+
+
+    <div id="post" class="container pt-3">
+  <div class="row">
+    <div class="col">
+      <h3>My first API</h3>
+      <p class="post-meta">
+        <i class="far fa-calendar-alt"></i> Jan 19, 2021 ·
+        <!-- reading_time from Minimal Mistakes theme -->
+
+
+
+<span class="page__meta-readtime">
+  <i class="far fa-clock" aria-hidden="true"></i> 
+   1 minute read 
+<span>
+
+      </p>
+      <p class="post-tags-list">
+        <i class="fas fa-tags"></i> Ruby
+      </p>
+      <hr>
+      <article>
+        <p>Used my first API this weekend! The weekend challenge was to make a takeaway ordering system which sent a text to confirm the order had been placed. I decided to use the domain modelling/basic class diagrams exercise that we learned last week to plan out how to satisfy the user stories. I <a href="https://github.com/mscwilson/takeaway-challenge">ended up with</a> quite a few small classes as that seemed the most satisfying way to put it together. eg Dish objects have a name and a price, then a Menu object contains or reads in Dishes.</p>
+
+<p>I was pleased how easy it was to use the Twilio API to send myself texts. It meant that I also had to learn about environment variables so I didn’t accidentally post my phone number on Github. I used a gem called dotenv for this rather than putting them in my .zshrc file. The variables are saved in a .env file in the project directory, then the dotenv gem loads them in when the program is run. Worked well.</p>
+
+<p>The novelty of getting automated texts from myself wore off somewhat when I didn’t isolate my tests properly to start with, and each run of rspec sent me another batch of “your order is on its way!”s.</p>
+
+<p>I’m happy with the finished code. I even managed to isolate my tests eventually (by deleting one of them I couldn’t work out hehe). Would have been good to have spent less time on the challenge and more time studying RSpec this weekend though. Oh well!</p>
+
+<hr />
+<p>Now that I’ve learned how to embed Youtube videos, I can embed one here as well. I listened to this album while writing the takeaway challenge. Pretty psybient (psychedelic ambient) music.</p>
+
+<!-- instructions from https://learn.cloudcannon.com/jekyll/youtube/ -->
+<div class="video_wrapper">
+  <iframe src="https://www.youtube.com/embed/MhgVxKMoGBA?rel=0&amp;modestbranding=1&amp;showinfo=0" frameborder="0" allowfullscreen=""></iframe>
+</div>
+
+
+      </article>
+    </div>
+  </div>
+
+  <!-- from Minimal Mistakes -->
+
+<nav class="post-pagination text-center section-pagination mx-auto">
+  <div class="btn-group">
+  
+  <a href="/blog/2021/01/14/this-test/" class="btn btn-outline-primary" role="button"
+    title="Yo! This is a test!
+">Previous</a>
+  
+  
+  <a href="/blog/2021/01/20/no-internet/" class="btn btn-outline-primary"  role="button"
+    title="No internet!
+">Next</a>
+  
+  </div>
+</nav>
+
+
+</div>
+
+
+
+    <footer class="footer fixed-bottom mt-auto py-3">
+  <div class="container text-center text-secondary">
+    <div class="row">
+      <div class="col">
+        
+        <div class="social-links">
+  <a target="_blank" href="https://github.com/mscwilson">
+    <i class="fab fa-github fa-2x"></i>
+  </a>
+  <a href="mailto:miranda@mirandawilson.tech">
+    <i class="fa fa-envelope fa-2x"></i>
+  </a>
+  <a target="_blank" href="https://www.linkedin.com/in/miranda-wilson-b2196336/">
+    <i class="fab fa-linkedin fa-2x"></i>
+  </a>
+</div>
+
+        
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <p class="footer-text">&copy; 2021 Miranda Wilson
+      </div>
+    </div>
+  </div>
+  
+  <!-- JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+  
+  <script src="https://kit.fontawesome.com/6b6bfd734a.js" crossorigin="anonymous"></script>
+</footer>
+
+    
+  </body>
+</html>

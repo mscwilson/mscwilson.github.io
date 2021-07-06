@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" href="/assets/images/favicon-star.png" />
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css//bootstrap/bootstrap-mir-dark.css" media="(prefers-color-scheme: dark)">
+  <link rel="stylesheet" href="/assets/css//bootstrap/bootstrap-mir-light.css" media="(prefers-color-scheme: light)">
+  
+  <title>Changing URLs without breaking everything</title>
+  <meta name="description" content="" />
+</head>
+
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark body-bg">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <h3 class="d-inline align-middle pl-2 text-primary">Miranda Making Things</h3>
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
+                
+        <li  class="nav-item active ml-auto" >
+          <a class="nav-link" href="/blog/">Blog</a>
+        </li>
+        
+        <li  class="nav-item ml-auto" >
+          <a class="nav-link" href="/portfolio/">Portfolio</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<nav class="navbar navbar-expand navbar-dark body-bg navbar-blog">
+  <div class="container-fluid">
+    
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
+
+        <li class="nav-item ml-auto d-none d-lg-block">
+          <a class="nav-link" href="/feed.xml"><i class="fas fa-rss"></i></a>
+        </li>
+
+        <li  class="nav-item ml-auto" >
+          <a class="nav-link" href="/blog/">Posts</a>
+        </li>
+        
+        <li  class="nav-item ml-auto" >
+          <a class="nav-link" href="/blog/tags/">Tags</a>
+        </li>
+
+        <li  class="nav-item ml-auto"
+          >
+          <a class="nav-link" href="/blog/archive/">Archive</a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <section id="banner" class="py-5 d-none d-sm-block">
+</section>
+
+
+    <div id="post" class="container pt-3">
+  <div class="row">
+    <div class="col">
+      <h3>Changing URLs without breaking everything</h3>
+      <p class="post-meta">
+        <i class="far fa-calendar-alt"></i> Feb 18, 2021 ·
+        <!-- reading_time from Minimal Mistakes theme -->
+
+
+
+<span class="page__meta-readtime">
+  <i class="far fa-clock" aria-hidden="true"></i> 
+   3 minute read 
+<span>
+
+      </p>
+      <p class="post-tags-list">
+        <i class="fas fa-tags"></i> Jekyll
+      </p>
+      <hr>
+      <article>
+        <p>When I started this blog 6 weeks ago, I knew basically nothing about websites or how the internet works. Now I know marginally more, but enough to start thinking about my goals for this site. This blog was found directly at <code class="language-plaintext highlighter-rouge">http://www.mirandawilson.tech</code>. I realised that I’ll want a portfolio website soonish, of which this blog should be one part. Therefore it should actually be at <code class="language-plaintext highlighter-rouge">http://www.mirandawilson.tech/blog</code>. Which would break all my links. Not just the links to the posts I’ve shared with people, but potentially the internal images as well, because I hardcoded them like a noob.</p>
+
+<p>Once I started looking at it, I realised that the URLs for each post were also a bit rubbish. The default Jekyll post URL is <code class="language-plaintext highlighter-rouge">/:category/:title</code> but I haven’t actually assigned any categories, so the URLs just had the title like <code class="language-plaintext highlighter-rouge">http://www.mirandawilson.tech/javascript-intro/</code>. I thought the Jekyll “<a href="https://jekyllrb.com/docs/permalinks/">pretty</a>” permalink style of <code class="language-plaintext highlighter-rouge">/:categories/:year/:month/:day/:title/</code> would look better, eg <code class="language-plaintext highlighter-rouge">http://www.mirandawilson.tech/2021/02/11/javascript-intro/</code>.</p>
+
+<p>There were several things to fix:</p>
+<ol>
+  <li>The blog should be at /blog</li>
+  <li>Pages should have better permalinks</li>
+  <li>Redirect existing page links from <code class="language-plaintext highlighter-rouge">http://www.mirandawilson.tech</code></li>
+  <li>Restore broken links to images?</li>
+  <li>Need a link to the homepage</li>
+  <li>Need a homepage! With a link to the blog</li>
+  <li>Sort out the RSS feed</li>
+</ol>
+
+<p>After extensive research, false starts, and wasted effort, I managed to complete (a first go at) most of these.</p>
+
+<h3 id="problem-1">Problem 1</h3>
+<p>Since I wanted to separate out the blog posts from a homepage, the “easiest” solution was to have two separate projects that just linked to each other. This is actually not too hard using GitHub Pages.</p>
+
+<p>Previously, everything was in my <code class="language-plaintext highlighter-rouge">mscwilson.github.io</code> repository for hosting on GitHub Pages. That’s a GitHub User project. But they also do Project er, projects. As long as a repo has a <code class="language-plaintext highlighter-rouge">gh-pages</code> branch (and contains files for a static site etc), they will try to deploy it, at the root URL/the name of the repo. GitHub users are allowed to have one User site but many Project sites.</p>
+
+<p>So, I duplicated my repo, into a new one called <code class="language-plaintext highlighter-rouge">blog</code>. It worked! At that point I had identical sites at <code class="language-plaintext highlighter-rouge">http://www.mirandawilson.tech</code> and ``http://www.mirandawilson.tech/blog`.</p>
+
+<h3 id="problem-2">Problem 2</h3>
+<p>In the <code class="language-plaintext highlighter-rouge">blog</code> repo, changed the permalink style in <code class="language-plaintext highlighter-rouge">_config.yml</code> to “pretty”.</p>
+
+<h3 id="problem-3">Problem 3</h3>
+<p>Although eventually they won’t be accessible, I’m keeping the existing posts  - or at least their structure - in the old repo <code class="language-plaintext highlighter-rouge">mscwilson.github.io</code>. Then if someone actually tries to revisit an old post, they won’t get a 404. They’ll end up on the correct version of the post instead.</p>
+
+<p>Using the gem <a href="https://github.com/jekyll/jekyll-redirect-from">Jekyll-Redirect-From</a>, I added redirects on each post to the new location at eg <code class="language-plaintext highlighter-rouge">http://www.mirandawilson.tech/blog/2021/02/11/javascript-intro/</code>. This was done by (manually…) editing each post’s “Front Matter”. Then I deleted the body of each post.</p>
+
+<p>Now the posts in the old repo look like eg:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre><span class="nn">---</span>
+<span class="na">layout</span><span class="pi">:</span> <span class="s">post</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s">My first JavaScript</span>
+<span class="na">redirect_to</span><span class="pi">:</span> <span class="s">http://www.mirandawilson.tech/blog/2021/02/11/javascript-intro/</span>
+<span class="na">date</span><span class="pi">:</span>  <span class="s">2021-02-11 21:57:00</span>
+<span class="na">tags</span><span class="pi">:</span> <span class="s">JavaScript Sublime</span>
+<span class="nn">---</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="problem-4">Problem 4</h3>
+<p>The image links in <code class="language-plaintext highlighter-rouge">blog</code> repo are fine. The entire site URL is different now, the relative paths didn’t change at all.</p>
+
+<h3 id="problem-5">Problem 5</h3>
+<p>Thanks to the Jekyll theme <a href="https://mmistakes.github.io/minimal-mistakes/">Minimal Mistakes</a>, the links at the top right of the page (Posts, Tags, About etc) are generated automatically, based on the <code class="language-plaintext highlighter-rouge">navigation.yml</code> file. In the <code class="language-plaintext highlighter-rouge">blog</code> repo, I added a hardcoded Home link:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre><span class="na">main</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Posts"</span>
+    <span class="na">url</span><span class="pi">:</span> <span class="s">/posts/</span>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Tags"</span>
+    <span class="na">url</span><span class="pi">:</span> <span class="s">/tags/</span>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">About"</span>
+    <span class="na">url</span><span class="pi">:</span> <span class="s">/about/</span>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Home"</span>
+    <span class="na">url</span><span class="pi">:</span> <span class="s">http://www.mirandawilson.tech/</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="problem-6">Problem 6</h3>
+<p>Similarly, I edited <code class="language-plaintext highlighter-rouge">navigation.yml</code> in the <code class="language-plaintext highlighter-rouge">mscwilson.github.io</code> repo to just show Blog and About.</p>
+
+<p>Right now, the homepage still shows all the post titles, and needs a lot of work. Ideally I’d write myself a brand new main site. Maybe once I have more spare time! The blog should still match though, so it would be a lot of work.</p>
+
+<h3 id="problem-7">Problem 7</h3>
+<p>Not urgent. I’m sure only my husband is subscribed anyway!</p>
+
+<p>I was going to cook a stew this evening, but also I’ve been thinking about how to do this migration for a week or more, so I’m very glad it’s done!</p>
+
+      </article>
+    </div>
+  </div>
+
+  <!-- from Minimal Mistakes -->
+
+<nav class="post-pagination text-center section-pagination mx-auto">
+  <div class="btn-group">
+  
+  <a href="/blog/2021/02/14/sublime-additions/" class="btn btn-outline-primary" role="button"
+    title="Learning how to use Sublime
+">Previous</a>
+  
+  
+  <a href="/blog/2021/02/22/first-rails/" class="btn btn-outline-primary"  role="button"
+    title="My first Rails project
+">Next</a>
+  
+  </div>
+</nav>
+
+
+</div>
+
+
+
+    <footer class="footer fixed-bottom mt-auto py-3">
+  <div class="container text-center text-secondary">
+    <div class="row">
+      <div class="col">
+        
+        <div class="social-links">
+  <a target="_blank" href="https://github.com/mscwilson">
+    <i class="fab fa-github fa-2x"></i>
+  </a>
+  <a href="mailto:miranda@mirandawilson.tech">
+    <i class="fa fa-envelope fa-2x"></i>
+  </a>
+  <a target="_blank" href="https://www.linkedin.com/in/miranda-wilson-b2196336/">
+    <i class="fab fa-linkedin fa-2x"></i>
+  </a>
+</div>
+
+        
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <p class="footer-text">&copy; 2021 Miranda Wilson
+      </div>
+    </div>
+  </div>
+  
+  <!-- JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+  
+  <script src="https://kit.fontawesome.com/6b6bfd734a.js" crossorigin="anonymous"></script>
+</footer>
+
+    
+  </body>
+</html>

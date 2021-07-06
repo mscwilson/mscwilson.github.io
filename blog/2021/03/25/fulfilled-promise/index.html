@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" href="/assets/images/favicon-star.png" />
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css//bootstrap/bootstrap-mir-dark.css" media="(prefers-color-scheme: dark)">
+  <link rel="stylesheet" href="/assets/css//bootstrap/bootstrap-mir-light.css" media="(prefers-color-scheme: light)">
+  
+  <title>Fulfilled promise</title>
+  <meta name="description" content="" />
+</head>
+
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark body-bg">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <h3 class="d-inline align-middle pl-2 text-primary">Miranda Making Things</h3>
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
+                
+        <li  class="nav-item active ml-auto" >
+          <a class="nav-link" href="/blog/">Blog</a>
+        </li>
+        
+        <li  class="nav-item ml-auto" >
+          <a class="nav-link" href="/portfolio/">Portfolio</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<nav class="navbar navbar-expand navbar-dark body-bg navbar-blog">
+  <div class="container-fluid">
+    
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
+
+        <li class="nav-item ml-auto d-none d-lg-block">
+          <a class="nav-link" href="/feed.xml"><i class="fas fa-rss"></i></a>
+        </li>
+
+        <li  class="nav-item ml-auto" >
+          <a class="nav-link" href="/blog/">Posts</a>
+        </li>
+        
+        <li  class="nav-item ml-auto" >
+          <a class="nav-link" href="/blog/tags/">Tags</a>
+        </li>
+
+        <li  class="nav-item ml-auto"
+          >
+          <a class="nav-link" href="/blog/archive/">Archive</a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <section id="banner" class="py-5 d-none d-sm-block">
+</section>
+
+
+    <div id="post" class="container pt-3">
+  <div class="row">
+    <div class="col">
+      <h3>Fulfilled promise</h3>
+      <p class="post-meta">
+        <i class="far fa-calendar-alt"></i> Mar 25, 2021 ·
+        <!-- reading_time from Minimal Mistakes theme -->
+
+
+
+<span class="page__meta-readtime">
+  <i class="far fa-clock" aria-hidden="true"></i> 
+   3 minute read 
+<span>
+
+      </p>
+      <p class="post-tags-list">
+        <i class="fas fa-tags"></i> JavaScript, Makers
+      </p>
+      <hr>
+      <article>
+        <p>Today is my penultimate day of Makers. I think I might be a developer now?! I was certainly very keen to try solving the puzzle of getting data in and out of local SecureStorage last night. In fact I did end up feeling very developer-y: my first ever memory leak!</p>
+
+<p>Our app is looking good. It does pretty much everything we wanted it to. We named it Spring Onion after one teammate’s gardening crop. I made this design for the splash screen:</p>
+
+<p><img src="/blog/images/2021/2021-03/spring_onion_splash.png" alt="splash screen spring onion" /></p>
+
+<p>Everything takes ages to do of course, and several things turned out not to be possible at all with our current set up (eg In-App Payments, automatic licence plate recognition). We were hoping to get the In-App Payments so that the user could directly buy offsets from the app, via one of the many companies offering APIs for this. But we’re using the Expo framework for React Native and it’s not supported (or at least not without a lot of faff). So as a stop-gap, we found a company that does individual offset transactions from its website, and open that page up inside our app. A coach came and checked with us that we knew it’s dodgy and very much not the done thing, because we used JavaScript injection to fill in the correct amount of emissions in the page’s form. It looks good for now though.</p>
+
+<p>The memory leak happened because of an unfulfilled promise. We wanted to store journey history locally on the app using SecureStorage. It’s a basic kind of storage with only three methods: save key value pair, get value of key, delete key value pair. And it’s asynchronous, since it takes a bit of time to do these actions. I have no idea how other languages handle asynchronicity, but in JavaScript an async request creates a promise, that is eventually fulfilled when the response comes back. The old-fashioned syntax involves chaining <code class="language-plaintext highlighter-rouge">then</code> eg <code class="language-plaintext highlighter-rouge">.then(response =&gt; response.json).then(data =&gt; console.log(data))</code> onto the promise-making (promising?) function. Very confusing. Luckily they added a new syntax a few years ago where you declare the function as <code class="language-plaintext highlighter-rouge">async</code> and then <code class="language-plaintext highlighter-rouge">await</code> the response.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="k">export</span> <span class="k">async</span> <span class="kd">function</span> <span class="nx">deleteKey</span><span class="p">(</span><span class="nx">key</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`here in delete key, deleting </span><span class="p">${</span><span class="nx">key</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+  <span class="k">await</span> <span class="nx">SecureStore</span><span class="p">.</span><span class="nx">deleteItemAsync</span><span class="p">(</span><span class="nx">key</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>I had written a function to get the stored journey history out and saved into a variable, for display on the History screen. But it was constantly updating, ie constantly making new promises. Bad enough and quite annoying because I was console logging quite a few lines with each call. This is the error I got when changing screen:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>Warning: Can’t perform a React state update on an unmounted component. This is 
+a no-op, but it indicates a memory leak in your application. To fix, cancel 
+all subscriptions and asynchronous tasks in a useEffect cleanup function.
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>A promise had been made, but I’d changed screen before it could be finished. So the unfulfilled promise was floating about in memory. I fixed it by following their instructions and using useEffect to wrap up the whole async thing - by doing it properly essentially!</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre></td><td class="rouge-code"><pre><span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">cancelled</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+
+    <span class="kd">const</span> <span class="nx">getHistory</span> <span class="o">=</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">journeyHistoryString</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">getValueFor</span><span class="p">();</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">cancelled</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">journeyHistoryString</span><span class="p">)</span> <span class="p">{</span>
+          <span class="kd">let</span> <span class="nx">journeyHistoryArray</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">journeyHistoryString</span><span class="p">);</span>
+          <span class="nx">setHistory</span><span class="p">(</span><span class="nx">journeyHistoryArray</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+          <span class="nx">setHistory</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">};</span>
+    <span class="nx">getHistory</span><span class="p">().</span><span class="k">catch</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">`There's an error: </span><span class="p">${</span><span class="nx">error</span><span class="p">}</span><span class="s2">`</span><span class="p">));</span>
+    <span class="k">return</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">cancelled</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="p">};</span>
+<span class="p">},</span> <span class="p">[]);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>React provides this useEffect “Hook” which automatically stops the promising thing on changing screen, by returning and setting <code class="language-plaintext highlighter-rouge">cancelled</code> to <code class="language-plaintext highlighter-rouge">true</code>. That’s the cleanup function that my error message had referred to. Then by giving useEffect an empty array as some kind of argument, it knows to only run once. Or something like that. Most importantly it works and the history page looks beautiful.</p>
+
+<p>Being a developer, writing code - still feels like another fun hobby. Even having spent 12 intensive weeks doing it. Doing this for a job is going to be a completely different thing.</p>
+
+<hr />
+<p>Me styling React Native apps: 🎵 Everythinggggggg… in its own Viewwww 🎵</p>
+
+<!-- instructions from https://learn.cloudcannon.com/jekyll/youtube/ -->
+<div class="video_wrapper">
+  <iframe src="https://www.youtube.com/embed/NUnXxh5U25Y?rel=0&amp;modestbranding=1&amp;showinfo=0" frameborder="0" allowfullscreen=""></iframe>
+</div>
+
+
+      </article>
+    </div>
+  </div>
+
+  <!-- from Minimal Mistakes -->
+
+<nav class="post-pagination text-center section-pagination mx-auto">
+  <div class="btn-group">
+  
+  <a href="/blog/2021/03/17/start-final-project/" class="btn btn-outline-primary" role="button"
+    title="Beginning of the end
+">Previous</a>
+  
+  
+  <a href="/blog/2021/03/31/finished-makers/" class="btn btn-outline-primary"  role="button"
+    title="Miranda the Job Hunter
+">Next</a>
+  
+  </div>
+</nav>
+
+
+</div>
+
+
+
+    <footer class="footer fixed-bottom mt-auto py-3">
+  <div class="container text-center text-secondary">
+    <div class="row">
+      <div class="col">
+        
+        <div class="social-links">
+  <a target="_blank" href="https://github.com/mscwilson">
+    <i class="fab fa-github fa-2x"></i>
+  </a>
+  <a href="mailto:miranda@mirandawilson.tech">
+    <i class="fa fa-envelope fa-2x"></i>
+  </a>
+  <a target="_blank" href="https://www.linkedin.com/in/miranda-wilson-b2196336/">
+    <i class="fab fa-linkedin fa-2x"></i>
+  </a>
+</div>
+
+        
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <p class="footer-text">&copy; 2021 Miranda Wilson
+      </div>
+    </div>
+  </div>
+  
+  <!-- JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+  
+  <script src="https://kit.fontawesome.com/6b6bfd734a.js" crossorigin="anonymous"></script>
+</footer>
+
+    
+  </body>
+</html>

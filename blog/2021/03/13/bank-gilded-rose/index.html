@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" href="/assets/images/favicon-star.png" />
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css//bootstrap/bootstrap-mir-dark.css" media="(prefers-color-scheme: dark)">
+  <link rel="stylesheet" href="/assets/css//bootstrap/bootstrap-mir-light.css" media="(prefers-color-scheme: light)">
+  
+  <title>Dependency injection, confusion injection / Double trouble</title>
+  <meta name="description" content="" />
+</head>
+
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark body-bg">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <h3 class="d-inline align-middle pl-2 text-primary">Miranda Making Things</h3>
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
+                
+        <li  class="nav-item active ml-auto" >
+          <a class="nav-link" href="/blog/">Blog</a>
+        </li>
+        
+        <li  class="nav-item ml-auto" >
+          <a class="nav-link" href="/portfolio/">Portfolio</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<nav class="navbar navbar-expand navbar-dark body-bg navbar-blog">
+  <div class="container-fluid">
+    
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
+
+        <li class="nav-item ml-auto d-none d-lg-block">
+          <a class="nav-link" href="/feed.xml"><i class="fas fa-rss"></i></a>
+        </li>
+
+        <li  class="nav-item ml-auto" >
+          <a class="nav-link" href="/blog/">Posts</a>
+        </li>
+        
+        <li  class="nav-item ml-auto" >
+          <a class="nav-link" href="/blog/tags/">Tags</a>
+        </li>
+
+        <li  class="nav-item ml-auto"
+          >
+          <a class="nav-link" href="/blog/archive/">Archive</a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <section id="banner" class="py-5 d-none d-sm-block">
+</section>
+
+
+    <div id="post" class="container pt-3">
+  <div class="row">
+    <div class="col">
+      <h3>Dependency injection, confusion injection / Double trouble</h3>
+      <p class="post-meta">
+        <i class="far fa-calendar-alt"></i> Mar 13, 2021 ·
+        <!-- reading_time from Minimal Mistakes theme -->
+
+
+
+<span class="page__meta-readtime">
+  <i class="far fa-clock" aria-hidden="true"></i> 
+   3 minute read 
+<span>
+
+      </p>
+      <p class="post-tags-list">
+        <i class="fas fa-tags"></i> Ruby, testing, Makers
+      </p>
+      <hr>
+      <article>
+        <p>I have now finished week 10 of <a href="https://makers.tech">Makers Academy</a>, meaning there are only two weeks left! Exciting, terrifying, tiring, surprising.</p>
+
+<p>This week we were given some practise tech tests, with the goal of producing our best possible code. I had a lovely week writing a <a href="https://github.com/mscwilson/bank_tech_test">command line Bank Account in Ruby</a>. This week’s coach gave me some very useful feedback on my first try, and I was able to up my game. Surely it is the best code I’ve written so far. Classes are fully isolated for the unit tests, 100% test coverage, as many methods private as possible, I’ve even got the “# frozen_string_literal: true” lines at the top of each file* to keep Rubocop happy. Isn’t Rubocop an amazing name for a linter?</p>
+
+<p>Part of the feedback suggested using dependency injection, since BankAccount depends on the Transaction and Statement classes. I tried researching dependency injection and got really confused. It seemed complicated. People were even using gems for it. I didn’t understand what anyone was saying. For example, <a href="https://www.codementor.io/@olotintemitope/dependency-injection-explained-in-plain-english-b24hippx7">this blog post</a> promised to explain dependency injection “in plain english”:</p>
+
+<p>“Dependency injection is the art of creating service/client relationships that work well together by injecting services that are easily swapped with minimal time and effort.”<br />
+🧐 (I can’t believe it took me this long to realise I can use emojis in Markdown already, with the built-in Mac emoji keyboard.)</p>
+
+<p>Luckily, the coach sent me a short Makers dependency injection workshop to look at. Apparently it’s just a concept that is impossible to explain at length in words, because in practise it’s just - you pass the dependent classes in as arguments?!</p>
+
+<p>This is the constructor and deposit method of my BankAccount class. The Transaction and Statement classes (the whole class, not instances) are passed in as default arguments:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">BankAccount</span>
+  <span class="nb">attr_reader</span> <span class="ss">:balance</span>
+
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">transaction</span> <span class="o">=</span> <span class="no">Transaction</span><span class="p">,</span> <span class="n">statement</span> <span class="o">=</span> <span class="no">Statement</span><span class="p">)</span>
+    <span class="vi">@transaction_class</span> <span class="o">=</span> <span class="n">transaction</span>
+    <span class="vi">@statement_class</span> <span class="o">=</span> <span class="n">statement</span>
+    <span class="vi">@balance</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="vi">@transactions</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">deposit</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
+    <span class="n">deposit</span> <span class="o">=</span> <span class="vi">@transaction_class</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">sanitise_input</span><span class="p">(</span><span class="n">amount</span><span class="p">),</span> <span class="vi">@balance</span><span class="p">)</span>
+    <span class="n">process_transaction</span><span class="p">(</span><span class="n">deposit</span><span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="n">etc</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>A new Transaction object is made from the instance variable <code class="language-plaintext highlighter-rouge">@transaction_class</code>. Set up like this, it was very easy to correctly isolate my unit tests, by passing in fake/double classes (which return fake objects) for initialize instead:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre> <span class="c1"># in spec/bank_account_spec.rb </span>
+  <span class="n">let</span><span class="p">(</span><span class="ss">:fake_transaction_class</span><span class="p">)</span> <span class="p">{</span> <span class="n">double</span> <span class="ss">:Transaction</span> <span class="p">}</span>
+  <span class="n">let</span><span class="p">(</span><span class="ss">:fake_statement_class</span><span class="p">)</span> <span class="p">{</span> <span class="n">double</span> <span class="ss">:Statement</span> <span class="p">}</span>
+  <span class="n">let</span><span class="p">(</span><span class="ss">:account</span><span class="p">)</span> <span class="p">{</span> <span class="no">BankAccount</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">fake_transaction_class</span><span class="p">,</span> <span class="n">fake_statement_class</span><span class="p">)</span> <span class="p">}</span>
+
+  <span class="n">describe</span> <span class="s2">"#deposit"</span> <span class="k">do</span>
+    <span class="n">before</span> <span class="k">do</span>
+      <span class="vi">@fake_deposit</span> <span class="o">=</span> <span class="n">double</span><span class="p">(</span><span class="ss">:deposit</span><span class="p">)</span>
+      <span class="n">allow</span><span class="p">(</span><span class="n">fake_transaction_class</span><span class="p">).</span><span class="nf">to</span> <span class="n">receive</span><span class="p">(</span><span class="ss">:new</span><span class="p">).</span><span class="nf">and_return</span><span class="p">(</span><span class="vi">@fake_deposit</span><span class="p">)</span>
+    <span class="k">end</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<hr />
+
+<p>The second pretend tech test to try this week was the <a href="https://github.com/emilybache/GildedRose-Refactoring-Kata">Gilded Rose</a>. It’s an exercise in refactoring written 10 years ago in C#, which has been translated into many different languages. The idea is that you’re given terrible legacy code, and have to improve it and add a new feature. There are two classes: Item, which mustn’t be changed; and GildedRose, a magical shop/inn. Riding high from my BankAccount attempt, I went straight in with making an Item double for the GildedRose tests. And fell flat on my face.</p>
+
+<p>The purpose of the GildedRose class is to store a list of Items, and increment their attributes every time <code class="language-plaintext highlighter-rouge">update_quality</code> is called. That method doesn’t even return anything, it just changes the Items through their setter methods (attr_accessor). But my fake items don’t work like that. I wrote some very unsatisfactory tests like <code class="language-plaintext highlighter-rouge">expect(@normal).to have_received(:quality=).with(@normal.quality - 1)</code> but that’s not what I want. I don’t know! I’ll ask the coaches next week.</p>
+
+<p>Edit: got a reply from a coach. She said not to mock! Apparently there are some situations, like this one, where it’s not worth it. Since the dependent class is really basic and doesn’t even have any logic itself, it’s unlikely to cause trouble in future.</p>
+
+<p>*Unlike in Python or JavaScript, strings are mutable in Ruby. They were going to change it for Ruby 3 but then <a href="https://bugs.ruby-lang.org/issues/11473#note-53">changed their mind</a> in case it broke a lot of old code. “# frozen_string_literal: true” goes at the top of a Ruby file (a magic comment) to freeze strings anyway, because immutable strings are better for memory usage.</p>
+
+<hr />
+<p>This album by Rosalie Cunningham is fun. Female-fronted psychedelic rock. The vocals remind me of Amanda Palmer (The Dresden Dolls), except better. I forgot about it, but Spotify told me she has a new single out. The single is also not bad.</p>
+
+<!-- instructions from https://learn.cloudcannon.com/jekyll/youtube/ -->
+<div class="video_wrapper">
+  <iframe src="https://www.youtube.com/embed/MFv-SJH4sOM?rel=0&amp;modestbranding=1&amp;showinfo=0" frameborder="0" allowfullscreen=""></iframe>
+</div>
+
+
+      </article>
+    </div>
+  </div>
+
+  <!-- from Minimal Mistakes -->
+
+<nav class="post-pagination text-center section-pagination mx-auto">
+  <div class="btn-group">
+  
+  <a href="/blog/2021/03/10/second-review/" class="btn btn-outline-primary" role="button"
+    title="Test Driven Inspired Development
+">Previous</a>
+  
+  
+  <a href="/blog/2021/03/17/start-final-project/" class="btn btn-outline-primary"  role="button"
+    title="Beginning of the end
+">Next</a>
+  
+  </div>
+</nav>
+
+
+</div>
+
+
+
+    <footer class="footer fixed-bottom mt-auto py-3">
+  <div class="container text-center text-secondary">
+    <div class="row">
+      <div class="col">
+        
+        <div class="social-links">
+  <a target="_blank" href="https://github.com/mscwilson">
+    <i class="fab fa-github fa-2x"></i>
+  </a>
+  <a href="mailto:miranda@mirandawilson.tech">
+    <i class="fa fa-envelope fa-2x"></i>
+  </a>
+  <a target="_blank" href="https://www.linkedin.com/in/miranda-wilson-b2196336/">
+    <i class="fab fa-linkedin fa-2x"></i>
+  </a>
+</div>
+
+        
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <p class="footer-text">&copy; 2021 Miranda Wilson
+      </div>
+    </div>
+  </div>
+  
+  <!-- JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+  
+  <script src="https://kit.fontawesome.com/6b6bfd734a.js" crossorigin="anonymous"></script>
+</footer>
+
+    
+  </body>
+</html>

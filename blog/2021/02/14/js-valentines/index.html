@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" href="/assets/images/favicon-star.png" />
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css//bootstrap/bootstrap-mir-dark.css" media="(prefers-color-scheme: dark)">
+  <link rel="stylesheet" href="/assets/css//bootstrap/bootstrap-mir-light.css" media="(prefers-color-scheme: light)">
+  
+  <title>Valentine's Day JavaScript</title>
+  <meta name="description" content="" />
+</head>
+
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark body-bg">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <h3 class="d-inline align-middle pl-2 text-primary">Miranda Making Things</h3>
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
+                
+        <li  class="nav-item active ml-auto" >
+          <a class="nav-link" href="/blog/">Blog</a>
+        </li>
+        
+        <li  class="nav-item ml-auto" >
+          <a class="nav-link" href="/portfolio/">Portfolio</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<nav class="navbar navbar-expand navbar-dark body-bg navbar-blog">
+  <div class="container-fluid">
+    
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
+
+        <li class="nav-item ml-auto d-none d-lg-block">
+          <a class="nav-link" href="/feed.xml"><i class="fas fa-rss"></i></a>
+        </li>
+
+        <li  class="nav-item ml-auto" >
+          <a class="nav-link" href="/blog/">Posts</a>
+        </li>
+        
+        <li  class="nav-item ml-auto" >
+          <a class="nav-link" href="/blog/tags/">Tags</a>
+        </li>
+
+        <li  class="nav-item ml-auto"
+          >
+          <a class="nav-link" href="/blog/archive/">Archive</a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <section id="banner" class="py-5 d-none d-sm-block">
+</section>
+
+
+    <div id="post" class="container pt-3">
+  <div class="row">
+    <div class="col">
+      <h3>Valentine's Day JavaScript</h3>
+      <p class="post-meta">
+        <i class="far fa-calendar-alt"></i> Feb 14, 2021 ·
+        <!-- reading_time from Minimal Mistakes theme -->
+
+
+
+<span class="page__meta-readtime">
+  <i class="far fa-clock" aria-hidden="true"></i> 
+   1 minute read 
+<span>
+
+      </p>
+      <p class="post-tags-list">
+        <i class="fas fa-tags"></i> JavaScript, Makers
+      </p>
+      <hr>
+      <article>
+        <p>Perhaps I should have found some CSS to make hearts all over my website - actually, what a missed opportunity. This weekend’s challenge was to translate the <a href="https://github.com/mscwilson/bowling-challenge-ruby">Bowling Challenge</a> from last week into JavaScript from Ruby - and then add an interface. So far I have generally enjoyed the weekend challenges, and been happy to spend hours working on them. <a href="https://github.com/mscwilson/bowling-challenge">This time</a>, for the first time I got fed up with it and have abandoned it “unfinished”.</p>
+
+<p>For one, I realised that my tests in Ruby and JavaScript were not isolated at all, not a double or stub in sight. I forgot I never got round to watching the doubles section of the <a href="https://www.udemy.com/course/testing-ruby-with-rspec/">Udemy RSpec course</a>; I have no idea how to use them. So that is annoying.</p>
+
+<p>Then I realised that how I had calculated the scores and set up the bowling game logic made it very difficult to extract the right numbers to display on a page, or to check for valid inputs. After looking again at real bowling scorecards I added a method to calculate the cumulative scores for each frame, which is now hooked up with jQuery to display. But how to display the rolls individually for each frame? This is probably a lesson in how important planning is - I should have planned out how the interface could look/work before starting the JS translation, just in case. Or I should have binned it off earlier and played with CSS floating hearts.</p>
+
+<p>Time for a break from the computer! This has been a frustrating weekend on mulitple fronts as I also failed to work out how to move posts from <code class="language-plaintext highlighter-rouge">www.mirandawilson.tech</code> to <code class="language-plaintext highlighter-rouge">www.mirandawilson.tech/blog</code> without breaking any existing links.</p>
+
+<hr />
+<p>On the plus side, I joined some of my cohort-colleagues for a quiz by Karsten yesterday (thanks Karsten!). It was fun. I did not know how tall the Eiffel Tower is. One of the rounds involved guessing which TV series the music came from. This was one of them, the excellent theme from True Detective:
+<!-- instructions from https://learn.cloudcannon.com/jekyll/youtube/ --></p>
+<div class="video_wrapper">
+  <iframe src="https://www.youtube.com/embed/ZRPpCqXYoos?rel=0&amp;modestbranding=1&amp;showinfo=0" frameborder="0" allowfullscreen=""></iframe>
+</div>
+
+
+      </article>
+    </div>
+  </div>
+
+  <!-- from Minimal Mistakes -->
+
+<nav class="post-pagination text-center section-pagination mx-auto">
+  <div class="btn-group">
+  
+  <a href="/blog/2021/02/11/javascript-intro/" class="btn btn-outline-primary" role="button"
+    title="My first JavaScript
+">Previous</a>
+  
+  
+  <a href="/blog/2021/02/14/sublime-additions/" class="btn btn-outline-primary"  role="button"
+    title="Learning how to use Sublime
+">Next</a>
+  
+  </div>
+</nav>
+
+
+</div>
+
+
+
+    <footer class="footer fixed-bottom mt-auto py-3">
+  <div class="container text-center text-secondary">
+    <div class="row">
+      <div class="col">
+        
+        <div class="social-links">
+  <a target="_blank" href="https://github.com/mscwilson">
+    <i class="fab fa-github fa-2x"></i>
+  </a>
+  <a href="mailto:miranda@mirandawilson.tech">
+    <i class="fa fa-envelope fa-2x"></i>
+  </a>
+  <a target="_blank" href="https://www.linkedin.com/in/miranda-wilson-b2196336/">
+    <i class="fab fa-linkedin fa-2x"></i>
+  </a>
+</div>
+
+        
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <p class="footer-text">&copy; 2021 Miranda Wilson
+      </div>
+    </div>
+  </div>
+  
+  <!-- JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+  
+  <script src="https://kit.fontawesome.com/6b6bfd734a.js" crossorigin="anonymous"></script>
+</footer>
+
+    
+  </body>
+</html>

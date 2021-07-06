@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" href="/assets/images/favicon-star.png" />
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css//bootstrap/bootstrap-mir-dark.css" media="(prefers-color-scheme: dark)">
+  <link rel="stylesheet" href="/assets/css//bootstrap/bootstrap-mir-light.css" media="(prefers-color-scheme: light)">
+  
+  <title>How to set up a Sinatra PostgreSQL app with ActiveRecord and RSpec</title>
+  <meta name="description" content="" />
+</head>
+
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark body-bg">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <h3 class="d-inline align-middle pl-2 text-primary">Miranda Making Things</h3>
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
+                
+        <li  class="nav-item active ml-auto" >
+          <a class="nav-link" href="/blog/">Blog</a>
+        </li>
+        
+        <li  class="nav-item ml-auto" >
+          <a class="nav-link" href="/portfolio/">Portfolio</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<nav class="navbar navbar-expand navbar-dark body-bg navbar-blog">
+  <div class="container-fluid">
+    
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
+
+        <li class="nav-item ml-auto d-none d-lg-block">
+          <a class="nav-link" href="/feed.xml"><i class="fas fa-rss"></i></a>
+        </li>
+
+        <li  class="nav-item ml-auto" >
+          <a class="nav-link" href="/blog/">Posts</a>
+        </li>
+        
+        <li  class="nav-item ml-auto" >
+          <a class="nav-link" href="/blog/tags/">Tags</a>
+        </li>
+
+        <li  class="nav-item ml-auto"
+          >
+          <a class="nav-link" href="/blog/archive/">Archive</a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <section id="banner" class="py-5 d-none d-sm-block">
+</section>
+
+
+    <div id="post" class="container pt-3">
+  <div class="row">
+    <div class="col">
+      <h3>How to set up a Sinatra PostgreSQL app with ActiveRecord and RSpec</h3>
+      <p class="post-meta">
+        <i class="far fa-calendar-alt"></i> Feb 1, 2021 ·
+        <!-- reading_time from Minimal Mistakes theme -->
+
+
+
+<span class="page__meta-readtime">
+  <i class="far fa-clock" aria-hidden="true"></i> 
+   12 minute read 
+<span>
+
+      </p>
+      <p class="post-tags-list">
+        <i class="fas fa-tags"></i> Ruby, Sinatra, PostgreSQL, ActiveRecord
+      </p>
+      <hr>
+      <article>
+        <p>Given that I spent quite a while working out how to do all of this yesterday, I wanted to write some fairly comprehensive notes on how I set up my <a href="https://github.com/mscwilson/chitter-challenge">Chitter app</a>. Here are the instructions almost entirely taken from this <a href="https://medium.com/@rileythompson/setting-up-a-simple-sinatra-blog-app-db56dda4c280">one blog post</a> with some alterations. Feels a bit cargo-cult programming, a lot of copy-pasting randomly off StackOverflow posts, but it works! I might try adding more links when I go through all the many tabs open about it on my Firefox. There may well be many mistakes.</p>
+
+<p>Edit: there were indeed several mistakes. I followed used these instructions with my Makers week 5 team, and with one of my peer group, to set up ActiveRecord. This was in existing repos at the point where the database was required. I’ve updated the walkthrough a bit based on problems we had.</p>
+
+<h2 id="setting-up-a-fully-tested-sinatra-postgres-app-with-activerecord">Setting up a fully tested Sinatra Postgres app with ActiveRecord</h2>
+<h3 id="specifically-the-chitter-weekend-challenge">Specifically, the Chitter weekend challenge</h3>
+
+<p>ActiveRecord is an ORM. Object Relational Mapper.
+<a href="https://guides.rubyonrails.org/active_record_basics.html">Here are all the basic details about it and how to use it</a>. <strong>Using ActiveRecord means not writing any SQL or Model code or unit tests</strong>. Feels a bit like cheating.</p>
+
+<p>These instructions are largely based on <a href="https://medium.com/@rileythompson/setting-up-a-simple-sinatra-blog-app-db56dda4c280">this post</a>.</p>
+
+<h3 id="1-starting-point">1. Starting point</h3>
+<p>A folder initialised with git and bundle. No databases required.</p>
+
+<h3 id="2-gemfile">2. Gemfile</h3>
+<p>Gemfile should have at least these gems:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="rouge-code"><pre><span class="c1"># in Gemfile</span>
+<span class="n">source</span> <span class="s1">'https://rubygems.org'</span>
+
+<span class="n">gem</span> <span class="s2">"sinatra"</span> <span class="c1"># self-explanatory</span>
+<span class="n">gem</span> <span class="s2">"pg"</span> <span class="c1"># postgreSQL</span>
+<span class="n">gem</span> <span class="s2">"activerecord"</span> <span class="c1"># the ORM</span>
+<span class="n">gem</span> <span class="s2">"sinatra-activerecord"</span> <span class="c1"># so it works with Sinatra</span>
+<span class="n">gem</span> <span class="s2">"rake"</span> <span class="c1"># to run scripts ??</span>
+<span class="n">gem</span> <span class="s2">"bcrypt"</span> <span class="c1"># password encryption</span>
+
+<span class="n">group</span> <span class="ss">:test</span> <span class="k">do</span>
+  <span class="n">gem</span> <span class="s1">'rspec'</span> <span class="c1"># tests</span>
+  <span class="n">gem</span> <span class="s1">'rubocop'</span><span class="p">,</span> <span class="s1">'0.79.0'</span> <span class="c1"># correct Ruby</span>
+  <span class="n">gem</span> <span class="s1">'simplecov'</span><span class="p">,</span> <span class="ss">require: </span><span class="kp">false</span> <span class="c1"># test coverage</span>
+  <span class="n">gem</span> <span class="s1">'simplecov-console'</span><span class="p">,</span> <span class="ss">require: </span><span class="kp">false</span> <span class="c1"># graphical test coverage</span>
+  <span class="n">gem</span> <span class="s2">"capybara"</span> <span class="c1"># feature tests</span>
+<span class="k">end</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>Run <code class="language-plaintext highlighter-rouge">bundle</code> to install everything.<br />
+May as well initialise rspec ready for later <code class="language-plaintext highlighter-rouge">rspec --init</code>.</p>
+
+<h3 id="3-make-a-rakefile">3. Make a Rakefile</h3>
+<p><code class="language-plaintext highlighter-rouge">touch Rakefile</code><br />
+This file allows the use of “rake”, which will be used to run the commands about the databases.</p>
+
+<p>The minimum to put in here is</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="c1"># in Rakefile</span>
+<span class="nb">require</span> <span class="s2">"sinatra/activerecord/rake"</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>Because the gem sinatra-activerecord provides some “Rake tasks”. Don’t know what they are really. If this file doesn’t work, I copied this off someone else:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="c1"># in Rakefile</span>
+<span class="nb">require</span> <span class="s2">"sinatra/activerecord/rake"</span>
+
+<span class="n">namespace</span> <span class="ss">:db</span> <span class="k">do</span>
+  <span class="n">task</span> <span class="ss">:load_config</span> <span class="k">do</span>
+    <span class="nb">require</span> <span class="s2">"./app"</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>Confirm that rake was installed correctly by listing the possible commands with:
+<code class="language-plaintext highlighter-rouge">rake -T</code></p>
+
+<h3 id="4-database-config">4. Database config</h3>
+<p>Three files are needed to define how the databases (not the tables inside yet, just the databases) should be created and set up.  <br />
+First do:
+<code class="language-plaintext highlighter-rouge">mkdir config</code></p>
+
+<ul>
+  <li><strong>4.1</strong> First one says which databases to make based on the environment. I believe rake will read this file in to create them automatically.  <br />
+<code class="language-plaintext highlighter-rouge">touch config/database.yml</code><br />
+It’s a YAML file. Don’t know what that is.<br />
+Write inside:</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre> # in config/database.yml
+ # this defines the database for the development environment (default environment)
+development:
+ # the type of database it will be
+ adapter: postgresql 
+  # name of db to make
+ database: chitter-development
+
+ # same but for test env
+test:
+ adapter: postgresql
+ database: chitter-test
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p><strong>NB this file is very strict with whitespace</strong>. No spaces allowed before <code class="language-plaintext highlighter-rouge">development</code> or <code class="language-plaintext highlighter-rouge">test</code>.</p>
+
+<p>Some instructions for this file listed all kinds of different parameters like “pool” and “host” but I don’t know what they are and I’m guessing they’re only required for deployment. Can also add instructions here for a deployment db.</p>
+
+<ul>
+  <li><strong>4.2</strong> Second file is for ActiveRecord to connect to the databases that are going to be made. It defines which database to use in which environment<br />
+<code class="language-plaintext highlighter-rouge">touch config/database.rb</code><br />
+Paste this in:</li>
+</ul>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="rouge-code"><pre> <span class="c1"># in config/database.rb</span>
+ <span class="c1"># set the database based on the current environment</span>
+ <span class="c1"># The name Chitter in the below line is because my main app controller class in app.rb is called Chitter</span>
+<span class="n">database_name</span> <span class="o">=</span> <span class="s2">"chitter-</span><span class="si">#{</span><span class="no">Chitter</span><span class="p">.</span><span class="nf">environment</span><span class="si">}</span><span class="s2">"</span>
+<span class="n">db</span> <span class="o">=</span> <span class="no">URI</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span> <span class="no">ENV</span><span class="p">[</span><span class="s1">'DATABASE_URL'</span><span class="p">]</span> <span class="o">||</span> <span class="s2">"postgres://localhost/</span><span class="si">#{</span><span class="n">database_name</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+ <span class="c1"># connect ActiveRecord with the current database</span>
+<span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="p">.</span><span class="nf">establish_connection</span><span class="p">(</span>
+ <span class="ss">:adapter</span> <span class="o">=&gt;</span> <span class="n">db</span><span class="p">.</span><span class="nf">scheme</span> <span class="o">==</span> <span class="s2">"postgres"</span> <span class="p">?</span> <span class="s2">"postgresql"</span> <span class="p">:</span> <span class="n">db</span><span class="p">.</span><span class="nf">scheme</span><span class="p">,</span>
+ <span class="ss">:host</span> <span class="o">=&gt;</span> <span class="n">db</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span>
+ <span class="ss">:port</span> <span class="o">=&gt;</span> <span class="n">db</span><span class="p">.</span><span class="nf">port</span><span class="p">,</span>
+ <span class="ss">:username</span> <span class="o">=&gt;</span> <span class="n">db</span><span class="p">.</span><span class="nf">user</span><span class="p">,</span>
+ <span class="ss">:password</span> <span class="o">=&gt;</span> <span class="n">db</span><span class="p">.</span><span class="nf">password</span><span class="p">,</span>
+ <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s2">"</span><span class="si">#{</span><span class="n">database_name</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+ <span class="ss">:encoding</span> <span class="o">=&gt;</span> <span class="s2">"utf8"</span>
+<span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<ul>
+  <li><strong>4.3</strong> Final file is to tell Sinatra where the relevant files are. I don’t know if this is necessary?? It’s in case your folder structure is non-standard and Sinatra gets confused. Or for big projects maybe<br />
+<code class="language-plaintext highlighter-rouge">touch config/environment.rb</code></li>
+</ul>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+</pre></td><td class="rouge-code"><pre> <span class="c1"># in config/environment.rb</span>
+ <span class="c1"># get the path of the root of the app</span>
+ <span class="c1"># assuming that this file is one folder down in config/</span>
+<span class="no">APP_ROOT</span> <span class="o">=</span> <span class="no">File</span><span class="p">.</span><span class="nf">expand_path</span><span class="p">(</span><span class="s2">".."</span><span class="p">,</span> <span class="n">__dir__</span><span class="p">)</span>
+
+ <span class="c1"># require the controller(s)</span>
+ <span class="c1"># says that app.rb is in the root</span>
+<span class="no">Dir</span><span class="p">.</span><span class="nf">glob</span><span class="p">(</span><span class="no">File</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="no">APP_ROOT</span><span class="p">,</span> <span class="s2">"app"</span><span class="p">,</span> <span class="s2">"*.rb"</span><span class="p">)).</span><span class="nf">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">file</span><span class="o">|</span> <span class="nb">require</span> <span class="n">file</span> <span class="p">}</span>
+
+ <span class="c1"># require the model(s)</span>
+ <span class="c1"># models stored in lib/</span>
+<span class="no">Dir</span><span class="p">.</span><span class="nf">glob</span><span class="p">(</span><span class="no">File</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="no">APP_ROOT</span><span class="p">,</span> <span class="s2">"lib"</span><span class="p">,</span> <span class="s2">"*.rb"</span><span class="p">)).</span><span class="nf">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">file</span><span class="o">|</span> <span class="nb">require</span> <span class="n">file</span> <span class="p">}</span>
+
+<span class="c1"># require database configurations</span>
+<span class="c1"># the database setup files that were just made in config/</span>
+<span class="nb">require</span> <span class="no">File</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="no">APP_ROOT</span><span class="p">,</span> <span class="s2">"config"</span><span class="p">,</span> <span class="s2">"database"</span><span class="p">)</span>
+
+<span class="c1"># configure Chitter settings</span>
+<span class="c1"># This bit of config could also be done in the main app class definition</span>
+<span class="c1"># This is monkey-patching onto the main class definition</span>
+<span class="c1"># I suppose it's neater to move it here</span>
+<span class="c1"># The public/ folder is where images and stylesheets should be, the last line confirms that location</span>
+<span class="k">class</span> <span class="nc">Chitter</span> <span class="o">&lt;</span> <span class="no">Sinatra</span><span class="o">::</span><span class="no">Base</span>
+ <span class="n">set</span> <span class="ss">:method_override</span><span class="p">,</span> <span class="kp">true</span>
+ <span class="n">set</span> <span class="ss">:root</span><span class="p">,</span> <span class="no">APP_ROOT</span>
+ <span class="n">set</span> <span class="ss">:views</span><span class="p">,</span> <span class="no">File</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="no">APP_ROOT</span><span class="p">,</span> <span class="s2">"views"</span><span class="p">)</span>
+ <span class="n">set</span> <span class="ss">:public_folder</span><span class="p">,</span> <span class="no">File</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="no">APP_ROOT</span><span class="p">,</span> <span class="s2">"public"</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="5-configure-tests-with-spec_helperrb">5. Configure tests with spec_helper.rb</h3>
+<p>The order in which things are set or required matters. At the top, require simplecov maybe? Otherwise, setting the ENV should be the first thing.</p>
+
+<p>It should look like this at the top:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="rouge-code"><pre> <span class="c1"># in spec/spec_helper.rb</span>
+ <span class="c1"># the SimpleCov stuff is for test coverage, not essential</span>
+<span class="nb">require</span> <span class="s1">'simplecov'</span>
+<span class="nb">require</span> <span class="s1">'simplecov-console'</span>
+<span class="no">SimpleCov</span><span class="p">.</span><span class="nf">start</span>
+
+<span class="c1"># very important line to say that tests are run in "test" environment</span>
+<span class="no">ENV</span><span class="p">[</span><span class="s2">"RACK_ENV"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"test"</span>
+<span class="c1"># imports the actual controller file</span>
+<span class="nb">require_relative</span> <span class="s2">"../app"</span>
+
+<span class="nb">require</span> <span class="s2">"rspec"</span>
+<span class="nb">require</span> <span class="s2">"capybara"</span>
+<span class="nb">require</span> <span class="s2">"capybara/rspec"</span>
+
+<span class="c1"># tells Capybara what the app is for the feature tests</span>
+<span class="no">Capybara</span><span class="p">.</span><span class="nf">app</span> <span class="o">=</span> <span class="no">Chitter</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="6-write-a-feature-test-about-visiting-the-home-page-tests-first-remember">6. Write a feature test about visiting the home page (tests first remember?)</h3>
+<p>You know how to do that. It will say, uninitialised constant Chitter or something.</p>
+
+<h3 id="7-set-up-the-apprb-file">7. Set up the app.rb file</h3>
+<p>It should be mostly the same as a normal modular Sinatra app file, with a couple of extra things.</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre><span class="c1"># in app.rb</span>
+<span class="nb">require</span> <span class="s2">"sinatra/base"</span>
+<span class="c1"># an extra gem to require</span>
+<span class="nb">require</span> <span class="s2">"sinatra/activerecord"</span>
+
+<span class="c1"># BCrypt for encrypting the passwords</span>
+<span class="nb">require</span> <span class="s2">"bcrypt"</span>
+
+<span class="k">class</span> <span class="nc">Chitter</span> <span class="o">&lt;</span> <span class="no">Sinatra</span><span class="o">::</span><span class="no">Base</span>
+  <span class="n">register</span> <span class="no">Sinatra</span><span class="o">::</span><span class="no">ActiveRecordExtension</span>
+<span class="k">end</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="7-creating-the-databases">7. Creating the databases!</h3>
+<p>Create databases for test and development environments:<br />
+<code class="language-plaintext highlighter-rouge">rake db:create</code></p>
+
+<p>It reads in from the databases.yml file to see what to make.<br />
+Should confirm:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>Created database 'chitter-development'
+Created database 'chitter-test'
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>If this doesn’t work, check the whitespace in your database.yml file.</p>
+
+<h3 id="8-remember-the-configru-file">8. Remember the config.ru file</h3>
+<p>If want to run with rackup. Put this in root.</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="c1"># in config.ru</span>
+<span class="nb">require_relative</span> <span class="s2">"app"</span>
+<span class="n">run</span> <span class="no">Chitter</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="9-adding-stuff-to-the-databases-or-changing-existing-stuff-in-there">9. Adding stuff to the database(s), or changing existing stuff in there</h3>
+<p>When using ActiveRecord, no SQL is needed!<br />
+To make a change to a database, use rake to make a template for it to run. Run this, with a description of the change you’re doing - in snake_case - for NAME:<br />
+<code class="language-plaintext highlighter-rouge">rake db:create_migration NAME=what_i_want_the_change_to_be</code></p>
+
+<p>Then it will make a file, plus the folders if necessary, in <code class="language-plaintext highlighter-rouge">db/migrate/timestamp-what_i_want_the_change_to_be</code>.</p>
+
+<p>Inside the file will be an empty template like this:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="c1"># in empty migration file, within db/migrate</span>
+<span class="k">class</span> <span class="nc">WhatIWantTheChangeToBe</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span><span class="p">[</span><span class="mf">6.1</span><span class="p">]</span>
+  <span class="k">def</span> <span class="nf">change</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>It will name the file what you entered for <code class="language-plaintext highlighter-rouge">NAME=</code>, and the class inside gets named the same but in CamelCase. <strong>NB:</strong> this class must not have the same name as your app controller class. Also, if you want to change the name of the class inside here, it won’t work to edit it, just make a new migration with the right name.</p>
+
+<p>Instead of SQL, fill in the change method with ActiveRecord syntax instructions, like this:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre><span class="c1"># in db/migrate/&lt;timestamp&gt;-create_posts.rb</span>
+<span class="k">class</span> <span class="nc">CreatePosts</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span><span class="p">[</span><span class="mf">6.1</span><span class="p">]</span>
+  <span class="k">def</span> <span class="nf">change</span>
+    <span class="c1"># makes a table called "posts"</span>
+      <span class="c1"># has a column called "text", type is text</span>
+      <span class="c1"># column "author_name", a string</span>
+      <span class="c1"># automatically makes created_at and modified_at columns</span>
+    <span class="n">create_table</span> <span class="ss">:posts</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+      <span class="n">t</span><span class="p">.</span><span class="nf">text</span> <span class="ss">:text</span>
+      <span class="n">t</span><span class="p">.</span><span class="nf">string</span> <span class="ss">:author_name</span>
+      <span class="n">t</span><span class="p">.</span><span class="nf">timestamps</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>The numeric primary key is made automatically, no need to list that column.</p>
+
+<p><strong>To create the table in the databases</strong>, have to add it to each one separately using rake.<br />
+Run:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>rake db:migrate
+
+rake db:migrate RACK_ENV="test"
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>It will confirm that it made the table.
+You can then check with psql or TablePlus what the ActiveRecord “string” or “text” converted to in SQL terms, if you want.</p>
+
+<h3 id="10-model-classes-with-activerecord-nb-naming-is-important">10. Model classes with ActiveRecord NB naming is important</h3>
+<p>There is no need to write any database accessing code with ActiveRecord. But, it relies on the naming convention discussed <a href="https://edgeguides.rubyonrails.org/active_record_migrations.html#migrations-and-seed-data">here</a> iirc. Specifically, the <strong>model classes have to be named in singular and the db tables the same but plural</strong>.</p>
+
+<p>Here’s the Post class which will be for accessing and wrapping info from the posts table.</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="c1"># in lib/post.rb</span>
+<span class="k">class</span> <span class="nc">Post</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+<span class="k">end</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>That’s it. It gets all the methods inherited from ActiveRecord.</p>
+
+<p>Here’s the User class (for users table), it has an extra line.</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="c1"># in lib/user.rb</span>
+<span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+  <span class="c1"># ActiveRecord method for authentication using BCrypt</span>
+  <span class="n">has_secure_password</span>
+<span class="k">end</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>That method, <code class="language-plaintext highlighter-rouge">has_secure_password</code>, allows Sinatra to use an authenticate method for passwords (eg <code class="language-plaintext highlighter-rouge">user.authenticate(params["password"]</code>), so it’s easy to check if they entered the correct one on logging in. Assuming you used encryption before saving it. This is how to encrypt a password after it comes in off registration form:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="c1"># in app.rb</span>
+ <span class="n">encrypted_password</span> <span class="o">=</span> <span class="no">BCrypt</span><span class="o">::</span><span class="no">Password</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s2">"password"</span><span class="p">])</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p><strong>NB the encrypted passwords must be saved into a column called “password_digest”, not “password”, to use the user.authenticate method</strong>.</p>
+
+<h3 id="10-adding-data-to-the-database-in-the-controller">10. Adding data to the database in the controller</h3>
+<p>Data comes into the controller off the HTML forms, into params. Eg user entering a post and their name.</p>
+
+<p>Given that the posts table currently has columns for text (content), author name and datetime, can save the data into the database with something like:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre><span class="c1"># in app.rb</span>
+  <span class="n">post</span> <span class="s2">"/new_post/:id"</span> <span class="k">do</span>
+    <span class="c1"># Post.new adds a new row in the db</span>
+    <span class="c1"># the hash keys I'm giving are the column names off the table</span>
+    <span class="n">post</span> <span class="o">=</span> <span class="no">Post</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"text"</span><span class="p">:</span> <span class="n">params</span><span class="p">[</span><span class="s2">"text"</span><span class="p">],</span> <span class="s2">"author_name"</span><span class="p">:</span> <span class="n">params</span><span class="p">[</span><span class="s2">"name"</span><span class="p">])</span>
+    <span class="n">post</span><span class="p">.</span><span class="nf">save</span> <span class="p">?</span> <span class="p">(</span><span class="n">redirect</span> <span class="s2">"/"</span><span class="p">)</span> <span class="p">:</span> <span class="s2">"failed to create a post!"</span>
+  <span class="k">end</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>See below, step 13, for more of my usage examples.</p>
+
+<p>You don’t need to say what time it was made (for the created_at column), ActiveRecord automatically fills that in.</p>
+
+<h3 id="11-clearing-out-the-test-database-before-each-test">11. Clearing out the test database before each test</h3>
+<p>Add this to the spec_helper, just after <code class="language-plaintext highlighter-rouge">RSpec.configure do |config|</code></p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="c1">#in spec/spec_helper.rb</span>
+  <span class="n">config</span><span class="p">.</span><span class="nf">before</span><span class="p">(</span><span class="ss">:each</span><span class="p">)</span> <span class="k">do</span>
+    <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="p">.</span><span class="nf">subclasses</span><span class="p">.</span><span class="nf">each</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:delete_all</span><span class="p">)</span>
+  <span class="k">end</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>ActiveRecord will delete all data in the (test) tables.</p>
+
+<h3 id="12-adding-more-tables-to-databases-or-changing-existing-columns">12. Adding more tables to databases or changing existing columns</h3>
+<p>For every change, make a new migration file with <code class="language-plaintext highlighter-rouge">rake db:create_migration NAME=whatever</code></p>
+
+<p>Mine looked like this to make the users table:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre><span class="c1"># in db/migrate/&lt;timestamp&gt;-create_users.rb</span>
+<span class="k">class</span> <span class="nc">CreateUsers</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span><span class="p">[</span><span class="mf">6.1</span><span class="p">]</span>
+  <span class="k">def</span> <span class="nf">change</span>
+    <span class="n">create_table</span> <span class="ss">:users</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+      <span class="n">t</span><span class="p">.</span><span class="nf">string</span> <span class="ss">:email</span>
+       <span class="c1"># password_digest not password column, because encyrpted</span>
+      <span class="n">t</span><span class="p">.</span><span class="nf">string</span> <span class="ss">:password_digest</span>
+      <span class="n">t</span><span class="p">.</span><span class="nf">string</span> <span class="ss">:real_name</span>
+      <span class="n">t</span><span class="p">.</span><span class="nf">string</span> <span class="ss">:username</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>NB again, the encrypted passwords must be saved into a column called “password_digest”, not “password”, to use the user.authenticate method.</p>
+
+<p>Run the <code class="language-plaintext highlighter-rouge">rake db:migrate</code> for both environments to update the tables.</p>
+
+<p>Then I wanted to change the column in posts table to be a user_id foreign key instead of the string “author_name”. Another migration file.</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="rouge-code"><pre><span class="c1"># in db/migrate/&lt;timestamp&gt;-rename_author_name_to_user_id.rb</span>
+<span class="k">class</span> <span class="nc">RenameAuthorNameToUserId</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span><span class="p">[</span><span class="mf">6.1</span><span class="p">]</span>
+  <span class="k">def</span> <span class="nf">change</span>
+    <span class="c1"># removes the unwanted column "author_name" from table "posts"</span>
+    <span class="n">remove_column</span> <span class="ss">:posts</span><span class="p">,</span> <span class="ss">:author_name</span>
+
+    <span class="c1"># makes a new column "user_id" in "posts" table, of type "bigint"</span>
+    <span class="c1"># specially has to be called user_id, to be a foreign key for the id column of users table</span>
+    <span class="c1"># primary/foreign keys must be bigint</span>
+    <span class="n">add_column</span> <span class="ss">:posts</span><span class="p">,</span> <span class="ss">:user_id</span><span class="p">,</span> <span class="ss">:bigint</span>
+
+    <span class="c1"># is this the JOIN??? connects the two tables via the foreign key</span>
+    <span class="n">add_foreign_key</span> <span class="ss">:posts</span><span class="p">,</span> <span class="ss">:users</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Every time <code class="language-plaintext highlighter-rouge">rake db:migrate</code> is run, rake creates or updates a <code class="language-plaintext highlighter-rouge">schema.rb</code> file in db/ folder. This file contains the up-to-date details of how the database(s) are set up. This is the important file, the used migrations can be deleted. The whole database structure can be recreated from the schema file with <code class="language-plaintext highlighter-rouge">rake db:schema:load</code>.</p>
+
+<h3 id="13-activerecord-methods-i-used-in-my-chitter-app">13. ActiveRecord methods I used in my Chitter app</h3>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+</pre></td><td class="rouge-code"><pre> <span class="c1"># in app.rb</span>
+<span class="c1"># taking form input from params, and wrapping into a Post with Post.new</span>
+<span class="c1"># then saving into the db</span>
+<span class="n">post</span> <span class="o">=</span> <span class="no">Post</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"text"</span><span class="p">:</span> <span class="n">params</span><span class="p">[</span><span class="s2">"text"</span><span class="p">],</span> <span class="s2">"author_name"</span><span class="p">:</span> <span class="n">params</span><span class="p">[</span><span class="s2">"name"</span><span class="p">])</span>
+<span class="n">post</span><span class="p">.</span><span class="nf">save</span>
+
+<span class="c1"># same as doing SELECT * FROM posts</span>
+<span class="vi">@posts</span> <span class="o">=</span> <span class="no">Post</span><span class="p">.</span><span class="nf">all</span>
+<span class="c1"># as above but somehow in reverse chronological order</span>
+<span class="vi">@posts</span> <span class="o">=</span> <span class="no">Post</span><span class="p">.</span><span class="nf">all</span><span class="p">.</span><span class="nf">order</span><span class="p">(</span><span class="ss">created_at: :desc</span><span class="p">)</span>
+
+<span class="c1"># find row in db by user ID (primary key)</span>
+<span class="vi">@user</span> <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="n">session</span><span class="p">[</span><span class="ss">:session_user_id</span><span class="p">])</span>
+
+<span class="c1"># find row(s) in db by something other than ID key</span>
+<span class="c1"># returns a list, hence then calling first ([0])</span>
+<span class="n">user</span> <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">where</span><span class="p">(</span><span class="s2">"email"</span><span class="p">:</span> <span class="n">params</span><span class="p">[</span><span class="s2">"email"</span><span class="p">]).</span><span class="nf">first</span>
+
+<span class="c1"># looking up user with the entered (unique) email</span>
+<span class="c1"># for login</span>
+<span class="n">user</span> <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">where</span><span class="p">(</span><span class="s2">"email"</span><span class="p">:</span> <span class="n">params</span><span class="p">[</span><span class="s2">"email"</span><span class="p">]).</span><span class="nf">first</span>
+    <span class="k">if</span> <span class="n">user</span><span class="p">.</span><span class="nf">authenticate</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s2">"password"</span><span class="p">])</span>
+      <span class="c1"># if this is true then it's the right password and they can log in</span>
+
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="14-recreating-the-database-from-the-schemarb">14. Recreating the database from the schema.rb</h3>
+<p>The db/schema.rb file describes the current database setup. If other people on the team have the databases with the right name, they can update their dbs from a schema.rb file by running:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>rake db:schema:load
+
+rake db:schema:load RACK_ENV=test
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>Once each for the development and test dbs.</p>
+
+<h3 id="15-easily-make-a-sinatrapostgres-webapp">15. Easily make a Sinatra+Postgres webapp!</h3>
+<p>Be smug about not needing unit tests etc. And also about the ease of maintaining identical databases across the team, if applicable.</p>
+
+<h3 id="16-advanced-putting-data-into-the-database-automatically">16. Advanced: putting data into the database automatically?</h3>
+<p>It is also possible to automatically populate the databases with records and info, instead of everyone manually entering it. I have not tried this. The “easiest” way looks to be to get a <code class="language-plaintext highlighter-rouge">seed.rb</code> or <code class="language-plaintext highlighter-rouge">seeds.rb</code> file in the db/ folder. Then can run:<br />
+<code class="language-plaintext highlighter-rouge">rake db:seed</code><br />
+and it will magically put the data in the database.<br />
+However, how does the data get into the <code class="language-plaintext highlighter-rouge">seed.rb</code> file? Some quick research suggests that at this point - assuming it works with Sinatra and not just Rails - the <a href="https://medium.com/adventures-in-code/seed-dump-ruby-gem-b74cc8bdfdc">best bet is the gem Seed Dump</a>. It saves (dumps) all the data that’s been already entered and is in the db into a seed file. <code class="language-plaintext highlighter-rouge">rake db:seed:dump</code><br />
+Then, everyone in the team can use that seed.rb file to populate the dbs so everyone is using the same data without having to manually enter loads of things.</p>
+
+
+      </article>
+    </div>
+  </div>
+
+  <!-- from Minimal Mistakes -->
+
+<nav class="post-pagination text-center section-pagination mx-auto">
+  <div class="btn-group">
+  
+  <a href="/blog/2021/01/31/fun-databases/" class="btn btn-outline-primary" role="button"
+    title="Full stack fun
+">Previous</a>
+  
+  
+  <a href="/blog/2021/02/03/teamwork/" class="btn btn-outline-primary"  role="button"
+    title="First team project
+">Next</a>
+  
+  </div>
+</nav>
+
+
+</div>
+
+
+
+    <footer class="footer fixed-bottom mt-auto py-3">
+  <div class="container text-center text-secondary">
+    <div class="row">
+      <div class="col">
+        
+        <div class="social-links">
+  <a target="_blank" href="https://github.com/mscwilson">
+    <i class="fab fa-github fa-2x"></i>
+  </a>
+  <a href="mailto:miranda@mirandawilson.tech">
+    <i class="fa fa-envelope fa-2x"></i>
+  </a>
+  <a target="_blank" href="https://www.linkedin.com/in/miranda-wilson-b2196336/">
+    <i class="fab fa-linkedin fa-2x"></i>
+  </a>
+</div>
+
+        
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <p class="footer-text">&copy; 2021 Miranda Wilson
+      </div>
+    </div>
+  </div>
+  
+  <!-- JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+  
+  <script src="https://kit.fontawesome.com/6b6bfd734a.js" crossorigin="anonymous"></script>
+</footer>
+
+    
+  </body>
+</html>

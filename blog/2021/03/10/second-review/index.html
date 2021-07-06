@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" href="/assets/images/favicon-star.png" />
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css//bootstrap/bootstrap-mir-dark.css" media="(prefers-color-scheme: dark)">
+  <link rel="stylesheet" href="/assets/css//bootstrap/bootstrap-mir-light.css" media="(prefers-color-scheme: light)">
+  
+  <title>Test Driven Inspired Development</title>
+  <meta name="description" content="" />
+</head>
+
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark body-bg">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <h3 class="d-inline align-middle pl-2 text-primary">Miranda Making Things</h3>
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
+                
+        <li  class="nav-item active ml-auto" >
+          <a class="nav-link" href="/blog/">Blog</a>
+        </li>
+        
+        <li  class="nav-item ml-auto" >
+          <a class="nav-link" href="/portfolio/">Portfolio</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<nav class="navbar navbar-expand navbar-dark body-bg navbar-blog">
+  <div class="container-fluid">
+    
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
+
+        <li class="nav-item ml-auto d-none d-lg-block">
+          <a class="nav-link" href="/feed.xml"><i class="fas fa-rss"></i></a>
+        </li>
+
+        <li  class="nav-item ml-auto" >
+          <a class="nav-link" href="/blog/">Posts</a>
+        </li>
+        
+        <li  class="nav-item ml-auto" >
+          <a class="nav-link" href="/blog/tags/">Tags</a>
+        </li>
+
+        <li  class="nav-item ml-auto"
+          >
+          <a class="nav-link" href="/blog/archive/">Archive</a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <section id="banner" class="py-5 d-none d-sm-block">
+</section>
+
+
+    <div id="post" class="container pt-3">
+  <div class="row">
+    <div class="col">
+      <h3>Test Driven Inspired Development</h3>
+      <p class="post-meta">
+        <i class="far fa-calendar-alt"></i> Mar 10, 2021 ·
+        <!-- reading_time from Minimal Mistakes theme -->
+
+
+
+<span class="page__meta-readtime">
+  <i class="far fa-clock" aria-hidden="true"></i> 
+   2 minute read 
+<span>
+
+      </p>
+      <p class="post-tags-list">
+        <i class="fas fa-tags"></i> miscellaneous, testing, Makers
+      </p>
+      <hr>
+      <article>
+        <p>There’s a focus at <a href="https://makers.tech">Makers</a> on coding process. How <del>the sausage is made</del> we developers plan and interpret the specifications, our ability to explain our decisions, the quality of our commit messages, how well we can use TDD etc etc. In terms of how good we’re considered as devs, process is given at least as much weight as the final code that comes out at the end. There are workshops every week to practise this with other students, but also formal Review sessions with external reviewers.</p>
+
+<p>My first Review was a couple of weeks ago. I was pretty stressed going in, especially having hardly done any basic Ruby in weeks. Indeed, my opening move was to try to set up a class something like this:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">Report</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+
+<span class="k">end</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>(And it should have been just a method anyway!) Once I fixed that and got into it, I thought I was doing ok. I was writing tests, and getting them to go green == TDD. Imagine my surprise when the reviewer told me at the end that I was doing it all wrong.</p>
+
+<p>Somehow in the 6-8 weeks since learning about TDD I had gone off on my own path. I’ve now done a few practise sessions trying hard to do it properly. Looking back at what I wrote in my first Review: lol.</p>
+
+<p>I had my second Review today. Conveniently I got some extremely useful advice from one of my cohort (who is particularly great at feedback) this morning. Not only had I previously been testing things like “is the input an array” or “I’ll delete this test in a bit once I’ve finished writing the method, it won’t work then” - but also only doing a bit more than 2/3rds of TDD. Red, Green, Red again, Green, Red, Green, Red, Green… Refactor! I’ll get the written feedback in a couple of days from the external coach, but I did much better this time.</p>
+
+<h3 id="installation-adventures">Installation adventures</h3>
+<p>I have <a href="/blog/2021/03/01/system_reset/">wiped</a>) and reinstalled my M1 computer, and now everything works! Laughably straightforward compared to my <a href="/blog/2021/02/09/installation-m1/">first attempt</a>. I followed the instructions <a href="https://dev.to/nitishdayal/setting-up-vs-code-and-iterm-on-m1-macs-37g7">here</a> - other walkthroughs prefixed all the installation steps with <code class="language-plaintext highlighter-rouge">arch -x86_64</code> to make sure it’s installed on the right architecture, but this genius pointed out that only one step is really necessary. Go to Get Info on the iTerm app, and tick “Open using Rosetta”. Et voilà:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>👻  ~ % <span class="nb">arch
+</span>i386
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Deliberately avoiding using the new chip properly is a bit disappointing. Pretending it’s an old Intel machine. But… my tools (mostly) work now and they didn’t before?!</p>
+
+<hr />
+<p>Went back to what I think of as an easy-listening album today. It’s actually kind of punky alternative rock, but I find it very easy to listen to. Tunes, (clean) singing, not challenging/experimental, short tracks, not boring. Ears/brain relaxation. They get bonus points for doing a cover of The Cardigan’s My Favourite Game.</p>
+
+<!-- instructions from https://learn.cloudcannon.com/jekyll/youtube/ -->
+<div class="video_wrapper">
+  <iframe src="https://www.youtube.com/embed/IJ-YWOja248?rel=0&amp;modestbranding=1&amp;showinfo=0" frameborder="0" allowfullscreen=""></iframe>
+</div>
+
+
+      </article>
+    </div>
+  </div>
+
+  <!-- from Minimal Mistakes -->
+
+<nav class="post-pagination text-center section-pagination mx-auto">
+  <div class="btn-group">
+  
+  <a href="/blog/2021/03/01/system_reset/" class="btn btn-outline-primary" role="button"
+    title="Native naivety - system reset
+">Previous</a>
+  
+  
+  <a href="/blog/2021/03/13/bank-gilded-rose/" class="btn btn-outline-primary"  role="button"
+    title="Dependency injection, confusion injection / Double trouble
+">Next</a>
+  
+  </div>
+</nav>
+
+
+</div>
+
+
+
+    <footer class="footer fixed-bottom mt-auto py-3">
+  <div class="container text-center text-secondary">
+    <div class="row">
+      <div class="col">
+        
+        <div class="social-links">
+  <a target="_blank" href="https://github.com/mscwilson">
+    <i class="fab fa-github fa-2x"></i>
+  </a>
+  <a href="mailto:miranda@mirandawilson.tech">
+    <i class="fa fa-envelope fa-2x"></i>
+  </a>
+  <a target="_blank" href="https://www.linkedin.com/in/miranda-wilson-b2196336/">
+    <i class="fab fa-linkedin fa-2x"></i>
+  </a>
+</div>
+
+        
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <p class="footer-text">&copy; 2021 Miranda Wilson
+      </div>
+    </div>
+  </div>
+  
+  <!-- JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+  
+  <script src="https://kit.fontawesome.com/6b6bfd734a.js" crossorigin="anonymous"></script>
+</footer>
+
+    
+  </body>
+</html>

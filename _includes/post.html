@@ -6,6 +6,9 @@
         <i class="far fa-calendar-alt"></i> {{ page.date | date: "%b %-d, %Y" }} ·
         {% include read-time.html content=page.content %}
       </p>
+      <p class="post-tags-list">
+        <i class="fas fa-tags"></i> {{ page.tags | join: ", " }}
+      </p>
       <hr>
       <article>
         {{ content }}

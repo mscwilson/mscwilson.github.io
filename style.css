@@ -1,0 +1,39 @@
+body {
+  margin: 30px;
+  padding-top: 20px;
+  padding-left: 10px;
+  background-color: #fffafa;
+  font-family: arial, sans-serif;
+  font-size: 20px;
+}
+
+p,
+ul {
+  /* font-size: 35px;
+  font-weight: normal; */
+  margin-top: 5px;
+}
+
+li {
+  padding: 3px;
+}
+
+/* unvisited link */
+a:link {
+  color: #e0006c;
+}
+
+/* visited link */
+a:visited {
+  color: #700036;
+}
+
+/* mouse over link */
+a:hover {
+  color: #80ffaa;
+}
+
+/* selected link */
+a:active {
+  color: #80ffaa;
+}

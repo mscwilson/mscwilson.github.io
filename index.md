@@ -69,16 +69,17 @@ Much like being a tech writer, being a scientist involves wearing many hats:
 * Writing in the passive voice
 * Copy editing and reviewing other people's papers
 * Teaching and mentoring students
-* Persisting despite the constant failures
+* Persisting despite the constant failures and glacial pace of progress
 * Giving presentations
 * Cleaning and maintaining the lab
 
-Notable papers:
+Notable publications:
 
 - The culmination of my postdoc, my first-author research paper. I showed that one of the molecules I studied was [something to do with cellular phosphate metabolism](https://pubmed.ncbi.nlm.nih.gov/31186349/).
-- Methods papers are scientific documentation that explain how to perform a technique. In this paper I described [how to extract and concentrate certain molecules from cells](https://pubmed.ncbi.nlm.nih.gov/30148188/).
+- Methods papers are scientific documentation that explain how to perform a technique. Here I described [how to extract and concentrate certain molecules from cells](https://pubmed.ncbi.nlm.nih.gov/30148188/).
 - [A literature review](https://pubmed.ncbi.nlm.nih.gov/23725456/) summarising the current knowledge about the molecules I worked on.
 
+---
 
 ## Hobby projects
 

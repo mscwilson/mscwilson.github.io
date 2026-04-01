@@ -14,45 +14,53 @@ Previously I was a software developer, and before that, a cell biologist.
 
 ## Some things I've done
 
-I'm the first ever technical writer at Snowplow. I've been busy 😎
+I'm the first ever technical writer at Snowplow. The Snowplow docs had no official owner from 2012 until 2025 🫥 plenty to do.
+
+The Snowplow docs are open source, so you can see all my changes. Here are some highlights.
 
 ### AI and LLMs
 
-- [placeholder](URL) — placeholder
-- [placeholder](URL) — placeholder
-- [placeholder](URL) — placeholder
+We're living in the future.
 
-### Processes and workflows
+- To improve ingestion by LLMs, I built a Markdown converter that has full support for tabs, Mermaid, and custom components[placeholder](URL) — placeholder
+- Automatic PR reviews by Claude have saved me _so_ much time[placeholder](URL) — placeholder
+- SEO description and keywords #115: Add SEO description and keywords to all files
 
-- [placeholder](URL) — placeholder
-- [placeholder](URL) — placeholder
-- [placeholder](URL) — placeholder
+### CI/CD
 
-### Information architecture
+Rules! The satisfaction of automating things! Clarity! Quality! I've read Zen and the Art of Motorcycle Maintenance multiple times. Great book.
 
-- [placeholder](URL) — placeholder
-- [placeholder](URL) — placeholder
-- [placeholder](URL) — placeholder
-
-### UI
-
-- [placeholder](URL) — placeholder
-- [placeholder](URL) — placeholder
-- [placeholder](URL) — placeholder
+- broken anchors[placeholder](URL) — placeholder #121: Fail build on broken links or anchors
+- enforce metadata[placeholder](URL) — placeholder #106: Enforce SEO metadata
 
 ### Product releases
 
-- [placeholder](URL) — placeholder
-- [placeholder](URL) — placeholder
+Our deploy previews are open source too. The docs for upcoming releases need to be shareable before general availability, and ready to go live on release day.
+
+- Signals [placeholder](URL) — placeholder
+- Event Forwarding [placeholder](URL) — placeholder
 - [placeholder](URL) — placeholder
 
-### Bugs and debt
+### Content refactoring
 
-The Snowplow docs had no official owner from 2012 until 2025 🫥
+Sometimes, there's a gap in release deadlines and I get to treat myself to some refactoring.
 
-- [placeholder](URL) — placeholder
-- [placeholder](URL) — placeholder
-- [placeholder](URL) — placeholder
+- Snowtype[placeholder](URL) — placeholder
+- fundamentals[placeholder](URL) — placeholder
+- ootb events [placeholder](URL) — placeholder
+
+### Information architecture
+
+Most users come directly from Google anyway.
+
+- landing pages[placeholder](URL) — #142: Add CDI and Signals landing pages
+- headings for nav[placeholder](URL) — #134: Add headings to navigation sidebar
+
+### UI
+
+- #135: Add buttons for Markdown download [placeholder](URL) — placeholder
+- [placeholder](URL) — #114: Add margin for anchor headings
+- [placeholder](URL) — #110: Add platform availability badges
 
 ---
 
@@ -60,7 +68,7 @@ The Snowplow docs had no official owner from 2012 until 2025 🫥
 
 I spent 12 years researching cell metabolism: PhD at Imperial College London, and postdoc at University College London. I have [25+ publications](https://www.webofscience.com/wos/author/record/W-1453-2019).
 
-Much like being a tech writer, being a scientist involves wearing many hats:
+Much like being a tech writer, being a cell biologist requires many overlapping skill sets:
 * Designing and performing experiments
 * Growing cells to do things with
 * Making tools and reagents
@@ -75,12 +83,6 @@ Much like being a tech writer, being a scientist involves wearing many hats:
 
 Notable publications:
 
-- The culmination of my postdoc, my first-author research paper. I showed that one of the molecules I studied was [something to do with cellular phosphate metabolism](https://pubmed.ncbi.nlm.nih.gov/31186349/).
+- The culmination of my postdoc, a first-author research paper. I showed that one of the molecules I studied was [something to do with cellular phosphate metabolism](https://pubmed.ncbi.nlm.nih.gov/31186349/).
 - Methods papers are scientific documentation that explain how to perform a technique. Here I described [how to extract and concentrate certain molecules from cells](https://pubmed.ncbi.nlm.nih.gov/30148188/).
 - [A literature review](https://pubmed.ncbi.nlm.nih.gov/23725456/) summarising the current knowledge about the molecules I worked on.
-
----
-
-## Hobby projects
-
-Placeholder

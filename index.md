@@ -41,7 +41,7 @@ Clarity! Quality*! The satisfaction of automating things!
 
 The docs for upcoming releases need to be shareable before general availability, and ready to go live on release day.
 
-* The [docs for our new product Identities](https://github.com/snowplow/documentation/pull/1435) were a collaboration between me, the Product Manager, a couple of engineers, and Claude AI
+* The [docs for our new product Identities](https://github.com/snowplow/documentation/pull/1435) were a collaboration between me, the Product Manager, and a couple of engineers
 * The [initial docs](https://github.com/snowplow/documentation/pull/1197) for our big new product, Signals, covered the concepts, SDKs, the UI (a last minute addition), notebooks, and tutorials
 
 ### Content refactoring

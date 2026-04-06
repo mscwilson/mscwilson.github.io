@@ -30,7 +30,7 @@ We're living in the future.
 
 ### CI/CD
 
-Rules! Quality*! The satisfaction of automating things!
+Clarity! Quality*! The satisfaction of automating things!
 
 * Fail the build on [broken anchors](https://github.com/snowplow/documentation/pull/1554) as well as broken internal links
 * This [workflow](https://github.com/snowplow/documentation/pull/1550) checks for the required SEO/AIO metadata
@@ -82,3 +82,11 @@ Notable publications:
 * The culmination of my postdoc, a first-author research paper. I showed that one of the molecules I studied was [something to do with cellular phosphate metabolism](https://pubmed.ncbi.nlm.nih.gov/31186349/).
 * Methods papers are scientific documentation that explain how to perform a technique. Here I described [how to extract and concentrate certain molecules from cells](https://pubmed.ncbi.nlm.nih.gov/30148188/).
 * [A literature review](https://pubmed.ncbi.nlm.nih.gov/23725456/) summarising the current knowledge about the molecules I worked on.
+
+---
+
+<footer markdown="1">
+
+[GitHub](https://github.com/mscwilson) · [LinkedIn](https://www.linkedin.com/in/miranda-wilson-b2196336/) · [email](mailto:miranda@mirandawilson.tech)
+
+</footer>

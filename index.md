@@ -39,8 +39,8 @@ Rules! Quality*! The satisfaction of automating things!
 
 The docs for upcoming releases need to be shareable before general availability, and ready to go live on release day.
 
-* The [docs for our new product Identities](https://github.com/snowplow/documentation/pull/1435) are a collaboration between me, the Product Manager, a couple of engineers, and Claude.
-* We released a big new product, [Signals](https://docs.snowplow.io/docs/signals/get-started/). The [initial docs](https://github.com/snowplow/documentation/pull/1197) covered the concepts, SDKs, the UI (a last minute addition), notebooks, and tutorials.
+* The [docs for our new product Identities](https://github.com/snowplow/documentation/pull/1435) were a collaboration between me, the Product Manager, a couple of engineers, and Claude AI
+* The [initial docs](https://github.com/snowplow/documentation/pull/1197) for our big new product, Signals, covered the concepts, SDKs, the UI (a last minute addition), notebooks, and tutorials
 
 ### Content refactoring
 
@@ -53,7 +53,7 @@ Sometimes, there's a gap in release deadlines and I get to treat myself to some 
 
 Improving knowledge discoverability.
 
-* More useful [landing pages](https://github.com/snowplow/documentation/pull/1645)
+* [Landing pages](https://github.com/snowplow/documentation/pull/1645) with CTAs and links to popular pages
 * I added [headings](https://github.com/snowplow/documentation/pull/1629) to the side navigation to highlight Signals, our important new product
 
 ---

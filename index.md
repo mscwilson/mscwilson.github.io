@@ -2,6 +2,8 @@
 layout: default
 ---
 
+# Miranda Wilson
+
 Hi, I'm Miranda. I'm a technical writer.
 
 I work for [Snowplow](https://snowplow.io/); I own the [product documentation](https://docs.snowplow.io/docs/).

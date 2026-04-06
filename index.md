@@ -8,7 +8,7 @@ Hi, I'm Miranda. I'm a technical writer.
 
 I work for [Snowplow](https://snowplow.io/); I own the [product documentation](https://docs.snowplow.io/docs/).
 
-Previously I was a software developer, and before that, a cell biologist.
+Previously I was a software developer, and before that, a cell biologist. I live in London, UK.
 
 [GitHub](https://github.com/mscwilson) · [LinkedIn](https://www.linkedin.com/in/miranda-wilson-b2196336/) · [email](mailto:miranda@mirandawilson.tech)
 
@@ -18,7 +18,7 @@ Previously I was a software developer, and before that, a cell biologist.
 
 I'm the first ever technical writer at Snowplow. The Snowplow docs had no official owner from 2012 until 2025 🫥
 
-The [Snowplow docs](https://github.com/snowplow/documentation) are open source, so you can see all my changes. Here are some highlights.
+The [Snowplow product docs repo](https://github.com/snowplow/documentation) is open source, so you can see all my changes. Here are some highlights.
 
 ### AI and LLMs
 
